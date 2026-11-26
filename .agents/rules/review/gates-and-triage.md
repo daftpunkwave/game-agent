@@ -8,6 +8,17 @@ This document governs CI check interpretation, static analysis triage, and revie
 
 - Rely strictly on the checks and workflows configured in `.github/workflows/` and `package.json`—do not invent unconfigured gates.
 - Wait for triggered CI workflows and automated reviewers via event notifications rather than polling loops.
+- **Required Checks on `main`**: The `main` ruleset blocks merging until these checks pass on the pull request head and the branch is up to date with `main`:
+
+  | Check | Workflow | What it verifies |
+  |---|---|---|
+  | `hygiene` | `repo-hygiene.yml` | Whitespace errors, conflict markers, tracked `.env` files |
+  | `check (ubuntu-latest)`, `check (windows-latest)` | `check.yml` | `pnpm check` on Linux and Windows |
+  | `conventions` | `pull-request.yml` | Conventional Commits and English-only title, description, and non-merge commits (`pnpm check:conventions`) |
+  | `dependency-review` | `pull-request.yml` | No newly added dependency with a known vulnerability of moderate or higher severity |
+
+- **CI Runs on Pull Requests Only**: Workflows do not rerun on pushes to `main`, because an up-to-date pull request that passed the required checks squashes to the tree that was checked. Use the manual `workflow_dispatch` trigger of `check` or `repo-hygiene` to check `main` on demand.
+- Renaming a required job or matrix entry is a breaking change to the ruleset: update the ruleset's required checks in the same change, or every pull request stays blocked.
 
 ---
 

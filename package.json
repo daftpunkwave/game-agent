@@ -13,6 +13,7 @@
     "test": "vitest run",
     "check:boundaries": "node scripts/check-boundaries.ts",
     "check:headers": "node scripts/check-headers.ts",
+    "check:conventions": "node scripts/check-conventions.ts",
     "check": "pnpm typecheck && pnpm test && pnpm check:boundaries && pnpm check:headers",
     "game-agent": "node apps/cli/src/main.ts"
   },
