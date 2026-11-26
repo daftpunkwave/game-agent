@@ -1,0 +1,17 @@
+{
+  "name": "@game-agent/fleet",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@game-agent/atomic-write": "workspace:*",
+    "@game-agent/behavior-tree": "workspace:*",
+    "@game-agent/contracts": "workspace:*",
+    "@game-agent/errors": "workspace:*",
+    "@game-agent/ports": "workspace:*"
+  }
+}
