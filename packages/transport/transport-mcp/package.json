@@ -1,0 +1,16 @@
+{
+  "name": "@game-agent/transport-mcp",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@game-agent/contracts": "workspace:*",
+    "@game-agent/errors": "workspace:*",
+    "@game-agent/ports": "workspace:*",
+    "@modelcontextprotocol/client": "^2.2.0"
+  }
+}

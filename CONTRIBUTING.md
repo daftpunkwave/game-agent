@@ -22,6 +22,12 @@ Thank you for your interest in contributing to **game-agent**! All contributions
    ```
    Examples: `feat/bt-scheduler`, `fix/intent-ledger-timeout`, `docs/protocol-adapter`.
 3. Never commit or push directly to `main`.
+4. Install dependencies and run the full gate before opening a pull request:
+   ```sh
+   pnpm install
+   pnpm check
+   ```
+   `pnpm check` runs type checking, tests, the package boundary check, and the file header check. See [docs/architecture.md](docs/architecture.md) for how the packages fit together.
 
 ## 4. Commit Conventions
 

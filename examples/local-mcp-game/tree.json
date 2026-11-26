@@ -1,0 +1,32 @@
+{
+  "format": "game-agent.tree/v1",
+  "id": "local-farmer",
+  "version": 1,
+  "title": "Local game over MCP: chores by rule, everything else by the model",
+  "description": "Action names are illustrative; they must match the tools listed by the game's MCP server.",
+  "root": {
+    "type": "selector",
+    "children": [
+      {
+        "type": "cooldown",
+        "name": "morning chores once per game day",
+        "ms": 1200000,
+        "child": {
+          "type": "sequence",
+          "children": [
+            { "type": "action", "action": "water_crops", "args": {} },
+            { "type": "action", "action": "harvest_crops", "args": {} }
+          ]
+        }
+      },
+      {
+        "type": "decision",
+        "name": "free play",
+        "purpose": "Chores are done. Choose the next most valuable activity for today.",
+        "tools": ["travel_to", "fish", "ship_items", "sleep"],
+        "maxProposals": 2,
+        "timeoutMs": 60000
+      }
+    ]
+  }
+}

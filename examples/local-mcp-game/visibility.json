@@ -1,0 +1,7 @@
+{
+  "views": {
+    "text": { "fields": [{ "path": "content" }] }
+  },
+  "events": {},
+  "budget": { "maxStringLength": 6000, "maxArrayItems": 50, "maxFieldsPerView": 50 }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@game-agent/cli",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "game-agent": "./src/main.ts"
+  },
+  "exports": {
+    ".": "./src/main.ts"
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis": "^4.1.0",
+    "@game-agent/agent-runtime": "workspace:*",
+    "@game-agent/app": "workspace:*",
+    "@game-agent/behavior-tree": "workspace:*",
+    "@game-agent/contracts": "workspace:*",
+    "@game-agent/decision": "workspace:*",
+    "@game-agent/errors": "workspace:*",
+    "@game-agent/fleet": "workspace:*",
+    "@game-agent/gateway": "workspace:*",
+    "@game-agent/model-openai-compatible": "workspace:*",
+    "@game-agent/ports": "workspace:*",
+    "@game-agent/trace": "workspace:*",
+    "@game-agent/transport-mcp": "workspace:*",
+    "@game-agent/transport-simulated": "workspace:*"
+  }
+}

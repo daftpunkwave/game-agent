@@ -1,6 +1,6 @@
 # Coding Agent Instructions and Engineering Charter
 
-**game-agent** is a universal **TypeScript (Node.js 24+)** game AI agent runtime harness. It connects any game API or MCP server through decoupled single-port protocol boundaries to drive **AI-NPCs**, **AI factions**, and **autonomous gameplay**, combining a local **Behavior Tree** engine, structured memory, bounded LLM decision loops, and headless CLI/TUI + Web monitoring.
+**game-agent** is a **TypeScript (Node.js 24+)** runtime that runs language-model agents as headless game clients. Games connect through transport adapters (MCP is one of them); every agent has a single ingress and a single egress gateway, an intent ledger, an event inbox, an agent-side behavior tree, and bounded AI decision nodes. The kernel is Cordis; the first interaction surface is the `game-agent` CLI. Read [docs/architecture.md](docs/architecture.md) before changing `packages/`.
 
 ## Meta-Directive
 
@@ -33,6 +33,30 @@ All external outputs—user replies, commit messages, PR descriptions, issues, r
 
 This repository is strictly **English-only** across all source code, comments, file headers, documentation, commit messages, pull requests, issues, and default prompts.
 - Do not introduce non-English text into tracked files unless explicitly implementing an `i18n` localization module or locale bundle under a dedicated `i18n`/`locale` boundary.
+
+---
+
+## Repository Layout & Commands
+
+```text
+packages/<group>/<name>   @game-agent/<name> workspaces; group rules in packages/README.md
+apps/cli                  the game-agent command line
+examples/                 runnable behavior trees and agent configs
+docs/                     architecture and design documents
+scripts/                  repository gates
+```
+
+```sh
+pnpm install
+pnpm typecheck          # tsc over every package, app, script, and test
+pnpm test               # vitest
+pnpm check:boundaries   # declared deps, no deep imports, acyclic graph, group rules, SDK confinement
+pnpm check:headers      # three-part file headers; no console.log, debugger, TODO, or FIXME in packages and apps
+pnpm check              # all of the above
+pnpm game-agent help    # run the CLI from source (Node.js native type stripping, no build step)
+```
+
+Source is executed directly by Node.js type stripping: use explicit `.ts` extensions in relative imports and only erasable TypeScript syntax (no enums, namespaces, or constructor parameter properties).
 
 ---
 
