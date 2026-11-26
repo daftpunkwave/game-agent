@@ -21,8 +21,10 @@ build/
 *.sqlite
 *.sqlite3
 .data/
-data/
-saves/
+/data/
+/saves/
+.game-agent/
+traces/
 
 # Logs & temporary artifacts
 *.log
