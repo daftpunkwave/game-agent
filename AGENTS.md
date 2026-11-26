@@ -53,6 +53,7 @@ pnpm test               # vitest
 pnpm check:boundaries   # declared deps, no deep imports, acyclic graph, group rules, SDK confinement
 pnpm check:headers      # three-part file headers; no console.log, debugger, TODO, or FIXME in packages and apps
 pnpm check              # all of the above
+pnpm check:conventions  # Conventional Commits and English-only commit messages in origin/main..HEAD (CI also checks PR title and description)
 pnpm game-agent help    # run the CLI from source (Node.js native type stripping, no build step)
 ```
 
