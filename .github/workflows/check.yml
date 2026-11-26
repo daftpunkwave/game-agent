@@ -1,15 +1,13 @@
 # Repository Check
 #
-# Responsibilities: Run the full repository gate (type checking, tests, package boundaries, file headers) on pushes and pull requests.
-# Contracts: Uses the pnpm version pinned in package.json and Node.js 24; fails when `pnpm check` fails.
-# Constraints: Actions are pinned by commit SHA; the job has read-only repository permissions.
+# Responsibilities: Run the full repository gate (type checking, tests, package boundaries, file headers) on Linux and Windows for pull requests, and on demand.
+# Contracts: Uses the pnpm version pinned in package.json and Node.js 24; reports one required check per runner, `check (ubuntu-latest)` and `check (windows-latest)`, each failing when `pnpm check` fails.
+# Constraints: Does not run on pushes to main: the `main` ruleset requires pull requests to be up to date with main and to pass this check, so the squashed tree is the tree already checked. Actions are pinned by commit SHA; jobs have read-only repository permissions; renaming a job or matrix entry requires updating the required checks of the `main` ruleset.
 name: check
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
+  workflow_dispatch:
 
 concurrency:
   group: check-${{ github.workflow }}-${{ github.ref }}
@@ -20,8 +18,15 @@ permissions:
 
 jobs:
   check:
-    name: check
-    runs-on: ubuntu-latest
+    name: check (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4

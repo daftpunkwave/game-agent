@@ -1,15 +1,13 @@
 # Repository Hygiene Check
 #
-# Responsibilities: Verify whitespace/conflict markers and basic file hygiene on pushes and pull requests.
-# Contracts: Runs on every PR and push to main using standard git diff checks without requiring package builds yet.
-# Constraints: Must fail loudly on whitespace errors, conflict markers, or non-empty .env commits.
+# Responsibilities: Verify whitespace/conflict markers and basic file hygiene on pull requests, and on demand.
+# Contracts: Uses git only (no dependency install); reports the required check `hygiene`. Pull requests check their diff against the base; manual runs check the whole tree of the selected ref.
+# Constraints: Must fail loudly on whitespace errors, conflict markers, or tracked .env files. Does not run on pushes to main because merged trees were already checked as up-to-date pull requests; renaming the job requires updating the required checks of the `main` ruleset.
 name: repo-hygiene
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
+  workflow_dispatch:
 
 concurrency:
   group: hygiene-${{ github.workflow }}-${{ github.ref }}
@@ -22,6 +20,7 @@ jobs:
   hygiene:
     name: hygiene
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
