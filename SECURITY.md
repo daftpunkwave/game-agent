@@ -20,4 +20,4 @@ Contributors and AI Coding Agents must uphold these boundaries at all times:
 1. **No Committed Secrets**: Never commit API keys, tokens, credentials, or `.env` files containing real secrets.
 2. **Untrusted Game Text Isolation**: All external player chat, whispers, mail, and game-world strings must enter through structured untrusted data slots and pass injection/authority guards—never interpolate untrusted text into system instructions.
 3. **Single-Port Egress Guardrails**: Game commands must pass server/gateway schema validation, idempotency checks, and quota limits before hitting any transport adapter.
-4. **Visibility Cropping**: Agent observations must never leak hidden internal game fields that a normal player client cannot observe.
+4. **Visibility Cropping**: Neither the model nor the behavior tree may receive hidden internal game fields that a normal player client cannot observe; cropping happens in the ingress gateway before data reaches either.
