@@ -1,0 +1,21 @@
+{
+  "agentId": "local-farmer",
+  "tree": "./tree.json",
+  "visibility": "./visibility.json",
+  "game": {
+    "url": "http://127.0.0.1:18080/mcp",
+    "snapshotTool": "get_state",
+    "callTimeoutMs": 960000,
+    "canPauseGameTime": true
+  },
+  "model": {
+    "baseUrl": "https://api.deepseek.com",
+    "model": "deepseek-v4-flash",
+    "apiKeyEnv": "DEEPSEEK_API_KEY"
+  },
+  "gameRules": "You are playing a farming game through tools. Finish daily chores before exploring. Sleep before the day ends.",
+  "persona": "Patient and thrifty. Prefers steady progress over risky shortcuts.",
+  "quota": { "dailyTotal": 2000 },
+  "jitter": { "minMs": 200, "maxMs": 1500 },
+  "trace": "./traces/local-farmer.jsonl"
+}

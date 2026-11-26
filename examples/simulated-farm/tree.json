@@ -1,0 +1,48 @@
+{
+  "format": "game-agent.tree/v1",
+  "id": "simulated-farm",
+  "version": 1,
+  "title": "Daily farm routine with an AI fallback",
+  "description": "Rules handle the routine at zero token cost; the AI node is consulted at most once per hour when no rule applies.",
+  "root": {
+    "type": "schedule",
+    "name": "active hours",
+    "windows": [
+      { "start": "07:00", "end": "12:00" },
+      { "start": "18:00", "end": "23:30" }
+    ],
+    "utcOffsetMinutes": 480,
+    "child": {
+      "type": "selector",
+      "children": [
+        {
+          "type": "sequence",
+          "name": "upgrade the farm when affordable",
+          "children": [
+            { "type": "condition", "check": "blackboard.equals", "args": { "key": "city.upgrading", "value": false } },
+            { "type": "condition", "check": "blackboard.atLeastKey", "args": { "key": "city.wood", "minKey": "city.upgradeCost" } },
+            { "type": "action", "action": "upgrade_farm", "args": {} }
+          ]
+        },
+        {
+          "type": "cooldown",
+          "name": "gather wood at most every 20 minutes",
+          "ms": 1200000,
+          "child": { "type": "action", "action": "gather", "args": { "resource": "wood" } }
+        },
+        {
+          "type": "cooldown",
+          "name": "consult the model at most hourly",
+          "ms": 3600000,
+          "child": {
+            "type": "decision",
+            "purpose": "No routine applies right now. Decide whether anything is worth doing.",
+            "tools": ["gather", "say"],
+            "maxProposals": 1,
+            "timeoutMs": 30000
+          }
+        }
+      ]
+    }
+  }
+}
