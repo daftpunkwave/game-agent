@@ -1,0 +1,44 @@
+# Repository Hygiene Check
+#
+# Responsibilities: Verify whitespace/conflict markers and basic file hygiene on pushes and pull requests.
+# Contracts: Runs on every PR and push to main using standard git diff checks without requiring package builds yet.
+# Constraints: Must fail loudly on whitespace errors, conflict markers, or non-empty .env commits.
+name: repo-hygiene
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: hygiene-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  hygiene:
+    name: hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Check git diff whitespace and conflict markers
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git diff --check "${{ github.event.pull_request.base.sha }}...HEAD"
+          else
+            git diff --check "$(git hash-object -t tree /dev/null)" HEAD
+          fi
+
+      - name: Ensure no .env credential files are tracked
+        run: |
+          if git ls-files | grep -E '(^|/)\.env(\..+)?$' | grep -v '\.env\.example$'; then
+            echo "Error: tracked .env file detected"
+            exit 1
+          fi
