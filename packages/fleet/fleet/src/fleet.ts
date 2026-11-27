@@ -5,7 +5,7 @@
  */
 import { validateTreeDefinition, type TreeDefinition } from '@game-agent/behavior-tree'
 import type { JsonObject } from '@game-agent/contracts'
-import { GameAgentError } from '@game-agent/errors'
+import { GameAgentError } from '@game-agent/error'
 import type { Clock, IdSource } from '@game-agent/ports'
 import type { AgentLifecycle, AgentProfile, FleetDocument, RolloutPolicy, TreeTemplateRecord } from './model.ts'
 

@@ -1,0 +1,17 @@
+{
+  "name": "@game-agent/timeout",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Zero-dependency timeout/deadline primitive: clampTimeout, deadline, timeoutOf, TimeoutReason (timing + classification only, no termination)",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  }
+}

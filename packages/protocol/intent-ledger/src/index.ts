@@ -4,7 +4,7 @@
  * Constraints: Never resends a command; overdue intents are reconciled by query only. Time comes from the injected Clock.
  */
 import type { CommandReceipt, CommandStatus, GameIntent, JsonValue, RawGameEvent } from '@game-agent/contracts'
-import { GameAgentError } from '@game-agent/errors'
+import { GameAgentError } from '@game-agent/error'
 import type { Clock } from '@game-agent/ports'
 
 /** Lifecycle state of one intent. */

@@ -1,0 +1,17 @@
+{
+  "name": "@game-agent/util-code-language",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Single file-extension to syntax-highlighting language table shared by Client code surfaces and the Host read card",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  }
+}

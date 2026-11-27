@@ -2,9 +2,18 @@
   "name": "@game-agent/atomic-write",
   "version": "0.0.0",
   "private": true,
+  "description": "Atomic file replacement: exclusive-create random-suffix temp + rename carrying the caller-stated permissions (writeFileAtomic)",
   "type": "module",
   "license": "MIT",
   "exports": {
     ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "@game-agent/error": "workspace:*",
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/error": "workspace:*",
+    "@game-agent/kernel": "workspace:*"
   }
 }

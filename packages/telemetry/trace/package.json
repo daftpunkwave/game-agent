@@ -8,7 +8,6 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@game-agent/contracts": "workspace:*",
-    "@game-agent/deque": "workspace:*"
+    "@game-agent/contracts": "workspace:*"
   }
 }

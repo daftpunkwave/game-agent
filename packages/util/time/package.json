@@ -1,0 +1,22 @@
+{
+  "name": "@game-agent/util-time",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Strict instant and IANA zone parsing, millisecond spans, and bounded Cron/RRULE recurrence arithmetic",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@js-temporal/polyfill": "0.5.1",
+    "rrule": "2.8.1"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  }
+}

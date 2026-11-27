@@ -4,7 +4,7 @@
  * Constraints: The runner never talks to a game or a model directly; it sees only the blackboard, the host, and registered conditions.
  */
 import { isJsonObject, type JsonObject, type JsonValue } from '@game-agent/contracts'
-import { GameAgentError } from '@game-agent/errors'
+import { GameAgentError } from '@game-agent/error'
 import type { ConditionRegistry } from './conditions.ts'
 import { ROOT_PATH, childPath, type NodeDefinition, type TreeDefinition } from './definition.ts'
 import { isWithinWindows, nextWindowBoundary } from './schedule.ts'

@@ -1,18 +1,21 @@
 /**
- * Responsibilities: Provide a circular double-ended queue for inboxes and work queues that live across asynchronous turns.
- * Contracts: Insertion and removal at both ends run in amortized constant time; removed slots are cleared so entries can be collected.
- * Constraints: Zero dependencies; storage shrinks once the live count falls to a quarter of capacity.
+ * Zero-dependency circular deque for queues that retain entries across asynchronous work.
+ * @module @game-agent/deque
  */
 
 const MIN_CAPACITY = 16
 
-/** A circular deque with amortized constant-time insertion and removal at both ends. */
+/**
+ * A circular deque with amortized constant-time insertion and removal.
+ * Removed entries are cleared immediately, and sparse storage shrinks after
+ * the live entry count reaches one quarter of its capacity.
+ */
 export class Deque<T> {
   private buffer = new Array<T | undefined>(MIN_CAPACITY)
   private head = 0
   private count = 0
 
-  /** Number of entries currently stored. */
+  /** Number of entries available to remove. */
   get size(): number {
     return this.count
   }
@@ -40,8 +43,9 @@ export class Deque<T> {
   }
 
   /**
-   * Remove and return the head entry.
-   * Callers whose element type includes `undefined` use {@link size} to tell an empty deque apart.
+   * Remove the current head entry and clear its retained reference.
+   * Callers whose element type includes `undefined` use {@link size} to
+   * distinguish an empty deque from an `undefined` entry.
    * @returns the removed entry, or `undefined` when the deque is empty.
    */
   popFront(): T | undefined {
@@ -53,39 +57,6 @@ export class Deque<T> {
     this.count -= 1
     this.compact()
     return value
-  }
-
-  /**
-   * Remove and return the tail entry.
-   * @returns the removed entry, or `undefined` when the deque is empty.
-   */
-  popBack(): T | undefined {
-    if (this.count === 0) return undefined
-    const tail = this.head + this.count - 1
-    const index = tail < this.buffer.length ? tail : tail - this.buffer.length
-    const value = this.buffer[index] as T
-    this.buffer[index] = undefined
-    this.count -= 1
-    this.compact()
-    return value
-  }
-
-  /**
-   * Read the head entry without removing it.
-   * @returns the head entry, or `undefined` when the deque is empty.
-   */
-  peekFront(): T | undefined {
-    return this.count === 0 ? undefined : this.buffer[this.head]
-  }
-
-  /** Iterate entries from head to tail without removing them. */
-  *[Symbol.iterator](): IterableIterator<T> {
-    let index = this.head
-    for (let visited = 0; visited < this.count; visited += 1) {
-      yield this.buffer[index] as T
-      index += 1
-      if (index === this.buffer.length) index = 0
-    }
   }
 
   /** Drop every entry and release the current backing storage. */

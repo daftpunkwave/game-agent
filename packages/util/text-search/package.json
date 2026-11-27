@@ -1,0 +1,21 @@
+{
+  "name": "@game-agent/util-text-search",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Multilingual fuzzy filtering for in-memory search lists",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@game-agent/package-manifest": "workspace:*",
+    "fuzzysort": "4.0.2"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@game-agent/util-workspace-path",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Browser-safe Workspace path and display helpers",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  }
+}

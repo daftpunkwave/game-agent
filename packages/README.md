@@ -13,10 +13,26 @@ Workspace packages live at `packages/<group>/<name>` and are published under the
 | | | `timer` | Timers released with the owning plugin |
 | | | `logger-console` | Console output for the kernel logger |
 | | | `hmr` | Hot module replacement for plugins during development |
-| `util` | `util` | `errors` | Base error with a stable `code` |
+| `util` | `util` | `atomic-write` | Atomic file replacement and cross-process file locks |
+| | | `brand` | Branded primitive types |
+| | | `chunked-list` | Persistent append-only chunked lists with JSON checkpoints |
+| | | `code-language` | File extension to syntax-highlighting language table |
+| | | `crypto` | Browser-safe UUID and byte-encoding helpers |
 | | | `deque` | Circular double-ended queue |
-| | | `atomic-write` | Atomic file replacement |
+| | | `error` | `GameAgentError` base class with a stable `code` |
+| | | `file-drag` | File drag names and native transfer requests |
+| | | `home-paths` | Paths under the game-agent home directory |
+| | | `http-proxy` | Process-wide outbound HTTP proxy policy |
+| | | `launch-environment` | Launch environment that records which layer supplied each value |
+| | | `lazy-require` | Lazy, cached loading of CommonJS dependencies |
+| | | `output-retention` | Bounded retention that reports what was kept and what was omitted |
+| | | `package-manifest` | Types for the `gameAgent` field of `package.json` |
 | | | `ports` | `Clock`, `Rng`, `IdSource` and deterministic test implementations |
+| | | `text-search` | Multilingual fuzzy filtering of in-memory lists |
+| | | `time` | Instant and time-zone parsing, durations, Cron and RRULE recurrence |
+| | | `timeout` | Timeout and deadline primitives |
+| | | `values` | JSON and immutable-value helpers |
+| | | `workspace-path` | Workspace paths, file addresses, and display helpers |
 | `protocol` | `util`, `protocol`, `telemetry` | `contracts` | Game vocabulary, transport port, JSON schema subset |
 | | | `intent-ledger` | Command lifecycle from issue to settlement |
 | | | `inbox` | Cursor-addressed event inbox |

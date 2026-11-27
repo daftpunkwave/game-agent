@@ -1,0 +1,17 @@
+{
+  "name": "@game-agent/lazy-require",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Caller-relative, success-cached lazy loading for CommonJS-compatible Host dependencies",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  }
+}

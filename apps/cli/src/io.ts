@@ -4,7 +4,7 @@
  * Constraints: No business logic; parsing helpers only convert and validate strings.
  */
 import { readFile } from 'node:fs/promises'
-import { GameAgentError } from '@game-agent/errors'
+import { GameAgentError } from '@game-agent/error'
 
 /** Destination of command output. */
 export interface Output {

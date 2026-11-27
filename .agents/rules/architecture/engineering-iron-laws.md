@@ -32,7 +32,7 @@ Before fixing any issue, verify four items in sequence:
 ### 2.1 Decoupling Over Cohesion (Fully Pluginized Kernel)
 - **Plugin-First Architecture**: Not just memory or tools—every capability (Behavior Tree nodes, memory stores, context builders, LLM providers, protocol adapters, CLI/TUI/Web surfaces, game mode presets) operates behind explicit versioned contracts.
 - **Plugin Kernel**: The kernel is the in-repo `@game-agent/kernel` package group, which owns service registration, scoped lifecycle, dependency injection, event dispatch, and reversible effects. Do not build a second kernel. Game-specific rules never live in the kernel group; any package may be a kernel plugin.
-- **Explicit Composition**: Applications (CLI, TUI, Web, cluster worker, harness preset) compose providers explicitly at their composition root.
+- **Explicit Composition**: Applications (CLI, terminal attach, Web, cluster worker) compose providers explicitly at their composition root.
 
 ### 2.2 Single Responsibility & Physical Isolation (SRP)
 - Keep each file focused on a single cohesive responsibility. Split mixed domains physically regardless of line count.

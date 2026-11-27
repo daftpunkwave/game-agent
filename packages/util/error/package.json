@@ -1,0 +1,17 @@
+{
+  "name": "@game-agent/error",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Dependency-free GameAgentError base class with a stable machine-routable code",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  }
+}

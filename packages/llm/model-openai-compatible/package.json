@@ -10,6 +10,6 @@
   "dependencies": {
     "@game-agent/contracts": "workspace:*",
     "@game-agent/decision": "workspace:*",
-    "@game-agent/errors": "workspace:*"
+    "@game-agent/error": "workspace:*"
   }
 }
