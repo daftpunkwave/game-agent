@@ -95,7 +95,7 @@ export { ResolutionRestartRequired } from './profile-resolution/resolver.ts'
 
 /**
  * Resolve the config to boot. Replay swaps a `game-agent.yml` basename for
- * `kernel.snapshot.yml` in the same directory; every other mode keeps the path.
+ * `game-agent.snapshot.yml` in the same directory; every other mode keeps the path.
  * @param configPath - the requested config path (absolute, or relative to `cwd`).
  * @param snapshotMode - the bin's `$GAME_AGENT_SNAPSHOT` value; only `'replay'` swaps the
  *   basename.
@@ -108,7 +108,7 @@ export function resolveConfigPath(
   const absolute = resolve(cwd, configPath)
   if (snapshotMode !== 'replay') return absolute
   const dir = dirname(absolute)
-  const replayName = basename(absolute).replace(/kernel\.ya?ml$/, 'kernel.snapshot.yml')
+  const replayName = basename(absolute).replace(/game-agent\.ya?ml$/, 'game-agent.snapshot.yml')
   return resolve(dir, replayName)
 }
 
