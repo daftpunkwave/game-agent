@@ -1,0 +1,28 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../llm/llm"
+    },
+    {
+      "path": "../session-format"
+    },
+    {
+      "path": "../session-format-v0-to-v1"
+    },
+    {
+      "path": "../../util/values"
+    }
+  ]
+}

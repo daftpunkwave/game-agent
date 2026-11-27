@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop-testkit": "workspace:*",
     "@game-agent/brand": "workspace:*",
     "@game-agent/error": "workspace:*",
     "@game-agent/fs": "workspace:*",

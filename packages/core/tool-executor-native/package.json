@@ -1,0 +1,28 @@
+{
+  "name": "@game-agent/tool-executor-native",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Native tool execution plugin",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/tools": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/tools": "workspace:*"
+  }
+}

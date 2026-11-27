@@ -1,0 +1,43 @@
+{
+  "name": "@game-agent/llm-replay",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Replay LLM plugin: short-circuits llm/stream with model chunks reconstructed from a recorded session JSONL (keyless snapshot tests)",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/session-format-catalog": "workspace:*",
+    "@game-agent/util-values": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/compaction": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/llm-api-extensions": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@game-agent/llm-api-extensions": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@game-agent/compaction": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/llm-api-extensions": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  }
+}

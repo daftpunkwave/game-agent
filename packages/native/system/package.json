@@ -2,7 +2,7 @@
   "name": "@game-agent/native-system",
   "version": "0.0.0",
   "private": true,
-  "description": "Locators for native system helpers: the Linux Landlock launcher and exclusive POSIX file locks",
+  "description": "Native system helpers: the Linux Landlock launcher locator and exclusive POSIX file locks through the C library",
   "type": "module",
   "license": "MIT",
   "exports": {
@@ -16,5 +16,8 @@
       "types": "./lib/flock.d.ts",
       "default": "./lib/flock.js"
     }
+  },
+  "dependencies": {
+    "koffi": "3.1.1"
   }
 }

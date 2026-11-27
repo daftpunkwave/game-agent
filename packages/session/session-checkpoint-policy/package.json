@@ -1,0 +1,45 @@
+{
+  "name": "@game-agent/session-checkpoint-policy",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Semantic session durability checkpoints before model requests and tool side effects",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-persistence": "workspace:*",
+    "@game-agent/tools": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop": "workspace:*",
+    "@game-agent/agent-loop-testkit": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-persistence": "workspace:*",
+    "@game-agent/session-persistence-jsonl": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/tool-executor-native": "workspace:*",
+    "@game-agent/tool-testkit": "workspace:*",
+    "@game-agent/tools": "workspace:*"
+  }
+}

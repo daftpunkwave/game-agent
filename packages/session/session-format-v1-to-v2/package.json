@@ -1,0 +1,32 @@
+{
+  "name": "@game-agent/session-format-v1-to-v2",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Frozen released-v1 Session codec and assistant-stream migration to v2",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/session-format": "workspace:*",
+    "@game-agent/session-format-v0-to-v1": "workspace:*",
+    "@game-agent/util-values": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  }
+}

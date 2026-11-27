@@ -1,0 +1,46 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../core/agent"
+    },
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../util/lazy-require"
+    },
+    {
+      "path": "../../shell/pwsh-local"
+    },
+    {
+      "path": "../../sandbox/sandbox"
+    },
+    {
+      "path": "../../sandbox/sandbox-policy"
+    },
+    {
+      "path": "../../kernel/schema"
+    },
+    {
+      "path": "../../core/session"
+    },
+    {
+      "path": "../../subprocess/subprocess"
+    },
+    {
+      "path": "../terminal"
+    },
+    {
+      "path": "../../session/working-directory"
+    }
+  ]
+}

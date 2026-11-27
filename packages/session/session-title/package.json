@@ -41,10 +41,12 @@
   },
   "devDependencies": {
     "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop": "workspace:*",
     "@game-agent/brand": "workspace:*",
     "@game-agent/kernel": "workspace:*",
     "@game-agent/llm": "workspace:*",
     "@game-agent/session": "workspace:*",
+    "@game-agent/session-persistence-jsonl": "workspace:*",
     "@game-agent/session-projection": "workspace:*"
   }
 }

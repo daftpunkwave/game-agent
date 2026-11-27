@@ -1,0 +1,43 @@
+{
+  "name": "@game-agent/shell-env",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Tool-independent managed GAME_AGENT_* shell environment registry",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/schema": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/app-boot": "workspace:*",
+    "@game-agent/error": "workspace:*",
+    "@game-agent/home-paths": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/shell": "workspace:*",
+    "@game-agent/tools": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/app-boot": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/error": "workspace:*",
+    "@game-agent/home-paths": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/shell": "workspace:*",
+    "@game-agent/tools": "workspace:*"
+  }
+}

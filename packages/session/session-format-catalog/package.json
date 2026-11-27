@@ -1,0 +1,42 @@
+{
+  "name": "@game-agent/session-format-catalog",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Build-static first-party Session format codec and migration catalog",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./message-projections": {
+      "@game-agent/source": "./src/message-projections.ts",
+      "types": "./lib/message-projections.d.ts",
+      "default": "./lib/message-projections.js"
+    }
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/compaction-image-offload": "workspace:*",
+    "@game-agent/session-format": "workspace:*",
+    "@game-agent/session-format-v0-to-v1": "workspace:*",
+    "@game-agent/session-format-v1-to-v2": "workspace:*",
+    "@game-agent/session-format-v2-to-v3": "workspace:*",
+    "@game-agent/session-format-v3-to-v4": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  }
+}

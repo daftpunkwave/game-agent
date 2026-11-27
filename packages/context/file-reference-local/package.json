@@ -1,0 +1,45 @@
+{
+  "name": "@game-agent/file-reference-local",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Local-filesystem ctx.fileReferences provider with bounded fuzzy indexes",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/schema": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/file-reference": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/tools": "workspace:*",
+    "@game-agent/working-directory": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/file-reference": "workspace:*",
+    "@game-agent/fs-local": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/tool-executor-native": "workspace:*",
+    "@game-agent/tool-testkit": "workspace:*",
+    "@game-agent/tools": "workspace:*",
+    "@game-agent/working-directory": "workspace:*"
+  }
+}

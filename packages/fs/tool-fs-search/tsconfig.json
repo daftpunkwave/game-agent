@@ -1,0 +1,52 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../llm/llm"
+    },
+    {
+      "path": "../../util/output-retention"
+    },
+    {
+      "path": "../../kernel/schema"
+    },
+    {
+      "path": "../../core/session"
+    },
+    {
+      "path": "../../spill/spill"
+    },
+    {
+      "path": "../../subprocess/subprocess"
+    },
+    {
+      "path": "../../core/system-prompt"
+    },
+    {
+      "path": "../../util/timeout"
+    },
+    {
+      "path": "../../core/tools"
+    },
+    {
+      "path": "../../util/ripgrep"
+    },
+    {
+      "path": "../../util/values"
+    },
+    {
+      "path": "../../session/working-directory"
+    }
+  ]
+}

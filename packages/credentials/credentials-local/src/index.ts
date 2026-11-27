@@ -13,7 +13,7 @@
  * the product must take effect consistently for every provider. The launch
  * environment, CI secrets included, applies only while the file stores no
  * value for the reference. See
- * `.agents/notes/implemented/architecture/2026-10-09-stored-credential-precedence.md`.
+ * an earlier design note.
  *
  * The invoking project may supply a key, because the product trusts the
  * project it is launched in. It ranks below the managed store, so a key stored

@@ -1,0 +1,31 @@
+{
+  "name": "@game-agent/session-format-v0-to-v1",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Frozen released-v0 Session codec and identity migration to v1",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@game-agent/session-format": "workspace:*",
+    "@game-agent/util-time": "workspace:*",
+    "@game-agent/util-values": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  }
+}

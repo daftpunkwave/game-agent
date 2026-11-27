@@ -1,0 +1,37 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../core/agent"
+    },
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../util/output-retention"
+    },
+    {
+      "path": "../../kernel/schema"
+    },
+    {
+      "path": "../../terminal/terminal"
+    },
+    {
+      "path": "../../util/timeout"
+    },
+    {
+      "path": "../../core/tools"
+    },
+    {
+      "path": "../../session/working-directory"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "@game-agent/tool-jobs",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Model-facing background job control tools (job_output, job_list, job_kill) over the ctx.jobs registry",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/schema": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/jobs": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/output-retention": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/tools": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop": "workspace:*",
+    "@game-agent/jobs": "workspace:*",
+    "@game-agent/jobs-local": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/output-retention": "workspace:*",
+    "@game-agent/scope": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/tool-executor-native": "workspace:*",
+    "@game-agent/tool-testkit": "workspace:*",
+    "@game-agent/tools": "workspace:*"
+  }
+}

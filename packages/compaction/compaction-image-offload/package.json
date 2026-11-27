@@ -1,0 +1,46 @@
+{
+  "name": "@game-agent/compaction-image-offload",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Durable image offload for image-capable routes: replace over-budget request images with placeholders and retry",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json",
+    "./projection": {
+      "@game-agent/source": "./src/projection.ts",
+      "types": "./lib/projection.d.ts",
+      "default": "./lib/projection.js"
+    },
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/util-values": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/compaction": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop": "workspace:*",
+    "@game-agent/agent-loop-testkit": "workspace:*",
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/compaction": "workspace:*",
+    "@game-agent/compaction-basic": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/token-meter": "workspace:*"
+  }
+}

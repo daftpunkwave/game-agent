@@ -1,0 +1,68 @@
+{
+  "name": "@game-agent/spill-policy",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Token-budgeted tool-result retention with recoverable text and image paths",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./notice": {
+      "@game-agent/source": "./src/notice.ts",
+      "types": "./lib/notice.d.ts",
+      "default": "./lib/notice.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/schema": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/fs": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/output-retention": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/spill": "workspace:*",
+    "@game-agent/token-meter": "workspace:*",
+    "@game-agent/tools": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop-testkit": "workspace:*",
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/fs": "workspace:*",
+    "@game-agent/fs-local": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/output-retention": "workspace:*",
+    "@game-agent/ptc-runtime": "workspace:*",
+    "@game-agent/ptc-runtime-node": "workspace:*",
+    "@game-agent/sandbox-local": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/spill": "workspace:*",
+    "@game-agent/spill-local": "workspace:*",
+    "@game-agent/subprocess-local": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/token-meter": "workspace:*",
+    "@game-agent/tool-executor-native": "workspace:*",
+    "@game-agent/tool-executor-ptc": "workspace:*",
+    "@game-agent/tool-fs": "workspace:*",
+    "@game-agent/tool-testkit": "workspace:*",
+    "@game-agent/tools": "workspace:*",
+    "@game-agent/util-values": "workspace:*"
+  }
+}

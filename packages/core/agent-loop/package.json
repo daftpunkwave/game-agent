@@ -1,0 +1,57 @@
+{
+  "name": "@game-agent/agent-loop",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The concrete agent loop plugin",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/kit": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "@game-agent/util-values": "workspace:*",
+    "zod": "4.6.6"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/scope": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-persistence": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/tools": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop-testkit": "workspace:*",
+    "@game-agent/compaction": "workspace:*",
+    "@game-agent/file-reference-local": "workspace:*",
+    "@game-agent/jobs-local": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/ptc-runtime": "workspace:*",
+    "@game-agent/scope": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-checkpoint-policy": "workspace:*",
+    "@game-agent/session-persistence": "workspace:*",
+    "@game-agent/session-persistence-jsonl": "workspace:*",
+    "@game-agent/session-persistence-sqlite": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/tool-executor-native": "workspace:*",
+    "@game-agent/tool-executor-ptc": "workspace:*",
+    "@game-agent/tool-testkit": "workspace:*",
+    "@game-agent/tools": "workspace:*"
+  }
+}

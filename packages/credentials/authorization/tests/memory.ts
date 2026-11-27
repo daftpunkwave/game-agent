@@ -14,8 +14,9 @@ import type {
  * half is exercised — the seam's whole interest in this service is whether a
  * flow left a record behind — so the reference half answers "nothing stored".
  */
-// The record half mirrors packages/credentials/credentials/tests/memory.ts;
-// the two stay separate until a third suite needs a shared double.
+// Open issue: near-duplicate of the record half of
+// packages/credentials/credentials/tests/memory.ts; fold both into a shared
+// test-support double when a third suite needs one.
 export class MemoryCredentials extends CredentialProvider {
   private readonly records = new Map<CredentialKey, CredentialRecord>()
 

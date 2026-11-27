@@ -19,8 +19,8 @@ export interface LlmCallControls {
   stop?: string[]
 }
 
-// Which fields are epoch-level for cache reuse, and where provider-specific
-// request options belong, is not settled; keep the shape minimal.
+// Open issue: Revisit which fields are epoch-level for cache reuse
+// and where provider-specific request options belong.
 /**
  * Provider, model, reasoning effort, and sampling scalars of one conversation's
  * requests. Every field maps 1:1 onto the same-named `GenerateOptions` field;

@@ -1,0 +1,49 @@
+{
+  "name": "@game-agent/jobs",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Background job registry (ctx.jobs) — shared ids, owner isolation, polling, cancellation, and completion listeners for long-running tool work",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./types": {
+      "@game-agent/source": "./src/types.ts",
+      "types": "./lib/types.d.ts",
+      "default": "./lib/types.js"
+    },
+    "./view": {
+      "@game-agent/source": "./src/view.ts",
+      "types": "./lib/view.d.ts",
+      "default": "./lib/view.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/error": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/workspace": "workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@game-agent/workspace": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/error": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/workspace": "workspace:*"
+  }
+}

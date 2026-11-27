@@ -1,0 +1,64 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../core/agent"
+    },
+    {
+      "path": "../../util/brand"
+    },
+    {
+      "path": "../../compaction/compaction"
+    },
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../llm/llm"
+    },
+    {
+      "path": "../../util/output-retention"
+    },
+    {
+      "path": "../../kernel/schema"
+    },
+    {
+      "path": "../../core/session"
+    },
+    {
+      "path": "../../session/session-projection"
+    },
+    {
+      "path": "../../session/session-projection-cache"
+    },
+    {
+      "path": "../../session-query/session-query"
+    },
+    {
+      "path": "../../session/session-title"
+    },
+    {
+      "path": "../../spill/spill"
+    },
+    {
+      "path": "../../core/system-prompt"
+    },
+    {
+      "path": "../../typert/protocol"
+    },
+    {
+      "path": "../../util/text-search"
+    },
+    {
+      "path": "../../util/values"
+    }
+  ]
+}

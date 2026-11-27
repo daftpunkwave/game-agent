@@ -1,0 +1,45 @@
+{
+  "name": "@game-agent/session-query-sqlite",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Concrete ctx.sessionQuery backend with SQLite FTS5 search",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/schema": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-persistence": "workspace:*",
+    "@game-agent/session-query": "workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@game-agent/session-persistence": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-persistence": "workspace:*",
+    "@game-agent/session-persistence-jsonl": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/session-query": "workspace:*"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "@game-agent/terminal-bash",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Persistent shell PTY backend over the game-agent subprocess terminal primitive",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/lazy-require": "workspace:*",
+    "@game-agent/pwsh-local": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "@xterm/headless": "^6.0.0"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/subprocess": "workspace:*",
+    "@game-agent/terminal": "workspace:*",
+    "@game-agent/working-directory": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop-testkit": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/subprocess": "workspace:*",
+    "@game-agent/subprocess-local": "workspace:*",
+    "@game-agent/terminal": "workspace:*",
+    "@game-agent/working-directory": "workspace:*"
+  }
+}

@@ -17,7 +17,7 @@
  * compatibility mechanism; event-name registration was rejected because
  * it does not classify omission safety and would make reads
  * composition-dependent. The rationale is in
- * `.agents/notes/implemented/architecture/2026-08-30-retain-ignorable-external-session-events.md`.
+ * an earlier design note.
  */
 export const KNOWN_SESSION_EVENT_TYPES: ReadonlySet<string> = new Set([
   'action-cards/decision',
@@ -54,6 +54,7 @@ export const KNOWN_SESSION_EVENT_TYPES: ReadonlySet<string> = new Set([
   'request/header',
   'sandbox/mode',
   'schedule/change',
+  'session-log-upload/delivery-accepted',
   'session/end-seed',
   'session/title',
   'session/title-llm-request',
@@ -80,6 +81,7 @@ export const KNOWN_SESSION_EVENT_TYPES: ReadonlySet<string> = new Set([
   'turn/end',
   'turn/start',
   'user/message',
+  'web/search-llm-request',
   'working-directory/change',
   'workspace-root/change',
   'workspace/changes',
