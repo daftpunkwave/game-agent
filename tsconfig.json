@@ -16,6 +16,9 @@
       "path": "./packages/attachment/attachment"
     },
     {
+      "path": "./packages/attachment/attachment-local"
+    },
+    {
       "path": "./packages/behavior/behavior-tree"
     },
     {
@@ -205,7 +208,16 @@
       "path": "./packages/llm/llm-api-extensions"
     },
     {
+      "path": "./packages/llm/llm-messages"
+    },
+    {
+      "path": "./packages/llm/llm-messages-api-key"
+    },
+    {
       "path": "./packages/llm/llm-retry"
+    },
+    {
+      "path": "./packages/llm/messages-auth"
     },
     {
       "path": "./packages/llm/model-openai-compatible"

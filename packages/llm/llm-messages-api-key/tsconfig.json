@@ -1,0 +1,37 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../credentials/credentials"
+    },
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../kernel/loader"
+    },
+    {
+      "path": "../../util/launch-environment"
+    },
+    {
+      "path": "../llm"
+    },
+    {
+      "path": "../llm-messages"
+    },
+    {
+      "path": "../messages-auth"
+    },
+    {
+      "path": "../../kernel/schema"
+    }
+  ]
+}

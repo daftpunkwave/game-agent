@@ -1,0 +1,46 @@
+{
+  "name": "@game-agent/llm-messages-api-key",
+  "version": "0.0.0",
+  "private": true,
+  "description": "API-key authentication and model discovery for the Messages API route",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/schema": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/credentials": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/launch-environment": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/llm-messages": "workspace:*",
+    "@game-agent/messages-auth": "workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@game-agent/kernel-loader": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@game-agent/credentials": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/launch-environment": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/llm-messages": "workspace:*",
+    "@game-agent/messages-auth": "workspace:*"
+  }
+}

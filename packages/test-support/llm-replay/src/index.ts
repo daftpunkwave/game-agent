@@ -1068,7 +1068,7 @@ export function installLlmReplay(ctx: Context, config: ReplayConfig): ReplayHand
         )
       }
       const resolved = resolveScriptedEntry(materializeSessionTokens(entry, liveSessionIds), options.messages)
-      if (options.provider === 'example-official' && providerAccepted(resolved)) {
+      if (options.provider === 'messages' && providerAccepted(resolved)) {
         const extensions = ctx.get('llmApiExtensions')
         if (extensions !== undefined) {
           const signal = options.signal ?? new AbortController().signal

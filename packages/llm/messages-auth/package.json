@@ -1,0 +1,37 @@
+{
+  "name": "@game-agent/messages-auth",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Model provider request authentication (ctx.messagesAuth): bind the API key to the deployment its model route connected and release its request headers",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./types": {
+      "@game-agent/source": "./src/types.ts",
+      "types": "./lib/types.d.ts",
+      "default": "./lib/types.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "peerDependencies": {
+    "@game-agent/credentials": "workspace:*",
+    "@game-agent/error": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/launch-environment": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/credentials": "workspace:*",
+    "@game-agent/error": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/launch-environment": "workspace:*"
+  }
+}

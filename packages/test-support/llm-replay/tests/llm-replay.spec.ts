@@ -1520,10 +1520,10 @@ describe('installLlmReplay (through the real LlmRuntime)', () => {
     installLlmReplay(ctx, { file })
 
     const sessionId = 'example-replay' as NonNullable<GenerateOptions['sessionId']>
-    await drain(ctx.llm.stream({ provider: 'example-official', model: 'm', messages: [], sessionId }))
+    await drain(ctx.llm.stream({ provider: 'messages', model: 'm', messages: [], sessionId }))
     expect(accepted).toHaveBeenCalledOnce()
     await drain(ctx.llm.stream({
-      provider: 'example-official',
+      provider: 'messages',
       model: 'm',
       messages: [],
       sessionId,
@@ -1545,13 +1545,13 @@ describe('installLlmReplay (through the real LlmRuntime)', () => {
       prepare: () => ({ value: { version: 1 }, accept: accepted }),
     })
     installLlmReplay(withRegistry, { file })
-    await drain(withRegistry.llm.stream({ provider: 'example-official', model: 'm', messages: [] }))
+    await drain(withRegistry.llm.stream({ provider: 'messages', model: 'm', messages: [] }))
     expect(accepted).toHaveBeenCalledOnce()
 
     const withoutRegistry = new Context()
     await withoutRegistry.plugin(LlmRuntime)
     installLlmReplay(withoutRegistry, { file })
-    await expect(drain(withoutRegistry.llm.stream({ provider: 'example-official', model: 'm', messages: [] })))
+    await expect(drain(withoutRegistry.llm.stream({ provider: 'messages', model: 'm', messages: [] })))
       .resolves.toEqual(TEXT_CHUNKS)
   })
 
@@ -1571,7 +1571,7 @@ describe('installLlmReplay (through the real LlmRuntime)', () => {
       prepare: () => ({ value: { version: 1 }, accept: accepted }),
     })
     installLlmReplay(ctx, { file, overrideFile })
-    const request = { provider: 'example-official', model: 'm', messages: [] }
+    const request = { provider: 'messages', model: 'm', messages: [] }
 
     await expect(drain(ctx.llm.stream(request))).rejects.toThrow('partial')
     expect(accepted).toHaveBeenCalledOnce()

@@ -243,6 +243,8 @@ limitations under the License.
 
 Installed from npm and not copied into this repository; their licenses ship with the packages.
 
+`sharp` installs a prebuilt libvips for the host platform (`@img/sharp-libvips-*`, LGPL-3.0-or-later) and loads it as a shared library. This repository neither copies nor modifies libvips; replacing it follows the sharp documentation for custom libvips builds.
+
 | Package | License | Used by |
 |---|---|---|
 | `@agentclientprotocol/sdk` | Apache-2.0 | `packages/test-support/session-snapshot` |
@@ -266,6 +268,7 @@ Installed from npm and not copied into this repository; their licenses ship with
 | `birpc` | MIT | `packages/ptc-runtime/ptc-runtime-node` |
 | `chokidar` | MIT | `packages/boot/hmr`, `packages/credentials/credentials-local`, `packages/fs/fs-local`, `packages/kernel/hmr` |
 | `diff` | BSD-3-Clause | `packages/fs/tool-fs` |
+| `eventsource-parser` | MIT | `packages/llm/llm-messages` |
 | `execa` | MIT | `packages/test-support/loader-smoke` |
 | `fuzzysort` | MIT | `packages/util/text-search` |
 | `got` | MIT | `packages/telemetry/otel` |
@@ -278,7 +281,8 @@ Installed from npm and not copied into this repository; their licenses ship with
 | `picomatch` | MIT | `packages/boot/hmr`, `packages/kernel/hmr` |
 | `resolve.exports` | MIT | `packages/boot/app-boot` |
 | `rrule` | BSD-3-Clause | `packages/util/time` |
-| `semver` | ISC | `packages/boot/app-boot` |
+| `semver` | ISC | `packages/boot/app-boot`, `packages/llm/llm-messages` |
+| `sharp` | Apache-2.0 | `packages/attachment/attachment-local` |
 | `supports-color` | MIT | `packages/kernel/logger-console` |
 | `tsx` | MIT | `packages/test-support/loader-smoke` |
 | `undici` | MIT | `packages/util/http-proxy` |
