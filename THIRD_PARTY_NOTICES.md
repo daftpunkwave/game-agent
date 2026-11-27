@@ -40,6 +40,7 @@ Installed from npm and not copied into this repository; their licenses ship with
 | `chokidar` | MIT | `packages/kernel/hmr` |
 | `fuzzysort` | MIT | `packages/util/text-search` |
 | `mime` | MIT | `packages/util/file-drag` |
+| `node-addon-require-builtin` | MIT | `packages/kernel/loader` |
 | `picomatch` | MIT | `packages/kernel/hmr` |
 | `rrule` | BSD-3-Clause | `packages/util/time` |
 | `supports-color` | MIT | `packages/kernel/logger-console` |

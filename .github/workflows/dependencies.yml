@@ -1,0 +1,30 @@
+# Dependency Review
+#
+# Responsibilities: Review the dependency changes of a pull request against the vulnerability and license policy.
+# Contracts: Reports the required check `dependency-review`; fails when the pull request adds a dependency with a known vulnerability of moderate or higher severity or with a license outside the allow list. The policy lives in .github/dependency-review-config.yml.
+# Constraints: Runs when a pull request is opened, reopened, or receives new commits; editing only the title or description cannot change dependencies, so it does not rerun. Read-only token; actions are pinned by commit SHA; renaming the job requires updating the required checks of the `main` ruleset.
+name: dependencies
+
+on:
+  pull_request:
+
+concurrency:
+  group: dependencies-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  dependency-review:
+    name: dependency-review
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Review dependency changes
+        uses: actions/dependency-review-action@bbc44d14a204704ccc493733616cd1e93a0321ec # v5.0.1
+        with:
+          config-file: ./.github/dependency-review-config.yml

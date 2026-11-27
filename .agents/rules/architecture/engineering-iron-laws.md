@@ -47,7 +47,7 @@ Before fixing any issue, verify four items in sequence:
 - **One Exit (`EgressGateway`)**: All Behavior Tree action leaves and accepted model proposals must pass one outbound gateway (schema validation, quota limits, ledger recording, jitter) before reaching any `TransportAdapter`. Idempotency keys prevent duplicates only when the transport declares `honorsIdempotencyKey`; otherwise commands that spend resources are never resent automatically, and a send that fails mid-flight is recorded as `in-doubt`, not `failed`.
 - **One Entry (`IngressGateway`)**: All game responses and push events must enter through one inbound gateway in a fixed order: intent ledger settlement, visibility cropping (whitelist, coarsen, budget), untrusted text tagging, inbox storage. Only then may they update the agent's blackboard or wake a step.
 - **MCP Is One Transport**: MCP is an access protocol behind the `TransportAdapter` port, not the boundary itself. Event delivery must not depend on MCP server notifications.
-- **No Backdoor Coupling**: Agent cognition, tools, and BT packages must never import transport sockets (`ws`, `http`, `net`) or game server internals directly.
+- **No Backdoor Coupling**: Agent cognition, tools, and BT packages must never import transport sockets (`ws`, `http`, `net`) or game server internals directly. `pnpm check:boundaries` also keeps the cognition packages listed in `COGNITION_PACKAGES` (`behavior-tree`, `decision`, `agent-runtime`) free of Node file, process, and network modules.
 
 ### 2.5 Security & Trust Boundaries
 - **Model Output Is Untrusted**: LLM output is an intent proposal, never authoritative game state; every command passes gateway and server validation.

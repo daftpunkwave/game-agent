@@ -12,7 +12,7 @@ Match local checks to the actual scope of your changes:
   - Verify relative links, heading anchors, Markdown table column alignment, English-only compliance, and `git diff --check`.
   - Skip unrelated runtime unit/build suites.
 - **Comments / File-Header-Only Changes (no executable changes)**:
-  - Run type checking (`pnpm typecheck`) and the boundary and header checks (`pnpm check:boundaries`, `pnpm check:headers`).
+  - Run type checking (`pnpm typecheck`) and the boundary and header checks (`pnpm check:boundaries`, `pnpm check:headers`); after changing dependencies or package entries, also run `pnpm check:notices` and `pnpm check:smoke`.
   - Skip full runtime test suites.
 - **Runtime Code, Protocol, Bug Fix, or Refactor Changes**:
   - Run targeted unit/integration tests during iteration, then run the full repository check suite (`pnpm check`) after your final edit before pushing or merging.

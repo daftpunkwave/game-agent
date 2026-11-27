@@ -50,8 +50,10 @@ scripts/                  repository gates
 pnpm install
 pnpm typecheck          # tsc over every package, app, script, and test
 pnpm test               # vitest
-pnpm check:boundaries   # declared deps, no deep imports, acyclic graph, group rules, SDK confinement
+pnpm check:boundaries   # declared deps, no deep imports, acyclic graph, group rules, no Node I/O in cognition packages, SDK confinement
 pnpm check:headers      # file headers with Responsibilities, Contracts, and Constraints (other content allowed); no console.log, debugger, TODO, or FIXME in packages and apps
+pnpm check:notices      # THIRD_PARTY_NOTICES.md matches runtime dependencies; their licenses are on the allow list
+pnpm check:smoke        # every package entry loads and the CLI runs under Node.js from source
 pnpm check              # all of the above
 pnpm check:conventions  # Conventional Commits and English-only commit messages in origin/main..HEAD (CI also checks PR title and description)
 pnpm game-agent help    # run the CLI from source (no build step yet)

@@ -1,0 +1,16 @@
+# Dependency review policy for pull requests.
+#
+# Responsibilities: Fail a pull request that adds a dependency with a known vulnerability of moderate or higher severity, or with a license outside the allow list.
+# Contracts: Read by actions/dependency-review-action in .github/workflows/dependencies.yml; scripts/check-notices.ts reads the same allow list to check the licenses of runtime dependencies.
+# Constraints: Add a license only after the project owner approves it; keep entries as SPDX identifiers.
+fail-on-severity: moderate
+allow-licenses:
+  - 0BSD
+  - Apache-2.0
+  - BlueOak-1.0.0
+  - BSD-2-Clause
+  - BSD-3-Clause
+  - CC0-1.0
+  - ISC
+  - MIT
+  - Unlicense

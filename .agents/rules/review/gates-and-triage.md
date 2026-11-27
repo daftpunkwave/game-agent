@@ -10,14 +10,17 @@ This document governs CI check interpretation, static analysis triage, and revie
 - Wait for triggered CI workflows and automated reviewers via event notifications rather than polling loops.
 - **Required Checks on `main`**: The `main` ruleset blocks merging until these checks pass on the pull request head and the branch is up to date with `main`:
 
-  | Check | Workflow | What it verifies |
-  |---|---|---|
-  | `hygiene` | `repo-hygiene.yml` | Whitespace errors, conflict markers, tracked `.env` files |
-  | `check (ubuntu-latest)`, `check (windows-latest)` | `check.yml` | `pnpm check` on Linux and Windows |
-  | `conventions` | `pull-request.yml` | Conventional Commits and English-only title, description, and non-merge commits (`pnpm check:conventions`) |
-  | `dependency-review` | `pull-request.yml` | No newly added dependency with a known vulnerability of moderate or higher severity |
+  | Check | Workflow | Runs when the pull request | What it verifies |
+  |---|---|---|---|
+  | `hygiene` | `repo-hygiene.yml` | is opened, reopened, or gets new commits | Whitespace errors, conflict markers, tracked `.env` files |
+  | `check (ubuntu-latest)` | `check.yml` | is opened, reopened, or gets new commits | `pnpm check`: types, tests, package boundaries, file headers, third-party notices, running from source |
+  | `check (windows-latest)` | `check.yml` | is opened, reopened, or gets new commits | `pnpm test` and `pnpm check:smoke`, the platform-sensitive part; static checks run only on Linux because their result does not depend on the platform |
+  | `conventions` | `pull-request.yml` | is opened, reopened, gets new commits, or has its title or description edited | Conventional Commits and English-only title, description, and non-merge commits (`pnpm check:conventions`) |
+  | `dependency-review` | `dependencies.yml` | is opened, reopened, or gets new commits | No added dependency with a known vulnerability of moderate or higher severity or with a license outside `allow-licenses` in `.github/dependency-review-config.yml` |
 
 - **CI Runs on Pull Requests Only**: Workflows do not rerun on pushes to `main`, because an up-to-date pull request that passed the required checks squashes to the tree that was checked. Use the manual `workflow_dispatch` trigger of `check` or `repo-hygiene` to check `main` on demand.
+- **No Redundant Runs**: Each check runs on the events that can change its result and nowhere else; superseded runs of the same pull request are cancelled.
+- **License Allow List**: `.github/dependency-review-config.yml` is the single license allow list; `pnpm check:notices` applies the same list to installed runtime dependencies. Add a license only with the project owner's approval.
 - Renaming a required job or matrix entry is a breaking change to the ruleset: update the ruleset's required checks in the same change, or every pull request stays blocked.
 
 ---
