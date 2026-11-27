@@ -13,8 +13,10 @@
     "test": "vitest run",
     "check:boundaries": "node scripts/check-boundaries.ts",
     "check:headers": "node scripts/check-headers.ts",
+    "check:notices": "node scripts/check-notices.ts",
+    "check:smoke": "node --experimental-transform-types --disable-warning=ExperimentalWarning scripts/check-smoke.ts",
     "check:conventions": "node scripts/check-conventions.ts",
-    "check": "pnpm typecheck && pnpm test && pnpm check:boundaries && pnpm check:headers",
+    "check": "pnpm typecheck && pnpm test && pnpm check:boundaries && pnpm check:headers && pnpm check:notices && pnpm check:smoke",
     "game-agent": "node --experimental-transform-types --disable-warning=ExperimentalWarning apps/cli/src/main.ts"
   },
   "devDependencies": {
