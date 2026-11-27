@@ -51,7 +51,7 @@ The author/agent creating a PR owns it through merge readiness:
 Before committing or pushing:
 1. Review the full diff (`git diff`) for unintended edits, debug logs, or leftover artifacts.
 2. Run change-scoped local checks (see [Verification & Testing](../testing/verification-and-testing.md)).
-3. Ensure comments and 3-part file headers match updated behavior.
+3. Ensure comments and file headers match updated behavior.
 
 ### 4.2 Wait for Active Checks Before Pushing Again
 After pushing to a PR, wait for active CI workflows and triggered automated reviewers to finish their current pass before pushing again—never interrupt running reviews with rapid redundant pushes.

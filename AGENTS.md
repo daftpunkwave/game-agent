@@ -51,7 +51,7 @@ pnpm install
 pnpm typecheck          # tsc over every package, app, script, and test
 pnpm test               # vitest
 pnpm check:boundaries   # declared deps, no deep imports, acyclic graph, group rules, SDK confinement
-pnpm check:headers      # three-part file headers; no console.log, debugger, TODO, or FIXME in packages and apps
+pnpm check:headers      # file headers with Responsibilities, Contracts, and Constraints (other content allowed); no console.log, debugger, TODO, or FIXME in packages and apps
 pnpm check              # all of the above
 pnpm check:conventions  # Conventional Commits and English-only commit messages in origin/main..HEAD (CI also checks PR title and description)
 pnpm game-agent help    # run the CLI from source (no build step yet)
@@ -85,7 +85,7 @@ Read only the specifications relevant to the current task to minimize context no
 | **Code Review** | [twelve-dimensional-criteria.md](.agents/rules/review/twelve-dimensional-criteria.md) | 12 engineering review dimensions (Correctness through Testing) plus Final Verification |
 | **Quality Gates** | [gates-and-triage.md](.agents/rules/review/gates-and-triage.md) | Repository CI gates, red-line items, non-blocking alert triage (no silent drops) |
 | **Architecture** | [engineering-iron-laws.md](.agents/rules/architecture/engineering-iron-laws.md) | Pluginized decoupling, SRP (500-line guideline), DIP, single-port game protocol boundary, unidirectional deps |
-| **Naming & Style** | [naming-and-headers.md](.agents/rules/conventions/naming-and-headers.md) | Intent-oriented naming, forbidden names, generic-word control, self-documenting code, 3-part file headers |
+| **Naming & Style** | [naming-and-headers.md](.agents/rules/conventions/naming-and-headers.md) | Intent-oriented naming, forbidden names, generic-word control, self-documenting code, file headers with required fields |
 | **Testing** | [verification-and-testing.md](.agents/rules/testing/verification-and-testing.md) | Change-scoped verification tiers, strong assertions, anti-fragile mocks, zero test weakening |
 
 ---
