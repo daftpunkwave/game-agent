@@ -19,6 +19,7 @@
     "./src/*": {
       "@game-agent/source": "./src/*"
     },
+    "./package.json": "./package.json",
     "./locale/*.json": "./locale/*.json",
     "./builtin": {
       "@game-agent/source": "./src/builtin.ts",

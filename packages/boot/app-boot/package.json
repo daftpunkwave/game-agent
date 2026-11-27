@@ -14,6 +14,7 @@
     "./src/*": {
       "@game-agent/source": "./src/*"
     },
+    "./package.json": "./package.json",
     "./worker/profile-resolution-bootstrap": {
       "@game-agent/source": "./src/profile-resolution/worker-bootstrap.ts",
       "types": "./lib/profile-resolution/worker-bootstrap.d.ts",

@@ -11,6 +11,7 @@
       "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
     },
+    "./package.json": "./package.json",
     "./configuration": {
       "@game-agent/source": "./src/configuration.ts",
       "types": "./lib/configuration.d.ts",

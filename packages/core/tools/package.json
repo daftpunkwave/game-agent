@@ -14,6 +14,7 @@
     "./src/*": {
       "@game-agent/source": "./src/*"
     },
+    "./package.json": "./package.json",
     "./locale/*.json": "./locale/*.json",
     "./pipeline": {
       "@game-agent/source": "./src/pipeline.ts",

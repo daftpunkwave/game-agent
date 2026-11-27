@@ -14,7 +14,8 @@
     "./src/*": {
       "@game-agent/source": "./src/*"
     },
-    "./locale/*.json": "./locale/*.json"
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json"
   },
   "dependencies": {
     "@game-agent/schema": "workspace:*"

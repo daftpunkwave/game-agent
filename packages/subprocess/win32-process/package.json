@@ -13,7 +13,8 @@
     },
     "./src/*": {
       "@game-agent/source": "./src/*"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "dependencies": {
     "@game-agent/lazy-require": "workspace:*",
