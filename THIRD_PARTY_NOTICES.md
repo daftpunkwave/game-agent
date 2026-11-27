@@ -258,7 +258,10 @@ Installed from npm and not copied into this repository; their licenses ship with
 | `@opentelemetry/sdk-logs` | Apache-2.0 | `packages/telemetry/otel` |
 | `@standard-schema/spec` | MIT | `packages/kernel/kernel`, `packages/kernel/schema` |
 | `@vscode/ripgrep` | MIT | `packages/util/ripgrep` |
+| `acorn` | MIT | `packages/ptc-runtime/ptc-runtime-node` |
+| `acorn-walk` | MIT | `packages/ptc-runtime/ptc-runtime-node` |
 | `ajv` | MIT | `packages/boot/app-boot` |
+| `birpc` | MIT | `packages/ptc-runtime/ptc-runtime-node` |
 | `chokidar` | MIT | `packages/boot/hmr`, `packages/credentials/credentials-local`, `packages/fs/fs-local`, `packages/kernel/hmr` |
 | `fuzzysort` | MIT | `packages/util/text-search` |
 | `got` | MIT | `packages/telemetry/otel` |
@@ -273,4 +276,4 @@ Installed from npm and not copied into this repository; their licenses ship with
 | `supports-color` | MIT | `packages/kernel/logger-console` |
 | `undici` | MIT | `packages/util/http-proxy` |
 | `yaml` | ISC | `packages/boot/config-editor`, `packages/credentials/credentials-local`, `packages/kernel/include`, `packages/sandbox/sandbox-windows-acl`, `packages/settings/settings` |
-| `zod` | MIT | `packages/core/agent`, `packages/core/system-prompt`, `packages/llm/llm`, `packages/session/session-projection`, `packages/session/session-projection-cache`, `packages/session/session-stats`, `packages/session/session-turn-outline`, `packages/storage/storage-domain`, `packages/typert/protocol`, `packages/typert/registry`, `packages/util/chunked-list`, `packages/workspace/workspace` |
+| `zod` | MIT | `packages/context/time-context`, `packages/core/agent`, `packages/core/system-prompt`, `packages/interaction/commands`, `packages/interaction/permission-presets`, `packages/interaction/user-approval`, `packages/llm/llm`, `packages/llm/llm-retry`, `packages/sandbox/sandbox-policy`, `packages/session/session-projection`, `packages/session/session-projection-cache`, `packages/session/session-stats`, `packages/session/session-title`, `packages/session/session-turn-outline`, `packages/session/working-directory`, `packages/storage/storage-domain`, `packages/typert/protocol`, `packages/typert/registry`, `packages/util/chunked-list`, `packages/workspace/workspace` |

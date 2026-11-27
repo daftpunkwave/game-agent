@@ -28,6 +28,7 @@
     "@game-agent/session-projection": "workspace:*"
   },
   "devDependencies": {
+    "@game-agent/compaction": "workspace:*",
     "@game-agent/kernel": "workspace:*",
     "@game-agent/llm": "workspace:*",
     "@game-agent/scope": "workspace:*",

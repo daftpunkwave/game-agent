@@ -1,0 +1,36 @@
+{
+  "name": "@game-agent/fs-sandbox",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Sandbox-enforcing implementation of the game-agent filesystem seam: fences write/edit by the per-call sandbox mode (read-only denies mutation, workspace-write contains it to the workspace + temp roots) while reads pass through",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./locale/*.json": "./locale/*.json"
+  },
+  "peerDependencies": {
+    "@game-agent/fs": "workspace:*",
+    "@game-agent/fs-local": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/fs": "workspace:*",
+    "@game-agent/fs-local": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*"
+  }
+}

@@ -35,6 +35,7 @@
     "@game-agent/session": "workspace:*"
   },
   "devDependencies": {
+    "@game-agent/agent-default-model": "workspace:*",
     "@game-agent/app-boot": "workspace:*",
     "@game-agent/brand": "workspace:*",
     "@game-agent/hmr": "workspace:*",

@@ -34,7 +34,19 @@
       "path": "./packages/boot/hmr"
     },
     {
+      "path": "./packages/compaction/compaction"
+    },
+    {
+      "path": "./packages/context/file-reference"
+    },
+    {
+      "path": "./packages/context/time-context"
+    },
+    {
       "path": "./packages/core/agent"
+    },
+    {
+      "path": "./packages/core/agent-default-model"
     },
     {
       "path": "./packages/core/agent-runtime"
@@ -50,6 +62,9 @@
     },
     {
       "path": "./packages/core/system-prompt"
+    },
+    {
+      "path": "./packages/core/tools"
     },
     {
       "path": "./packages/credentials/authorization"
@@ -74,6 +89,18 @@
     },
     {
       "path": "./packages/fs/fs-patch"
+    },
+    {
+      "path": "./packages/fs/fs-sandbox"
+    },
+    {
+      "path": "./packages/interaction/commands"
+    },
+    {
+      "path": "./packages/interaction/permission-presets"
+    },
+    {
+      "path": "./packages/interaction/user-approval"
     },
     {
       "path": "./packages/kernel/group"
@@ -109,6 +136,9 @@
       "path": "./packages/llm/llm-api-extensions"
     },
     {
+      "path": "./packages/llm/llm-retry"
+    },
+    {
       "path": "./packages/llm/model-openai-compatible"
     },
     {
@@ -133,10 +163,16 @@
       "path": "./packages/ptc-runtime/ptc-runtime"
     },
     {
+      "path": "./packages/ptc-runtime/ptc-runtime-node"
+    },
+    {
       "path": "./packages/sandbox/sandbox"
     },
     {
       "path": "./packages/sandbox/sandbox-local"
+    },
+    {
+      "path": "./packages/sandbox/sandbox-policy"
     },
     {
       "path": "./packages/sandbox/sandbox-windows-acl"
@@ -157,13 +193,25 @@
       "path": "./packages/session/session-stats"
     },
     {
+      "path": "./packages/session/session-telemetry"
+    },
+    {
+      "path": "./packages/session/session-title"
+    },
+    {
       "path": "./packages/session/session-turn-outline"
+    },
+    {
+      "path": "./packages/session/working-directory"
     },
     {
       "path": "./packages/settings/settings"
     },
     {
       "path": "./packages/shell/bash-local"
+    },
+    {
+      "path": "./packages/shell/bash-sandbox"
     },
     {
       "path": "./packages/shell/pwsh-local"

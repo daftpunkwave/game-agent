@@ -1,0 +1,61 @@
+{
+  "name": "@game-agent/permission-presets",
+  "version": "0.0.0",
+  "private": true,
+  "description": "User-facing permission presets (ctx.permissionPresets): one product-level Permissions select bundling the sandbox-mode and approval-policy knobs, written through to their own session events",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./types": {
+      "@game-agent/source": "./src/types.ts",
+      "types": "./lib/types.d.ts",
+      "default": "./lib/types.js"
+    },
+    "./client": {
+      "@game-agent/source": "./src/client.ts",
+      "types": "./lib/client.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "zod": "4.6.6"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/commands": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/shell": "workspace:*",
+    "@game-agent/typert-protocol": "workspace:*",
+    "@game-agent/user-approval": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/commands": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*",
+    "@game-agent/scope": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/settings": "workspace:*",
+    "@game-agent/shell": "workspace:*",
+    "@game-agent/typert-protocol": "workspace:*",
+    "@game-agent/typert-registry": "workspace:*",
+    "@game-agent/user-approval": "workspace:*"
+  }
+}
