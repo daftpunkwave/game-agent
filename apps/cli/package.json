@@ -11,7 +11,6 @@
     ".": "./src/main.ts"
   },
   "dependencies": {
-    "@deepseek-ai/cordis": "^4.1.0",
     "@game-agent/agent-runtime": "workspace:*",
     "@game-agent/app": "workspace:*",
     "@game-agent/behavior-tree": "workspace:*",
@@ -20,6 +19,7 @@
     "@game-agent/errors": "workspace:*",
     "@game-agent/fleet": "workspace:*",
     "@game-agent/gateway": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
     "@game-agent/model-openai-compatible": "workspace:*",
     "@game-agent/ports": "workspace:*",
     "@game-agent/trace": "workspace:*",

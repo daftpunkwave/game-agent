@@ -8,8 +8,8 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@deepseek-ai/cordis": "^4.1.0",
     "@game-agent/agent-runtime": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
     "@game-agent/ports": "workspace:*",
     "@game-agent/trace": "workspace:*"
   },
