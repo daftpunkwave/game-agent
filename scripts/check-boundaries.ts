@@ -1,5 +1,5 @@
 /**
- * Responsibilities: Enforce package boundaries: declared dependencies, no deep imports, an acyclic package graph, layer rules between package groups, and isolation of third-party SDKs.
+ * Responsibilities: Enforce package boundaries: declared dependencies, no deep imports, an acyclic package graph, layer rules between package groups, no Node I/O modules in cognition packages, and isolation of third-party SDKs.
  * Contracts: Scans `packages/<group>/<name>` and `apps/<name>`; prints every violation and exits with code 1 when any exists.
  * Constraints: Static text analysis of import specifiers; run with `node scripts/check-boundaries.ts` from the repository root.
  */
@@ -34,8 +34,11 @@ const CONFINED_IMPORTS: readonly { readonly prefix: string; readonly groups: rea
   { prefix: '@modelcontextprotocol/', groups: ['transport'] },
 ]
 
-/** Node modules that cognition packages must not touch. */
-const COGNITION_GROUPS = new Set(['behavior', 'core'])
+/**
+ * Cognition packages decide what an agent does; they reach files, processes, and the network only through
+ * gateways and injected ports, so they must not import Node I/O modules or socket libraries directly.
+ */
+const COGNITION_PACKAGES = new Set(['@game-agent/behavior-tree', '@game-agent/decision', '@game-agent/agent-runtime'])
 const COGNITION_FORBIDDEN = ['node:net', 'node:http', 'node:https', 'node:child_process', 'node:fs', 'node:fs/promises', 'ws']
 
 const IMPORT_PATTERN = /(?:^|\n)\s*(?:import|export)\s[^'"]*?from\s+['"]([^'"]+)['"]|import\(\s*['"]([^'"]+)['"]\s*\)|(?:^|\n)\s*import\s+['"]([^'"]+)['"]/g
@@ -53,7 +56,7 @@ async function listTypeScript(path: string): Promise<string[]> {
   for (const entry of await readdir(path, { withFileTypes: true }).catch(() => [])) {
     const full = join(path, entry.name)
     if (entry.isDirectory() && entry.name !== 'node_modules') result.push(...(await listTypeScript(full)))
-    else if (entry.isFile() && entry.name.endsWith('.ts')) result.push(full)
+    else if (entry.isFile() && /\.(ts|tsx|mts|cts)$/.test(entry.name) && !/\.d\.(ts|mts|cts)$/.test(entry.name)) result.push(full)
   }
   return result
 }
@@ -123,8 +126,8 @@ async function main(): Promise<number> {
           const specifier = match[1] ?? match[2] ?? match[3]
           if (specifier === undefined || specifier.startsWith('.') || specifier.startsWith('node:') && !COGNITION_FORBIDDEN.includes(specifier)) continue
           const name = packageNameOf(specifier)
-          if (kind === 'src' && COGNITION_GROUPS.has(item.group) && COGNITION_FORBIDDEN.includes(specifier)) {
-            violations.push(`${where}: ${item.group} packages must not import ${specifier}`)
+          if (kind === 'src' && COGNITION_PACKAGES.has(item.name) && COGNITION_FORBIDDEN.includes(specifier)) {
+            violations.push(`${where}: ${item.name} is a cognition package and must not import ${specifier}`)
             continue
           }
           if (specifier.startsWith('node:') || name === 'vitest') continue
