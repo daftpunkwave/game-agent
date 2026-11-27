@@ -1,17 +1,41 @@
 {
   "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": false,
+    "noEmit": true,
+    "rewriteRelativeImportExtensions": false
+  },
   "include": [
-    "packages/*/*/src/**/*.ts",
-    "packages/*/*/tests/**/*.ts",
-    "apps/*/src/**/*.ts",
-    "apps/*/tests/**/*.ts",
-    "scripts/**/*.ts",
+    "packages/*/*/tests/**/*",
+    "apps/*/tests/**/*",
+    "scripts/**/*",
     "vitest.config.ts"
   ],
-  "exclude": [
-    "packages/kernel/*/src/**"
-  ],
   "references": [
+    {
+      "path": "./packages/behavior/behavior-tree"
+    },
+    {
+      "path": "./packages/boot/app"
+    },
+    {
+      "path": "./packages/core/agent-runtime"
+    },
+    {
+      "path": "./packages/core/decision"
+    },
+    {
+      "path": "./packages/fleet/fleet"
+    },
+    {
+      "path": "./packages/kernel/group"
+    },
+    {
+      "path": "./packages/kernel/hmr"
+    },
+    {
+      "path": "./packages/kernel/include"
+    },
     {
       "path": "./packages/kernel/kernel"
     },
@@ -19,25 +43,103 @@
       "path": "./packages/kernel/kit"
     },
     {
-      "path": "./packages/kernel/schema"
-    },
-    {
       "path": "./packages/kernel/loader"
-    },
-    {
-      "path": "./packages/kernel/include"
-    },
-    {
-      "path": "./packages/kernel/group"
-    },
-    {
-      "path": "./packages/kernel/timer"
     },
     {
       "path": "./packages/kernel/logger-console"
     },
     {
-      "path": "./packages/kernel/hmr"
+      "path": "./packages/kernel/schema"
+    },
+    {
+      "path": "./packages/kernel/timer"
+    },
+    {
+      "path": "./packages/llm/model-openai-compatible"
+    },
+    {
+      "path": "./packages/protocol/contracts"
+    },
+    {
+      "path": "./packages/protocol/gateway"
+    },
+    {
+      "path": "./packages/protocol/inbox"
+    },
+    {
+      "path": "./packages/protocol/intent-ledger"
+    },
+    {
+      "path": "./packages/telemetry/trace"
+    },
+    {
+      "path": "./packages/transport/transport-mcp"
+    },
+    {
+      "path": "./packages/transport/transport-simulated"
+    },
+    {
+      "path": "./packages/util/atomic-write"
+    },
+    {
+      "path": "./packages/util/brand"
+    },
+    {
+      "path": "./packages/util/chunked-list"
+    },
+    {
+      "path": "./packages/util/code-language"
+    },
+    {
+      "path": "./packages/util/crypto"
+    },
+    {
+      "path": "./packages/util/deque"
+    },
+    {
+      "path": "./packages/util/error"
+    },
+    {
+      "path": "./packages/util/file-drag"
+    },
+    {
+      "path": "./packages/util/home-paths"
+    },
+    {
+      "path": "./packages/util/http-proxy"
+    },
+    {
+      "path": "./packages/util/launch-environment"
+    },
+    {
+      "path": "./packages/util/lazy-require"
+    },
+    {
+      "path": "./packages/util/output-retention"
+    },
+    {
+      "path": "./packages/util/package-manifest"
+    },
+    {
+      "path": "./packages/util/ports"
+    },
+    {
+      "path": "./packages/util/text-search"
+    },
+    {
+      "path": "./packages/util/time"
+    },
+    {
+      "path": "./packages/util/timeout"
+    },
+    {
+      "path": "./packages/util/values"
+    },
+    {
+      "path": "./packages/util/workspace-path"
+    },
+    {
+      "path": "./apps/cli"
     }
   ]
 }

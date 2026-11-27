@@ -27,7 +27,7 @@ Thank you for your interest in contributing to **game-agent**! All contributions
    pnpm install
    pnpm check
    ```
-   `pnpm check` runs type checking, tests, the package boundary check, the file header check, the third-party notices check, and the run-from-source smoke check. `pnpm check:conventions` checks the commit messages on your branch against `origin/main`. See [docs/architecture.md](docs/architecture.md) for how the packages fit together.
+   `pnpm check` runs the build (which type-checks everything), tests, the package boundary and project reference check, the file header check, the third-party notices check, and the smoke check of the compiled output. After adding a package or changing workspace dependencies, run `pnpm sync:projects` to regenerate the `tsconfig.json` files. `pnpm check:conventions` checks the commit messages on your branch against `origin/main`. See [docs/architecture.md](docs/architecture.md) for how the packages fit together.
 5. A pull request can merge only when its branch is up to date with `main` and the required checks pass: `hygiene`, `check (ubuntu-latest)`, `check (windows-latest)`, `conventions` (title, description, and commits), and `dependency-review`. CI runs on pull requests only; see [Quality Gates](.agents/rules/review/gates-and-triage.md#1-repository-defined-gates).
 
 ## 4. Commit Conventions

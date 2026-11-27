@@ -1,7 +1,7 @@
 # Repository Check
 #
 # Responsibilities: Run the repository gate for pull requests and on demand: the full gate once on Linux, and the platform-sensitive part on Windows.
-# Contracts: Uses the pnpm version pinned in package.json and Node.js 24; reports one required check per runner. `check (ubuntu-latest)` runs `pnpm check` (types, tests, package boundaries, file headers, third-party notices, running from source). `check (windows-latest)` runs `pnpm test` and `pnpm check:smoke`, the checks whose result depends on the platform; type checking and the static repository checks give the same result everywhere, so they run only on Linux.
+# Contracts: Uses the pnpm version pinned in package.json and Node.js 24; reports one required check per runner. `check (ubuntu-latest)` runs `pnpm check` (build with type checking, tests, package boundaries and project references, file headers, third-party notices, running the compiled output). `check (windows-latest)` runs `pnpm build`, `pnpm test`, and `pnpm check:smoke`: the build is needed to run the compiled output, tests and the compiled output are platform-sensitive, and the static repository checks give the same result everywhere, so they run only on Linux.
 # Constraints: Does not run on pushes to main: the `main` ruleset requires pull requests to be up to date with main and to pass this check, so the squashed tree is the tree already checked. Runs on pull request open, reopen, and new commits, not on title or description edits. Actions are pinned by commit SHA; jobs have read-only repository permissions; renaming a job or matrix entry requires updating the required checks of the `main` ruleset.
 name: check
 
@@ -28,7 +28,7 @@ jobs:
           - os: ubuntu-latest
             gate: pnpm check
           - os: windows-latest
-            gate: pnpm test && pnpm check:smoke
+            gate: pnpm build && pnpm test && pnpm check:smoke
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4

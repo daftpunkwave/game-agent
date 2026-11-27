@@ -5,7 +5,11 @@
   "type": "module",
   "license": "MIT",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    }
   },
   "dependencies": {
     "@game-agent/agent-runtime": "workspace:*",
