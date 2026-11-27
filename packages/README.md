@@ -60,6 +60,7 @@ Capability packages are plugins of the kernel. They are constrained by declared 
 | Group | Package | Responsibility |
 |---|---|---|
 | `attachment` | `attachment` | Durable, immutable attachment storage interface |
+| | `attachment-local` | Private content-addressed attachment storage in the game-agent home, with image normalization |
 | `boot` | `app-boot` | Boot sequence: `.env` loading, configuration resolution, loader guards |
 | | `cmdline` | Immutable command-line handoff from the launcher to app plugins |
 | | `config-editor` | Persist plugin configuration through profile patches |
@@ -109,7 +110,10 @@ Capability packages are plugins of the kernel. They are constrained by declared 
 | | `tool-jobs` | Tools to read, list, and stop background jobs |
 | `llm` | `llm` | Provider-neutral model service interface |
 | | `llm-api-extensions` | Additive request-field registry for provider adapters |
+| | `llm-messages` | Messages API adapter: request translation, streaming, Files API image upload, and model listing |
+| | `llm-messages-api-key` | API-key route for the Messages API: credentials and discovery of configured models |
 | | `llm-retry` | Retry policy for model requests, routed by provider |
+| | `messages-auth` | Releases the API key of a model route for each provider request |
 | | `token-meter` | Replay-aware token measurement |
 | `native` | `native-system` | Locators for native helpers: the Linux Landlock launcher and exclusive file locks (no helper binaries are shipped yet) |
 | `preset` | `agent-preset` | Declares an agent capability composition in configuration |
