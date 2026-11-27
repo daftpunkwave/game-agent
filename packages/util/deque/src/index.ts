@@ -1,7 +1,7 @@
 /**
  * Responsibilities: Provide a circular double-ended queue for inboxes and work queues that live across asynchronous turns.
  * Contracts: Insertion and removal at both ends run in amortized constant time; removed slots are cleared so entries can be collected.
- * Constraints: Zero dependencies; storage shrinks once the live count falls to a quarter of capacity. Adapted from DeepSeek Harness `packages/util/deque` (MIT).
+ * Constraints: Zero dependencies; storage shrinks once the live count falls to a quarter of capacity.
  */
 
 const MIN_CAPACITY = 16

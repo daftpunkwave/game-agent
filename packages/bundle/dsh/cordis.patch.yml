@@ -1,3 +1,0 @@
-- insert:
-    - id: game-agent
-      name: '@game-agent/dsh-bundle'

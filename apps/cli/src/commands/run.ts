@@ -1,5 +1,5 @@
 /**
- * Responsibilities: `game-agent run --config <file>`: run one agent against a real game over MCP with an OpenAI-compatible model, hosted by the Cordis app layer.
+ * Responsibilities: `game-agent run --config <file>`: run one agent against a real game over MCP with an OpenAI-compatible model, hosted by the kernel app layer.
  * Contracts: The config file names the tree, visibility policy, MCP endpoint, model endpoint, and the environment variable holding the API key; trace lines stream to stdout and optionally to a JSON Lines file.
  * Constraints: The API key is read from the environment only and never printed. Stops cleanly on SIGINT or SIGTERM.
  */

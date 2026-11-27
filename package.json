@@ -9,13 +9,14 @@
     "node": ">=24"
   },
   "scripts": {
-    "typecheck": "tsc -p tsconfig.json",
+    "typecheck": "tsc -b tsconfig.json",
     "test": "vitest run",
     "check:boundaries": "node scripts/check-boundaries.ts",
     "check:headers": "node scripts/check-headers.ts",
     "check:conventions": "node scripts/check-conventions.ts",
-    "check": "pnpm typecheck && pnpm test && pnpm check:boundaries && pnpm check:headers",
-    "game-agent": "node apps/cli/src/main.ts"
+    "check": "pnpm typecheck && pnpm test && pnpm check:boundaries && pnpm check:headers && pnpm check:denylist",
+    "game-agent": "node --experimental-transform-types --disable-warning=ExperimentalWarning apps/cli/src/main.ts",
+    "check:denylist": "node scripts/check-denylist.ts"
   },
   "devDependencies": {
     "@types/node": "^24.10.0",

@@ -1,7 +1,7 @@
 /**
  * Responsibilities: Define the base error type shared by every game-agent package.
  * Contracts: Each error carries a stable machine-readable `code` separate from its human-readable message and supports `cause` chaining.
- * Constraints: Callers route on `code`, never on message text. Adapted from DeepSeek Harness `packages/util/error` (MIT).
+ * Constraints: Callers route on `code`, never on message text.
  */
 
 /**

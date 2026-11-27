@@ -9,7 +9,7 @@ import { GameAgentError } from '@game-agent/errors'
 
 /** Connection settings for one provider endpoint. */
 export interface OpenAiCompatibleConfig {
-  /** Base URL up to and excluding `/chat/completions`, e.g. `https://api.deepseek.com`. */
+  /** Base URL up to and excluding `/chat/completions`, e.g. `https://api.example.com/v1`. */
   readonly baseUrl: string
   readonly model: string
   readonly apiKey: string

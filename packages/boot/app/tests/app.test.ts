@@ -1,6 +1,6 @@
 /**
- * Responsibilities: Verify scheduler pacing and fault backoff, and that the Cordis host service starts, lists, and stops agents.
- * Contracts: Scheduler tests use a manual timer queue; the host test uses the simulated game with real Cordis composition.
+ * Responsibilities: Verify scheduler pacing and fault backoff, and that the kernel host service starts, lists, and stops agents.
+ * Contracts: Scheduler tests use a manual timer queue; the host test uses the simulated game with real kernel composition.
  * Constraints: No real timers are left running after a test.
  */
 import { describe, expect, it } from 'vitest'
@@ -62,7 +62,7 @@ describe('AgentScheduler', () => {
 })
 
 describe('GameAgentHost', () => {
-  it('hosts agents as a Cordis service and stops them on demand', async () => {
+  it('hosts agents as a kernel service and stops them on demand', async () => {
     const ctx = createAppContext()
     const clock = new ManualClock(0)
     const timers = new ManualTimers()
