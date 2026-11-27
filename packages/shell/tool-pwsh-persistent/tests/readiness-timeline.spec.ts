@@ -59,8 +59,8 @@ describe('replayPromptEvidence', () => {
       .toEqual({ promptSeen: true, promptTail: CONTROLLED_PROMPT, promptTextSeen: true })
     expect(replayPromptEvidence([{ prompt: true, promptTail: '' }, { prompt: false, promptTail: `${CONTROLLED_PROMPT}Write-Output` }]))
       .toEqual({ promptSeen: true, promptTail: `${CONTROLLED_PROMPT}\0`, promptTextSeen: false })
-    expect(replayPromptEvidence([{ prompt: true, promptTail: '' }, { prompt: false, promptTail: 'game-agent' }]))
-      .toEqual({ promptSeen: true, promptTail: 'game-agent', promptTextSeen: false })
+    expect(replayPromptEvidence([{ prompt: true, promptTail: '' }, { prompt: false, promptTail: 'npc' }]))
+      .toEqual({ promptSeen: true, promptTail: 'npc', promptTextSeen: false })
     expect(replayPromptEvidence([{ prompt: false, promptTail: undefined }, { prompt: false, promptTail: 'npc> ' }]))
       .toEqual({ promptSeen: false, promptTail: '', promptTextSeen: false })
     // A later marker restarts the tail, as the session's onData does.
