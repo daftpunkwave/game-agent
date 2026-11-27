@@ -1,0 +1,11 @@
+{
+  "name": "@game-agent/kit",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Small general-purpose utilities used by the kernel",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

@@ -1,20 +1,12 @@
 # Third-Party Notices
 
-game-agent includes source code adapted from the projects listed below. Each adapted file names its origin in its file header.
-
-## DeepSeek Harness
-
-- Source: <https://github.com/deepseek-ai/deepseek-harness> (commit `4b399c39`)
-- Adapted files:
-  - `packages/util/errors/src/index.ts` from `packages/util/error/src/index.ts`
-  - `packages/util/deque/src/index.ts` from `packages/util/deque/src/index.ts`
-  - `packages/util/atomic-write/src/index.ts` from `packages/util/atomic-write/src/index.ts`
-- The DeepSeek Harness bundle in `packages/bundle/dsh` follows the plugin, preset, and tool registration conventions documented by DeepSeek Harness.
+Portions of game-agent are derived from software distributed under the MIT License. The copyright notices and the license text are reproduced below, as that license requires.
 
 ```text
 MIT License
 
 Copyright (c) 2026 DeepSeek
+Copyright (c) 2021-present Shigma
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -41,5 +33,10 @@ Installed from npm and not copied into this repository; their licenses ship with
 
 | Package | License | Used by |
 |---|---|---|
-| `@deepseek-ai/cordis` | MIT | `packages/boot/app`, `packages/bundle/dsh`, `apps/cli` |
+| `@babel/code-frame` | MIT | `packages/kernel/hmr` |
 | `@modelcontextprotocol/client` | Apache-2.0 | `packages/transport/transport-mcp` |
+| `@standard-schema/spec` | MIT | `packages/kernel/kernel`, `packages/kernel/schema` |
+| `chokidar` | MIT | `packages/kernel/hmr` |
+| `picomatch` | MIT | `packages/kernel/hmr` |
+| `supports-color` | MIT | `packages/kernel/logger-console` |
+| `yaml` | ISC | `packages/kernel/include` |

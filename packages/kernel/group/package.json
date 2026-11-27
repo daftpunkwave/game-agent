@@ -1,0 +1,15 @@
+{
+  "name": "@game-agent/kernel-group",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Groups plugin entries in configuration",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*"
+  }
+}

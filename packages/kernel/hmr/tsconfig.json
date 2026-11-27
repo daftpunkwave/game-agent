@@ -1,0 +1,42 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": true,
+    "rootDir": "src",
+    "outDir": "lib/types",
+    "verbatimModuleSyntax": false,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "strictFunctionTypes": false,
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false,
+    "noImplicitOverride": false
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../kit"
+    },
+    {
+      "path": "../schema"
+    },
+    {
+      "path": "../loader"
+    },
+    {
+      "path": "../include"
+    },
+    {
+      "path": "../timer"
+    },
+    {
+      "path": "../kernel"
+    }
+  ]
+}

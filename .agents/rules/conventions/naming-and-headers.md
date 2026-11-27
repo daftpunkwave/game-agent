@@ -50,6 +50,8 @@ Every hand-written source file (core domain packages, adapters, runtime apps, te
 2. **Contracts**: Required inputs/dependencies, output guarantees, and runtime assumptions.
 3. **Constraints**: Dependency prohibitions, side-effect restrictions, and invariants.
 
+Packages in the groups listed in `HEADER_EXEMPT_PREFIXES` of `scripts/check-headers.ts` (currently `kernel`) document every exported API with TSDoc instead of a file header; the zero-leftover rules still apply to them.
+
 ### Example (TypeScript)
 ```ts
 /**

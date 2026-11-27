@@ -1,0 +1,19 @@
+{
+  "name": "@game-agent/kernel-logger-console",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Console output for the kernel logger",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/browser.ts"
+  },
+  "dependencies": {
+    "@game-agent/kit": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "supports-color": "^9.4.0"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@game-agent/schema",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Composable schemas for validating and describing plugin configuration",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@game-agent/kit": "workspace:*",
+    "@standard-schema/spec": "^1.1.0"
+  }
+}

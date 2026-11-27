@@ -1,0 +1,17 @@
+{
+  "name": "@game-agent/kernel-timer",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Timer service whose timers are released with the owning plugin",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@game-agent/kit": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  }
+}
