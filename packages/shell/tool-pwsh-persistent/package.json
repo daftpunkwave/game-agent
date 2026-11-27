@@ -1,0 +1,54 @@
+{
+  "name": "@game-agent/tool-pwsh-persistent",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Model-facing owner-scoped persistent PowerShell tool backed by the Runtime PTY service",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/schema": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/output-retention": "workspace:*",
+    "@game-agent/terminal": "workspace:*",
+    "@game-agent/timeout": "workspace:*",
+    "@game-agent/tools": "workspace:*",
+    "@game-agent/working-directory": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop-testkit": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-include": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/output-retention": "workspace:*",
+    "@game-agent/pwsh-local": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/subprocess": "workspace:*",
+    "@game-agent/subprocess-local": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/terminal": "workspace:*",
+    "@game-agent/terminal-bash": "workspace:*",
+    "@game-agent/timeout": "workspace:*",
+    "@game-agent/tool-executor-native": "workspace:*",
+    "@game-agent/tool-testkit": "workspace:*",
+    "@game-agent/tools": "workspace:*",
+    "@game-agent/working-directory": "workspace:*"
+  }
+}

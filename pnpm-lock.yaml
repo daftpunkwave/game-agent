@@ -426,6 +426,37 @@ importers:
         specifier: ^0.28.2
         version: 0.28.2
 
+  packages/compaction/command-compact:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/commands':
+        specifier: workspace:*
+        version: link:../../interaction/commands
+      '@game-agent/compaction':
+        specifier: workspace:*
+        version: link:../compaction
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+
   packages/compaction/compaction:
     devDependencies:
       '@game-agent/brand':
@@ -444,6 +475,223 @@ importers:
         specifier: workspace:*
         version: link:../../core/session
 
+  packages/compaction/compaction-basic:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/attachment':
+        specifier: workspace:*
+        version: link:../../attachment/attachment
+      '@game-agent/commands':
+        specifier: workspace:*
+        version: link:../../interaction/commands
+      '@game-agent/compaction':
+        specifier: workspace:*
+        version: link:../compaction
+      '@game-agent/compaction-image-offload':
+        specifier: workspace:*
+        version: link:../compaction-image-offload
+      '@game-agent/compaction-tool-result-pruner':
+        specifier: workspace:*
+        version: link:../compaction-tool-result-pruner
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/llm-retry':
+        specifier: workspace:*
+        version: link:../../llm/llm-retry
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/token-meter':
+        specifier: workspace:*
+        version: link:../../llm/token-meter
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+
+  packages/compaction/compaction-image-offload:
+    dependencies:
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/attachment':
+        specifier: workspace:*
+        version: link:../../attachment/attachment
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/compaction':
+        specifier: workspace:*
+        version: link:../compaction
+      '@game-agent/compaction-basic':
+        specifier: workspace:*
+        version: link:../compaction-basic
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/token-meter':
+        specifier: workspace:*
+        version: link:../../llm/token-meter
+
+  packages/compaction/compaction-tool-result-pruner:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+    devDependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/compaction':
+        specifier: workspace:*
+        version: link:../compaction
+      '@game-agent/compaction-image-offload':
+        specifier: workspace:*
+        version: link:../compaction-image-offload
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/token-meter':
+        specifier: workspace:*
+        version: link:../../llm/token-meter
+
+  packages/context/agent-instructions:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/fs':
+        specifier: workspace:*
+        version: link:../../fs/fs
+      '@game-agent/fs-local':
+        specifier: workspace:*
+        version: link:../../fs/fs-local
+      '@game-agent/home-paths':
+        specifier: workspace:*
+        version: link:../../util/home-paths
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-fs':
+        specifier: workspace:*
+        version: link:../../fs/tool-fs
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
+
   packages/context/file-reference:
     devDependencies:
       '@game-agent/agent':
@@ -452,6 +700,137 @@ importers:
       '@game-agent/kernel':
         specifier: workspace:*
         version: link:../../kernel/kernel
+
+  packages/context/file-reference-local:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/file-reference':
+        specifier: workspace:*
+        version: link:../file-reference
+      '@game-agent/fs-local':
+        specifier: workspace:*
+        version: link:../../fs/fs-local
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
+
+  packages/context/session-reference:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@game-agent/util-text-search':
+        specifier: workspace:*
+        version: link:../../util/text-search
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/compaction':
+        specifier: workspace:*
+        version: link:../../compaction/compaction
+      '@game-agent/fs-local':
+        specifier: workspace:*
+        version: link:../../fs/fs-local
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/output-retention':
+        specifier: workspace:*
+        version: link:../../util/output-retention
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/session-projection-cache':
+        specifier: workspace:*
+        version: link:../../session/session-projection-cache
+      '@game-agent/session-query':
+        specifier: workspace:*
+        version: link:../../session-query/session-query
+      '@game-agent/session-query-sqlite':
+        specifier: workspace:*
+        version: link:../../session-query/session-query-sqlite
+      '@game-agent/session-title':
+        specifier: workspace:*
+        version: link:../../session/session-title
+      '@game-agent/spill':
+        specifier: workspace:*
+        version: link:../../spill/spill
+      '@game-agent/spill-local':
+        specifier: workspace:*
+        version: link:../../spill/spill-local
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-fs':
+        specifier: workspace:*
+        version: link:../../fs/tool-fs
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/typert-protocol':
+        specifier: workspace:*
+        version: link:../../typert/protocol
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
 
   packages/context/time-context:
     dependencies:
@@ -468,6 +847,12 @@ importers:
       '@game-agent/agent':
         specifier: workspace:*
         version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
       '@game-agent/app-boot':
         specifier: workspace:*
         version: link:../../boot/app-boot
@@ -486,9 +871,18 @@ importers:
       '@game-agent/llm':
         specifier: workspace:*
         version: link:../../llm/llm
+      '@game-agent/loader-smoke':
+        specifier: workspace:*
+        version: link:../../test-support/loader-smoke
       '@game-agent/session':
         specifier: workspace:*
         version: link:../../core/session
+      '@game-agent/session-checkpoint-policy':
+        specifier: workspace:*
+        version: link:../../session/session-checkpoint-policy
+      '@game-agent/session-persistence-jsonl':
+        specifier: workspace:*
+        version: link:../../session/session-persistence-jsonl
       '@game-agent/session-projection':
         specifier: workspace:*
         version: link:../../session/session-projection
@@ -498,6 +892,9 @@ importers:
       '@game-agent/system-prompt':
         specifier: workspace:*
         version: link:../../core/system-prompt
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
       '@game-agent/tools':
         specifier: workspace:*
         version: link:../../core/tools
@@ -514,6 +911,9 @@ importers:
         specifier: 4.6.6
         version: 4.6.6
     devDependencies:
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
       '@game-agent/kernel':
         specifier: workspace:*
         version: link:../../kernel/kernel
@@ -569,6 +969,85 @@ importers:
       '@game-agent/settings':
         specifier: workspace:*
         version: link:../../settings/settings
+
+  packages/core/agent-loop:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/kit':
+        specifier: workspace:*
+        version: link:../../kernel/kit
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/compaction':
+        specifier: workspace:*
+        version: link:../../compaction/compaction
+      '@game-agent/file-reference-local':
+        specifier: workspace:*
+        version: link:../../context/file-reference-local
+      '@game-agent/jobs-local':
+        specifier: workspace:*
+        version: link:../../jobs/jobs-local
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/ptc-runtime':
+        specifier: workspace:*
+        version: link:../../ptc-runtime/ptc-runtime
+      '@game-agent/scope':
+        specifier: workspace:*
+        version: link:../scope
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../session
+      '@game-agent/session-checkpoint-policy':
+        specifier: workspace:*
+        version: link:../../session/session-checkpoint-policy
+      '@game-agent/session-persistence':
+        specifier: workspace:*
+        version: link:../../session/session-persistence
+      '@game-agent/session-persistence-jsonl':
+        specifier: workspace:*
+        version: link:../../session/session-persistence-jsonl
+      '@game-agent/session-persistence-sqlite':
+        specifier: workspace:*
+        version: link:../../session/session-persistence-sqlite
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../tool-executor-native
+      '@game-agent/tool-executor-ptc':
+        specifier: workspace:*
+        version: link:../tool-executor-ptc
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../tools
 
   packages/core/agent-runtime:
     dependencies:
@@ -666,6 +1145,79 @@ importers:
         specifier: workspace:*
         version: link:../../session/session-projection
 
+  packages/core/tool-executor-native:
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../tools
+
+  packages/core/tool-executor-ptc:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/attachment':
+        specifier: workspace:*
+        version: link:../../attachment/attachment
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/ptc-runtime':
+        specifier: workspace:*
+        version: link:../../ptc-runtime/ptc-runtime
+      '@game-agent/sandbox':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox
+      '@game-agent/sandbox-policy':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox-policy
+      '@game-agent/scope':
+        specifier: workspace:*
+        version: link:../scope
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../tools
+      '@game-agent/user-approval':
+        specifier: workspace:*
+        version: link:../../interaction/user-approval
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
+
   packages/core/tools:
     dependencies:
       '@game-agent/schema':
@@ -678,6 +1230,12 @@ importers:
       '@game-agent/agent':
         specifier: workspace:*
         version: link:../agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
       '@game-agent/brand':
         specifier: workspace:*
         version: link:../../util/brand
@@ -699,6 +1257,12 @@ importers:
       '@game-agent/system-prompt':
         specifier: workspace:*
         version: link:../system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
       '@game-agent/user-approval':
         specifier: workspace:*
         version: link:../../interaction/user-approval
@@ -755,6 +1319,89 @@ importers:
       '@game-agent/launch-environment':
         specifier: workspace:*
         version: link:../../util/launch-environment
+
+  packages/feedback/command-feedback:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/anonymous-user-id':
+        specifier: workspace:*
+        version: link:../../identity/anonymous-user-id
+      '@game-agent/commands':
+        specifier: workspace:*
+        version: link:../../interaction/commands
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/typert-protocol':
+        specifier: workspace:*
+        version: link:../../typert/protocol
+
+  packages/feedback/message-feedback:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/command-feedback':
+        specifier: workspace:*
+        version: link:../command-feedback
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-persistence':
+        specifier: workspace:*
+        version: link:../../session/session-persistence
+      '@game-agent/session-persistence-jsonl':
+        specifier: workspace:*
+        version: link:../../session/session-persistence-jsonl
+      '@game-agent/typert-protocol':
+        specifier: workspace:*
+        version: link:../../typert/protocol
 
   packages/fleet/fleet:
     dependencies:
@@ -869,6 +1516,313 @@ importers:
         specifier: workspace:*
         version: link:../../session/session-projection
 
+  packages/fs/tool-fs:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/fs-patch':
+        specifier: workspace:*
+        version: link:../fs-patch
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@game-agent/util-code-language':
+        specifier: workspace:*
+        version: link:../../util/code-language
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+      diff:
+        specifier: ^9.0.0
+        version: 9.0.0
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/attachment':
+        specifier: workspace:*
+        version: link:../../attachment/attachment
+      '@game-agent/error':
+        specifier: workspace:*
+        version: link:../../util/error
+      '@game-agent/fs':
+        specifier: workspace:*
+        version: link:../fs
+      '@game-agent/fs-local':
+        specifier: workspace:*
+        version: link:../fs-local
+      '@game-agent/fs-observation-policy':
+        specifier: workspace:*
+        version: link:../fs-observation-policy
+      '@game-agent/fs-sandbox':
+        specifier: workspace:*
+        version: link:../fs-sandbox
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/ptc-runtime':
+        specifier: workspace:*
+        version: link:../../ptc-runtime/ptc-runtime
+      '@game-agent/sandbox':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox
+      '@game-agent/sandbox-policy':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox-policy
+      '@game-agent/scope':
+        specifier: workspace:*
+        version: link:../../core/scope
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-executor-ptc':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-ptc
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/user-approval':
+        specifier: workspace:*
+        version: link:../../interaction/user-approval
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
+
+  packages/fs/tool-fs-search:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@game-agent/util-ripgrep':
+        specifier: workspace:*
+        version: link:../../util/ripgrep
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/output-retention':
+        specifier: workspace:*
+        version: link:../../util/output-retention
+      '@game-agent/scope':
+        specifier: workspace:*
+        version: link:../../core/scope
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/spill':
+        specifier: workspace:*
+        version: link:../../spill/spill
+      '@game-agent/subprocess':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess
+      '@game-agent/subprocess-local':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess-local
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/timeout':
+        specifier: workspace:*
+        version: link:../../util/timeout
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
+      '@vscode/ripgrep':
+        specifier: ^1.18.0
+        version: 1.18.0
+
+  packages/fs/tool-str-replace-editor:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/fs':
+        specifier: workspace:*
+        version: link:../fs
+      '@game-agent/fs-local':
+        specifier: workspace:*
+        version: link:../fs-local
+      '@game-agent/fs-observation-policy':
+        specifier: workspace:*
+        version: link:../fs-observation-policy
+      '@game-agent/fs-sandbox':
+        specifier: workspace:*
+        version: link:../fs-sandbox
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/output-retention':
+        specifier: workspace:*
+        version: link:../../util/output-retention
+      '@game-agent/sandbox':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox
+      '@game-agent/sandbox-policy':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox-policy
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+
+  packages/guard/repeat-tool-reminder:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+
+  packages/guard/timeout-policy:
+    devDependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/timeout':
+        specifier: workspace:*
+        version: link:../../util/timeout
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+
+  packages/identity/anonymous-user-id:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/home-paths':
+        specifier: workspace:*
+        version: link:../../util/home-paths
+
   packages/interaction/commands:
     dependencies:
       '@game-agent/brand':
@@ -918,6 +1872,12 @@ importers:
       '@game-agent/agent':
         specifier: workspace:*
         version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
       '@game-agent/commands':
         specifier: workspace:*
         version: link:../commands
@@ -955,6 +1915,49 @@ importers:
         specifier: workspace:*
         version: link:../user-approval
 
+  packages/interaction/tool-ask-user:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/user-questions':
+        specifier: workspace:*
+        version: link:../user-questions
+
   packages/interaction/user-approval:
     dependencies:
       '@game-agent/brand':
@@ -988,6 +1991,165 @@ importers:
       '@game-agent/system-prompt':
         specifier: workspace:*
         version: link:../../core/system-prompt
+
+  packages/interaction/user-questions:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/error':
+        specifier: workspace:*
+        version: link:../../util/error
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/scope':
+        specifier: workspace:*
+        version: link:../../core/scope
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-persistence-jsonl':
+        specifier: workspace:*
+        version: link:../../session/session-persistence-jsonl
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/tool-executor-ptc':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-ptc
+      '@game-agent/typert-protocol':
+        specifier: workspace:*
+        version: link:../../typert/protocol
+
+  packages/jobs/jobs:
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/error':
+        specifier: workspace:*
+        version: link:../../util/error
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/workspace':
+        specifier: workspace:*
+        version: link:../../workspace/workspace
+
+  packages/jobs/jobs-local:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/jobs':
+        specifier: workspace:*
+        version: link:../jobs
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/scope':
+        specifier: workspace:*
+        version: link:../../core/scope
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/timeout':
+        specifier: workspace:*
+        version: link:../../util/timeout
+
+  packages/jobs/tool-jobs:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/jobs':
+        specifier: workspace:*
+        version: link:../jobs
+      '@game-agent/jobs-local':
+        specifier: workspace:*
+        version: link:../jobs-local
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/output-retention':
+        specifier: workspace:*
+        version: link:../../util/output-retention
+      '@game-agent/scope':
+        specifier: workspace:*
+        version: link:../../core/scope
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
 
   packages/kernel/group:
     dependencies:
@@ -1164,6 +2326,12 @@ importers:
       '@game-agent/agent':
         specifier: workspace:*
         version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
       '@game-agent/kernel':
         specifier: workspace:*
         version: link:../../kernel/kernel
@@ -1176,9 +2344,15 @@ importers:
       '@game-agent/llm':
         specifier: workspace:*
         version: link:../llm
+      '@game-agent/llm-mock-server':
+        specifier: workspace:*
+        version: link:../../test-support/llm-mock-server
       '@game-agent/session':
         specifier: workspace:*
         version: link:../../core/session
+      '@game-agent/session-persistence-jsonl':
+        specifier: workspace:*
+        version: link:../../session/session-persistence-jsonl
       '@game-agent/session-projection':
         specifier: workspace:*
         version: link:../../session/session-projection
@@ -1188,6 +2362,12 @@ importers:
       '@game-agent/timeout':
         specifier: workspace:*
         version: link:../../util/timeout
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
       '@game-agent/tools':
         specifier: workspace:*
         version: link:../../core/tools
@@ -1204,7 +2384,170 @@ importers:
         specifier: workspace:*
         version: link:../../util/error
 
-  packages/native/system: {}
+  packages/llm/token-meter:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/attachment':
+        specifier: workspace:*
+        version: link:../../attachment/attachment
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/compaction':
+        specifier: workspace:*
+        version: link:../../compaction/compaction
+      '@game-agent/compaction-image-offload':
+        specifier: workspace:*
+        version: link:../../compaction/compaction-image-offload
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../llm
+      '@game-agent/llm-retry':
+        specifier: workspace:*
+        version: link:../llm-retry
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+
+  packages/native/system:
+    dependencies:
+      koffi:
+        specifier: 3.1.1
+        version: 3.1.1
+
+  packages/preset/agent-preset:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent-preset-registry':
+        specifier: workspace:*
+        version: link:../agent-preset-registry
+      '@game-agent/compaction-tool-result-pruner':
+        specifier: workspace:*
+        version: link:../../compaction/compaction-tool-result-pruner
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/skill':
+        specifier: workspace:*
+        version: link:../../skill/skill
+
+  packages/preset/agent-preset-registry:
+    dependencies:
+      '@game-agent/app-boot':
+        specifier: workspace:*
+        version: link:../../boot/app-boot
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-preset':
+        specifier: workspace:*
+        version: link:../agent-preset
+      '@game-agent/atomic-write':
+        specifier: workspace:*
+        version: link:../../util/atomic-write
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/fs-local':
+        specifier: workspace:*
+        version: link:../../fs/fs-local
+      '@game-agent/hmr':
+        specifier: workspace:*
+        version: link:../../boot/hmr
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-group':
+        specifier: workspace:*
+        version: link:../../kernel/group
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/ptc-runtime':
+        specifier: workspace:*
+        version: link:../../ptc-runtime/ptc-runtime
+      '@game-agent/sandbox':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox
+      '@game-agent/sandbox-policy':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox-policy
+      '@game-agent/scope':
+        specifier: workspace:*
+        version: link:../../core/scope
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/settings':
+        specifier: workspace:*
+        version: link:../../settings/settings
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-executor-ptc':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-ptc
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/typert-protocol':
+        specifier: workspace:*
+        version: link:../../typert/protocol
+      '@game-agent/user-approval':
+        specifier: workspace:*
+        version: link:../../interaction/user-approval
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
 
   packages/preset/persona:
     dependencies:
@@ -1404,6 +2747,9 @@ importers:
       '@game-agent/agent':
         specifier: workspace:*
         version: link:../../core/agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
       '@game-agent/brand':
         specifier: workspace:*
         version: link:../../util/brand
@@ -1478,6 +2824,179 @@ importers:
         specifier: workspace:*
         version: link:../../subprocess/subprocess-local
 
+  packages/session-query/session-query:
+    dependencies:
+      '@game-agent/session-format-catalog':
+        specifier: workspace:*
+        version: link:../../session/session-format-catalog
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-persistence':
+        specifier: workspace:*
+        version: link:../../session/session-persistence
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/session-projection-cache':
+        specifier: workspace:*
+        version: link:../../session/session-projection-cache
+      '@game-agent/session-title':
+        specifier: workspace:*
+        version: link:../../session/session-title
+      '@game-agent/tool-todo':
+        specifier: workspace:*
+        version: link:../../todo/tool-todo
+
+  packages/session-query/session-query-sqlite:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-persistence':
+        specifier: workspace:*
+        version: link:../../session/session-persistence
+      '@game-agent/session-persistence-jsonl':
+        specifier: workspace:*
+        version: link:../../session/session-persistence-jsonl
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/session-query':
+        specifier: workspace:*
+        version: link:../session-query
+
+  packages/session-query/tool-session-list:
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-persistence':
+        specifier: workspace:*
+        version: link:../../session/session-persistence
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/session-projection-cache':
+        specifier: workspace:*
+        version: link:../../session/session-projection-cache
+      '@game-agent/session-query':
+        specifier: workspace:*
+        version: link:../session-query
+      '@game-agent/session-title':
+        specifier: workspace:*
+        version: link:../../session/session-title
+      '@game-agent/storage':
+        specifier: workspace:*
+        version: link:../../storage/storage
+      '@game-agent/storage-domain':
+        specifier: workspace:*
+        version: link:../../storage/storage-domain
+      '@game-agent/storage-json':
+        specifier: workspace:*
+        version: link:../../storage/storage-json
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/workspace':
+        specifier: workspace:*
+        version: link:../../workspace/workspace
+
+  packages/session/session-checkpoint-policy:
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-persistence':
+        specifier: workspace:*
+        version: link:../session-persistence
+      '@game-agent/session-persistence-jsonl':
+        specifier: workspace:*
+        version: link:../session-persistence-jsonl
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+
   packages/session/session-format:
     dependencies:
       '@game-agent/util-values':
@@ -1487,6 +3006,137 @@ importers:
       '@game-agent/kernel':
         specifier: workspace:*
         version: link:../../kernel/kernel
+
+  packages/session/session-format-catalog:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/compaction-image-offload':
+        specifier: workspace:*
+        version: link:../../compaction/compaction-image-offload
+      '@game-agent/session-format':
+        specifier: workspace:*
+        version: link:../session-format
+      '@game-agent/session-format-v0-to-v1':
+        specifier: workspace:*
+        version: link:../session-format-v0-to-v1
+      '@game-agent/session-format-v1-to-v2':
+        specifier: workspace:*
+        version: link:../session-format-v1-to-v2
+      '@game-agent/session-format-v2-to-v3':
+        specifier: workspace:*
+        version: link:../session-format-v2-to-v3
+      '@game-agent/session-format-v3-to-v4':
+        specifier: workspace:*
+        version: link:../session-format-v3-to-v4
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+
+  packages/session/session-format-v0-to-v1:
+    dependencies:
+      '@game-agent/session-format':
+        specifier: workspace:*
+        version: link:../session-format
+      '@game-agent/util-time':
+        specifier: workspace:*
+        version: link:../../util/time
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+
+  packages/session/session-format-v1-to-v2:
+    dependencies:
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session-format':
+        specifier: workspace:*
+        version: link:../session-format
+      '@game-agent/session-format-v0-to-v1':
+        specifier: workspace:*
+        version: link:../session-format-v0-to-v1
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+
+  packages/session/session-format-v2-to-v3:
+    dependencies:
+      '@game-agent/session-format':
+        specifier: workspace:*
+        version: link:../session-format
+      '@game-agent/session-format-v0-to-v1':
+        specifier: workspace:*
+        version: link:../session-format-v0-to-v1
+      '@game-agent/session-format-v1-to-v2':
+        specifier: workspace:*
+        version: link:../session-format-v1-to-v2
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+
+  packages/session/session-format-v3-to-v4:
+    dependencies:
+      '@game-agent/session-format':
+        specifier: workspace:*
+        version: link:../session-format
+      '@game-agent/session-format-v2-to-v3':
+        specifier: workspace:*
+        version: link:../session-format-v2-to-v3
+    devDependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/compaction-image-offload':
+        specifier: workspace:*
+        version: link:../../compaction/compaction-image-offload
+      '@game-agent/compaction-tool-result-pruner':
+        specifier: workspace:*
+        version: link:../../compaction/compaction-tool-result-pruner
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-format-catalog':
+        specifier: workspace:*
+        version: link:../session-format-catalog
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../session-projection
+      '@game-agent/token-meter':
+        specifier: workspace:*
+        version: link:../../llm/token-meter
 
   packages/session/session-persistence:
     dependencies:
@@ -1513,6 +3163,104 @@ importers:
         specifier: workspace:*
         version: link:../../util/timeout
 
+  packages/session/session-persistence-jsonl:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/native-system':
+        specifier: workspace:*
+        version: link:../../native/system
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@game-agent/session-format':
+        specifier: workspace:*
+        version: link:../session-format
+      '@game-agent/session-format-catalog':
+        specifier: workspace:*
+        version: link:../session-format-catalog
+      '@game-agent/session-format-v3-to-v4':
+        specifier: workspace:*
+        version: link:../session-format-v3-to-v4
+      koffi:
+        specifier: 3.1.1
+        version: 3.1.1
+      p-limit:
+        specifier: 7.3.3
+        version: 7.3.3
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-format-v0-to-v1':
+        specifier: workspace:*
+        version: link:../session-format-v0-to-v1
+      '@game-agent/session-format-v1-to-v2':
+        specifier: workspace:*
+        version: link:../session-format-v1-to-v2
+      '@game-agent/session-persistence':
+        specifier: workspace:*
+        version: link:../session-persistence
+      '@game-agent/session-persistence-sqlite':
+        specifier: workspace:*
+        version: link:../session-persistence-sqlite
+
+  packages/session/session-persistence-sqlite:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/native-system':
+        specifier: workspace:*
+        version: link:../../native/system
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@game-agent/session-format':
+        specifier: workspace:*
+        version: link:../session-format
+      '@game-agent/session-format-v3-to-v4':
+        specifier: workspace:*
+        version: link:../session-format-v3-to-v4
+      '@game-agent/session-persistence-jsonl':
+        specifier: workspace:*
+        version: link:../session-persistence-jsonl
+      koffi:
+        specifier: 3.1.1
+        version: 3.1.1
+      p-limit:
+        specifier: 7.3.3
+        version: 7.3.3
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-persistence':
+        specifier: workspace:*
+        version: link:../session-persistence
+
   packages/session/session-projection:
     dependencies:
       zod:
@@ -1528,6 +3276,9 @@ importers:
       '@game-agent/kernel':
         specifier: workspace:*
         version: link:../../kernel/kernel
+      '@game-agent/loader-smoke':
+        specifier: workspace:*
+        version: link:../../test-support/loader-smoke
       '@game-agent/session':
         specifier: workspace:*
         version: link:../../core/session
@@ -1612,6 +3363,70 @@ importers:
         specifier: workspace:*
         version: link:../../core/session
 
+  packages/session/session-telemetry-otel:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@opentelemetry/api-logs':
+        specifier: 0.222.0
+        version: 0.222.0
+    devDependencies:
+      '@game-agent/anonymous-user-id':
+        specifier: workspace:*
+        version: link:../../identity/anonymous-user-id
+      '@game-agent/app-boot':
+        specifier: workspace:*
+        version: link:../../boot/app-boot
+      '@game-agent/bash-local':
+        specifier: workspace:*
+        version: link:../../shell/bash-local
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/command-feedback':
+        specifier: workspace:*
+        version: link:../../feedback/command-feedback
+      '@game-agent/http-proxy':
+        specifier: workspace:*
+        version: link:../../util/http-proxy
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/kernel-logger-console':
+        specifier: workspace:*
+        version: link:../../kernel/logger-console
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/loader-smoke':
+        specifier: workspace:*
+        version: link:../../test-support/loader-smoke
+      '@game-agent/message-feedback':
+        specifier: workspace:*
+        version: link:../../feedback/message-feedback
+      '@game-agent/otel':
+        specifier: workspace:*
+        version: link:../../telemetry/otel
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-checkpoint-policy':
+        specifier: workspace:*
+        version: link:../session-checkpoint-policy
+      '@game-agent/session-persistence-jsonl':
+        specifier: workspace:*
+        version: link:../session-persistence-jsonl
+      '@game-agent/session-telemetry':
+        specifier: workspace:*
+        version: link:../session-telemetry
+      '@game-agent/subprocess-local':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess-local
+
   packages/session/session-title:
     dependencies:
       '@game-agent/schema':
@@ -1627,6 +3442,9 @@ importers:
       '@game-agent/agent':
         specifier: workspace:*
         version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
       '@game-agent/brand':
         specifier: workspace:*
         version: link:../../util/brand
@@ -1639,6 +3457,9 @@ importers:
       '@game-agent/session':
         specifier: workspace:*
         version: link:../../core/session
+      '@game-agent/session-persistence-jsonl':
+        specifier: workspace:*
+        version: link:../session-persistence-jsonl
       '@game-agent/session-projection':
         specifier: workspace:*
         version: link:../session-projection
@@ -1683,6 +3504,9 @@ importers:
       '@game-agent/agent':
         specifier: workspace:*
         version: link:../../core/agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
       '@game-agent/brand':
         specifier: workspace:*
         version: link:../../util/brand
@@ -1846,6 +3670,365 @@ importers:
         specifier: workspace:*
         version: link:../../subprocess/subprocess
 
+  packages/shell/shell-env:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/app-boot':
+        specifier: workspace:*
+        version: link:../../boot/app-boot
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/error':
+        specifier: workspace:*
+        version: link:../../util/error
+      '@game-agent/home-paths':
+        specifier: workspace:*
+        version: link:../../util/home-paths
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/shell':
+        specifier: workspace:*
+        version: link:../shell
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+
+  packages/shell/tool-bash:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/bash-local':
+        specifier: workspace:*
+        version: link:../bash-local
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/jobs':
+        specifier: workspace:*
+        version: link:../../jobs/jobs
+      '@game-agent/jobs-local':
+        specifier: workspace:*
+        version: link:../../jobs/jobs-local
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/ptc-runtime':
+        specifier: workspace:*
+        version: link:../../ptc-runtime/ptc-runtime
+      '@game-agent/sandbox':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox
+      '@game-agent/sandbox-policy':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox-policy
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-persistence-jsonl':
+        specifier: workspace:*
+        version: link:../../session/session-persistence-jsonl
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/shell':
+        specifier: workspace:*
+        version: link:../shell
+      '@game-agent/shell-env':
+        specifier: workspace:*
+        version: link:../shell-env
+      '@game-agent/subprocess':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess
+      '@game-agent/subprocess-local':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess-local
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-executor-ptc':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-ptc
+      '@game-agent/tool-jobs':
+        specifier: workspace:*
+        version: link:../../jobs/tool-jobs
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/user-approval':
+        specifier: workspace:*
+        version: link:../../interaction/user-approval
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
+
+  packages/shell/tool-bash-persistent:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/output-retention':
+        specifier: workspace:*
+        version: link:../../util/output-retention
+      '@game-agent/sandbox':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox
+      '@game-agent/sandbox-policy':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox-policy
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/subprocess-local':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess-local
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/terminal':
+        specifier: workspace:*
+        version: link:../../terminal/terminal
+      '@game-agent/terminal-bash':
+        specifier: workspace:*
+        version: link:../../terminal/terminal-bash
+      '@game-agent/timeout':
+        specifier: workspace:*
+        version: link:../../util/timeout
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
+
+  packages/shell/tool-pwsh:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/app-boot':
+        specifier: workspace:*
+        version: link:../../boot/app-boot
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/fs-local':
+        specifier: workspace:*
+        version: link:../../fs/fs-local
+      '@game-agent/jobs':
+        specifier: workspace:*
+        version: link:../../jobs/jobs
+      '@game-agent/jobs-local':
+        specifier: workspace:*
+        version: link:../../jobs/jobs-local
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/loader-smoke':
+        specifier: workspace:*
+        version: link:../../test-support/loader-smoke
+      '@game-agent/pwsh-local':
+        specifier: workspace:*
+        version: link:../pwsh-local
+      '@game-agent/sandbox':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox
+      '@game-agent/sandbox-policy':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox-policy
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/shell':
+        specifier: workspace:*
+        version: link:../shell
+      '@game-agent/shell-env':
+        specifier: workspace:*
+        version: link:../shell-env
+      '@game-agent/subprocess':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess
+      '@game-agent/subprocess-local':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess-local
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-jobs':
+        specifier: workspace:*
+        version: link:../../jobs/tool-jobs
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/user-approval':
+        specifier: workspace:*
+        version: link:../../interaction/user-approval
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
+
+  packages/shell/tool-pwsh-persistent:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/output-retention':
+        specifier: workspace:*
+        version: link:../../util/output-retention
+      '@game-agent/pwsh-local':
+        specifier: workspace:*
+        version: link:../pwsh-local
+      '@game-agent/sandbox':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox
+      '@game-agent/sandbox-policy':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox-policy
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/subprocess':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess
+      '@game-agent/subprocess-local':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess-local
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/terminal':
+        specifier: workspace:*
+        version: link:../../terminal/terminal
+      '@game-agent/terminal-bash':
+        specifier: workspace:*
+        version: link:../../terminal/terminal-bash
+      '@game-agent/timeout':
+        specifier: workspace:*
+        version: link:../../util/timeout
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
+
   packages/skill/skill:
     dependencies:
       '@game-agent/schema':
@@ -1910,6 +4093,94 @@ importers:
       '@game-agent/spill':
         specifier: workspace:*
         version: link:../spill
+
+  packages/spill/spill-policy:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/attachment':
+        specifier: workspace:*
+        version: link:../../attachment/attachment
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/fs':
+        specifier: workspace:*
+        version: link:../../fs/fs
+      '@game-agent/fs-local':
+        specifier: workspace:*
+        version: link:../../fs/fs-local
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/output-retention':
+        specifier: workspace:*
+        version: link:../../util/output-retention
+      '@game-agent/ptc-runtime':
+        specifier: workspace:*
+        version: link:../../ptc-runtime/ptc-runtime
+      '@game-agent/ptc-runtime-node':
+        specifier: workspace:*
+        version: link:../../ptc-runtime/ptc-runtime-node
+      '@game-agent/sandbox-local':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox-local
+      '@game-agent/sandbox-policy':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox-policy
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/spill':
+        specifier: workspace:*
+        version: link:../spill
+      '@game-agent/spill-local':
+        specifier: workspace:*
+        version: link:../spill-local
+      '@game-agent/subprocess-local':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess-local
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/token-meter':
+        specifier: workspace:*
+        version: link:../../llm/token-meter
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-executor-ptc':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-ptc
+      '@game-agent/tool-fs':
+        specifier: workspace:*
+        version: link:../../fs/tool-fs
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
 
   packages/storage/storage:
     devDependencies:
@@ -1992,6 +4263,9 @@ importers:
       '@game-agent/kernel':
         specifier: workspace:*
         version: link:../../kernel/kernel
+      '@game-agent/loader-smoke':
+        specifier: workspace:*
+        version: link:../../test-support/loader-smoke
       '@game-agent/subprocess':
         specifier: workspace:*
         version: link:../subprocess
@@ -2057,6 +4331,364 @@ importers:
       '@game-agent/contracts':
         specifier: workspace:*
         version: link:../../protocol/contracts
+
+  packages/terminal/terminal:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/error':
+        specifier: workspace:*
+        version: link:../../util/error
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+
+  packages/terminal/terminal-bash:
+    dependencies:
+      '@game-agent/lazy-require':
+        specifier: workspace:*
+        version: link:../../util/lazy-require
+      '@game-agent/pwsh-local':
+        specifier: workspace:*
+        version: link:../../shell/pwsh-local
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@xterm/headless':
+        specifier: ^6.0.0
+        version: 6.0.0
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/sandbox':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox
+      '@game-agent/sandbox-policy':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox-policy
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/subprocess':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess
+      '@game-agent/subprocess-local':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess-local
+      '@game-agent/terminal':
+        specifier: workspace:*
+        version: link:../terminal
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
+
+  packages/test-support/agent-loop-testkit:
+    dependencies:
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-executor-ptc':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-ptc
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/fs-local':
+        specifier: workspace:*
+        version: link:../../fs/fs-local
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/ptc-runtime':
+        specifier: workspace:*
+        version: link:../../ptc-runtime/ptc-runtime
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
+
+  packages/test-support/llm-mock-server:
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+
+  packages/test-support/llm-replay:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/session-format-catalog':
+        specifier: workspace:*
+        version: link:../../session/session-format-catalog
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+    devDependencies:
+      '@game-agent/compaction':
+        specifier: workspace:*
+        version: link:../../compaction/compaction
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/llm-api-extensions':
+        specifier: workspace:*
+        version: link:../../llm/llm-api-extensions
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+
+  packages/test-support/loader-smoke:
+    dependencies:
+      execa:
+        specifier: ^10.0.1
+        version: 10.2.1
+      tsx:
+        specifier: ^4.23.13
+        version: 4.23.15
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/app-boot':
+        specifier: workspace:*
+        version: link:../../boot/app-boot
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/http-proxy':
+        specifier: workspace:*
+        version: link:../../util/http-proxy
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+
+  packages/test-support/session-snapshot:
+    dependencies:
+      '@agentclientprotocol/sdk':
+        specifier: 1.4.0
+        version: 1.4.0(zod@4.6.7)
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/llm-replay':
+        specifier: workspace:*
+        version: link:../llm-replay
+      '@game-agent/loader-smoke':
+        specifier: workspace:*
+        version: link:../loader-smoke
+      '@game-agent/session-format':
+        specifier: workspace:*
+        version: link:../../session/session-format
+      js-yaml:
+        specifier: ^4.3.2
+        version: 4.3.2
+      vitest:
+        specifier: ^4.1.11
+        version: 4.1.12(@opentelemetry/api@1.10.0)(@types/node@22.20.7)(vite@8.3.8(@types/node@22.20.7)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-preset-registry':
+        specifier: workspace:*
+        version: link:../../preset/agent-preset-registry
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/compaction':
+        specifier: workspace:*
+        version: link:../../compaction/compaction
+      '@game-agent/fs':
+        specifier: workspace:*
+        version: link:../../fs/fs
+      '@game-agent/http-proxy':
+        specifier: workspace:*
+        version: link:../../util/http-proxy
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/persona':
+        specifier: workspace:*
+        version: link:../../preset/persona
+      '@game-agent/sandbox':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox
+      '@game-agent/sandbox-policy':
+        specifier: workspace:*
+        version: link:../../sandbox/sandbox-policy
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/user-questions':
+        specifier: workspace:*
+        version: link:../../interaction/user-questions
+      '@game-agent/working-directory':
+        specifier: workspace:*
+        version: link:../../session/working-directory
+      '@types/js-yaml':
+        specifier: ^4.0.9
+        version: 4.0.9
+
+  packages/test-support/tool-testkit:
+    devDependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+
+  packages/todo/tool-todo:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/agent':
+        specifier: workspace:*
+        version: link:../../core/agent
+      '@game-agent/agent-loop':
+        specifier: workspace:*
+        version: link:../../core/agent-loop
+      '@game-agent/agent-loop-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/agent-loop-testkit
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/session':
+        specifier: workspace:*
+        version: link:../../core/session
+      '@game-agent/session-projection':
+        specifier: workspace:*
+        version: link:../../session/session-projection
+      '@game-agent/system-prompt':
+        specifier: workspace:*
+        version: link:../../core/system-prompt
+      '@game-agent/tool-executor-native':
+        specifier: workspace:*
+        version: link:../../core/tool-executor-native
+      '@game-agent/tool-testkit':
+        specifier: workspace:*
+        version: link:../../test-support/tool-testkit
+      '@game-agent/tools':
+        specifier: workspace:*
+        version: link:../../core/tools
+      '@game-agent/user-questions':
+        specifier: workspace:*
+        version: link:../../interaction/user-questions
 
   packages/transport/transport-mcp:
     dependencies:
@@ -2301,6 +4933,11 @@ importers:
         version: link:../../typert/protocol
 
 packages:
+
+  '@agentclientprotocol/sdk@1.4.0':
+    resolution: {integrity: sha512-/eufudw+aFY1LKLolT6yFE6UMmYRl7fMJ/DEONSIyR6wI3slHWITBsANRGqXEY8FRzqUxwh7QEaGiZHcJPVThg==}
+    peerDependencies:
+      zod: ^3.25.0 || ^4.0.0
 
   '@babel/code-frame@7.29.7':
     resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
@@ -2772,6 +5409,9 @@ packages:
   '@types/http-cache-semantics@4.2.0':
     resolution: {integrity: sha512-L3LgimLHXtGkWikKnsPg0/VFx9OGZaC+eN1u4r+OB1XRqH3meBIAVC2zr1WdMH+RHmnRkqliQAOHNJ/E0j/e0Q==}
 
+  '@types/js-yaml@4.0.9':
+    resolution: {integrity: sha512-k4MGaQl5TGo/iipqb2UDG2UwjXziSWkh0uysQelTlJpX1qGlpUZYm8PnO4DxG1qBomtJUdYJ6qR6xdIah10JLg==}
+
   '@types/node@22.20.7':
     resolution: {integrity: sha512-F/Mcc4pD3YwXQCG50hb8BjB5RmrOere6hge7n2XHf0V8tpkZOVEjwYv9Ql7n0MpMn8Bv7+q12P9w6UHsBm0Sfw==}
 
@@ -2873,6 +5513,9 @@ packages:
   '@vscode/ripgrep@1.18.0':
     resolution: {integrity: sha512-ns5lWe44tSfbTMbVUsyB+I1819PVSw4AdpgK0RNkzfWfwy6+3IUNSxwSrfTno1/oWaS/hERNz+XLWVyga2aJBQ==}
 
+  '@xterm/headless@6.0.0':
+    resolution: {integrity: sha512-5Yj1QINYCyzrZtf8OFIHi47iQtI+0qYFPHmouEfG8dHNxbZ9Tb9YGSuLcsEwj9Z+OL75GJqPyJbyoFer80a2Hw==}
+
   acorn-walk@8.3.5:
     resolution: {integrity: sha512-HEHNfbars9v4pgpW6SO1KSPkfoS0xVOM/9UzkJltjlsHZmJasxg8aXkuZa7SMf8vKGIBhpUsPluQSqhJFCqebw==}
     engines: {node: '>=0.4.0'}
@@ -2884,6 +5527,9 @@ packages:
 
   ajv@8.20.0:
     resolution: {integrity: sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==}
+
+  argparse@2.0.1:
+    resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
 
   assertion-error@2.0.1:
     resolution: {integrity: sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==}
@@ -2934,6 +5580,10 @@ packages:
   detect-libc@2.1.2:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
+
+  diff@9.0.0:
+    resolution: {integrity: sha512-svtcdpS8CgJyqAjEQIXdb3OjhFVVYjzGAPO8WGCmRbrml64SPw/jJD4GoE98aR7r25A0XcgrK3F02yw9R/vhQw==}
+    engines: {node: '>=0.3.1'}
 
   es-module-lexer@2.3.2:
     resolution: {integrity: sha512-poHGpORABojJJucnV9KbOavETW8lBVnphkW77ER5/BQ5Fz7oXSoCNek7IH3vR5nRjdsEz926ibFYX8KtLQmdyw==}
@@ -3036,6 +5686,10 @@ packages:
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
+
+  js-yaml@4.3.2:
+    resolution: {integrity: sha512-SFNOvSJ+Dgf/9An904Yx+CgSlIPCkIpao4qo51lpee25TIRejdH3rhR4EZMGoNx3/TP3O+wzWuiTFl4sqbltzA==}
+    hasBin: true
 
   jsbi@4.3.2:
     resolution: {integrity: sha512-9fqMSQbhJykSeii05nxKl4m6Eqn2P6rOlYiS+C5Dr/HPIU/7yZxu5qzbs40tgaFORiw2Amd0mirjxatXYMkIew==}
@@ -3231,6 +5885,10 @@ packages:
   p-cancelable@4.0.1:
     resolution: {integrity: sha512-wBowNApzd45EIKdO1LaU+LrMBwAcjfPaYtVzV3lmfM3gf8Z4CHZsiIqlM8TZZ8okYvh5A1cP6gTfCRQtwUpaUg==}
     engines: {node: '>=14.16'}
+
+  p-limit@7.3.3:
+    resolution: {integrity: sha512-SKgVvDU5TNIxQ4r30U75BNLC6a+6GOEjngrk/ysM5+Zu3oJuk1SC5ApzIzY/7PjCEjoVPMWJ0zho/4QUiEB7TQ==}
+    engines: {node: '>=20'}
 
   parse-ms@4.0.0:
     resolution: {integrity: sha512-TXfryirbmq34y8QBwgqCVLi+8oA3oWx2eAnSn62ITyEhEYaWRlVZ2DvMM9eZbMs/RfxPu/PK/aBLyGj4IrqMHw==}
@@ -3489,6 +6147,10 @@ packages:
     engines: {node: '>= 14.6'}
     hasBin: true
 
+  yocto-queue@1.2.2:
+    resolution: {integrity: sha512-4LCcse/U2MHZ63HAJVE+v71o7yOdIe4cZ70Wpf8D/IyjDKYQLV5GD46B+hSTjJsvV5PztjvHoU580EftxjDZFQ==}
+    engines: {node: '>=12.20'}
+
   yoctocolors@2.2.0:
     resolution: {integrity: sha512-xYqdZFUK/VYazNl/oCDYN+3WloWQwMfZxBoiNt6qNyk+xfOdi598muWE42rNZFp1kNOiqW936q5RhUdnpqElSg==}
     engines: {node: '>=18'}
@@ -3500,6 +6162,10 @@ packages:
     resolution: {integrity: sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==}
 
 snapshots:
+
+  '@agentclientprotocol/sdk@1.4.0(zod@4.6.7)':
+    dependencies:
+      zod: 4.6.7
 
   '@babel/code-frame@7.29.7':
     dependencies:
@@ -3817,6 +6483,8 @@ snapshots:
 
   '@types/http-cache-semantics@4.2.0': {}
 
+  '@types/js-yaml@4.0.9': {}
+
   '@types/node@22.20.7':
     dependencies:
       undici-types: 6.21.0
@@ -3917,6 +6585,8 @@ snapshots:
       '@vscode/ripgrep-win32-ia32': 1.18.0
       '@vscode/ripgrep-win32-x64': 1.18.0
 
+  '@xterm/headless@6.0.0': {}
+
   acorn-walk@8.3.5:
     dependencies:
       acorn: 8.19.0
@@ -3929,6 +6599,8 @@ snapshots:
       fast-uri: 3.1.9
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
+
+  argparse@2.0.1: {}
 
   assertion-error@2.0.1: {}
 
@@ -3973,6 +6645,8 @@ snapshots:
       mimic-response: 4.0.0
 
   detect-libc@2.1.2: {}
+
+  diff@9.0.0: {}
 
   es-module-lexer@2.3.2: {}
 
@@ -4095,6 +6769,10 @@ snapshots:
   jose@6.2.18: {}
 
   js-tokens@4.0.0: {}
+
+  js-yaml@4.3.2:
+    dependencies:
+      argparse: 2.0.1
 
   jsbi@4.3.2: {}
 
@@ -4260,6 +6938,10 @@ snapshots:
   obug@2.2.1: {}
 
   p-cancelable@4.0.1: {}
+
+  p-limit@7.3.3:
+    dependencies:
+      yocto-queue: 1.2.2
 
   parse-ms@4.0.0: {}
 
@@ -4434,6 +7116,8 @@ snapshots:
       stackback: 0.0.2
 
   yaml@2.9.1: {}
+
+  yocto-queue@1.2.2: {}
 
   yoctocolors@2.2.0: {}
 

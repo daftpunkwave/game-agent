@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@game-agent/kernel": "workspace:*",
+    "@game-agent/loader-smoke": "workspace:*",
     "@game-agent/subprocess": "workspace:*",
     "@game-agent/timeout": "workspace:*"
   }

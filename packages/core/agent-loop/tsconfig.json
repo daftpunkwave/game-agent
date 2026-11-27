@@ -1,0 +1,52 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../agent"
+    },
+    {
+      "path": "../../util/brand"
+    },
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../kernel/kit"
+    },
+    {
+      "path": "../../llm/llm"
+    },
+    {
+      "path": "../../kernel/schema"
+    },
+    {
+      "path": "../scope"
+    },
+    {
+      "path": "../session"
+    },
+    {
+      "path": "../../session/session-persistence"
+    },
+    {
+      "path": "../../session/session-projection"
+    },
+    {
+      "path": "../system-prompt"
+    },
+    {
+      "path": "../tools"
+    },
+    {
+      "path": "../../util/values"
+    }
+  ]
+}

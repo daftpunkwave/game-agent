@@ -1,0 +1,38 @@
+{
+  "name": "@game-agent/command-compact",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Human-facing slash command for explicit session compaction",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/commands": "workspace:*",
+    "@game-agent/compaction": "workspace:*",
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/commands": "workspace:*",
+    "@game-agent/compaction": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-include": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  }
+}

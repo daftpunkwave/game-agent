@@ -62,56 +62,100 @@ Capability packages are plugins of the kernel. They are constrained by declared 
 | `attachment` | `attachment` | Durable, immutable attachment storage interface |
 | `boot` | `app-boot` | Boot sequence: `.env` loading, configuration resolution, loader guards |
 | | `cmdline` | Immutable command-line handoff from the launcher to app plugins |
-| | `hmr` | Coordinated hot reload of modules and profile configuration |
 | | `config-editor` | Persist plugin configuration through profile patches |
-| `compaction` | `compaction` | Context compaction interface |
-| `context` | `file-reference` | File reference discovery and the shared `@file` grammar |
+| | `hmr` | Coordinated hot reload of modules and profile configuration |
+| `compaction` | `command-compact` | Command that compacts a session on request |
+| | `compaction` | Context compaction interface |
+| | `compaction-basic` | Token-driven compaction policy with model summarization |
+| | `compaction-image-offload` | Replaces over-budget request images with placeholders and retries |
+| | `compaction-tool-result-pruner` | Model-free pruning of tool results |
+| `context` | `agent-instructions` | Loads `AGENTS.md` and `CLAUDE.md` instruction files into the context |
+| | `file-reference` | File reference discovery and the shared `@file` grammar |
+| | `file-reference-local` | Local file reference provider with bounded fuzzy indexes |
+| | `session-reference` | References to other sessions as untrusted model context |
 | | `time-context` | Per-step context with the current and elapsed time |
 | `core` | `agent` | Agent interface, registry, initiator scope, and event vocabulary |
 | | `agent-default-model` | Default model selection shared by agent entry points |
+| | `agent-loop` | Agent loop: turns, steps, model requests, and tool calls |
 | | `scope` | Scoped context registration and scope-filtered event dispatch |
 | | `session` | Event-sourced session store |
 | | `system-prompt` | System prompt section registry and assembly |
+| | `tool-executor-native` | Native tool execution |
+| | `tool-executor-ptc` | Programmatic tool-calling programs: tool bindings and generated SDK prompts |
 | | `tools` | Tool registry and execution pipeline |
-| `credentials` | `credentials` | Credential interface: settings hold references, providers hold values |
+| `credentials` | `authorization` | Flows that obtain a credential through a conversation with a person |
+| | `credentials` | Credential interface: settings hold references, providers hold values |
 | | `credentials-local` | Credentials from `$GAME_AGENT_HOME/.env` under the process environment |
-| | `authorization` | Flows that obtain a credential through a conversation with a person |
+| `feedback` | `command-feedback` | Command that records session feedback in the session log |
+| | `message-feedback` | Ratings and notes on assistant messages, kept in the session log |
 | `fs` | `fs` | File system interface: text I/O and optional version-guarded atomic writes |
 | | `fs-local` | Local file system implementation |
 | | `fs-observation-policy` | Read-before-edit and version-guarded writes over the file system interface |
 | | `fs-patch` | Patch parser and line-ending-preserving text updater |
 | | `fs-sandbox` | File system that confines writes and edits by the sandbox mode of each call |
+| | `tool-fs` | Read, write, and edit tools over the file system interface |
+| | `tool-fs-search` | Glob and grep tools backed by the packaged ripgrep |
+| | `tool-str-replace-editor` | View, create, replace, and insert editing tool |
+| `guard` | `repeat-tool-reminder` | Reminds the agent when it repeats identical tool calls |
+| | `timeout-policy` | Per-tool deadlines for tool calls |
+| `identity` | `anonymous-user-id` | Random identifier of one installation, kept in the game-agent home |
 | `interaction` | `commands` | Registry of human commands contributed by plugins |
 | | `permission-presets` | Permission presets that bundle the sandbox mode and approval policy |
+| | `tool-ask-user` | Tool that asks the person a question |
 | | `user-approval` | One-shot approval decisions, denied unless an answerer allows them |
+| | `user-questions` | Interface for asking the person questions during a run |
+| `jobs` | `jobs` | Background job registry: ids, owner isolation, polling, cancellation |
+| | `jobs-local` | Process-local background job registry |
+| | `tool-jobs` | Tools to read, list, and stop background jobs |
 | `llm` | `llm` | Provider-neutral model service interface |
 | | `llm-api-extensions` | Additive request-field registry for provider adapters |
 | | `llm-retry` | Retry policy for model requests, routed by provider |
+| | `token-meter` | Replay-aware token measurement |
 | `native` | `native-system` | Locators for native helpers: the Linux Landlock launcher and exclusive file locks (no helper binaries are shipped yet) |
-| `preset` | `persona` | Persona section composed into the system prompt |
+| `preset` | `agent-preset` | Declares an agent capability composition in configuration |
+| | `agent-preset-registry` | Preset registry with profile-backed editing |
+| | `persona` | Persona section composed into the system prompt |
 | `ptc-runtime` | `ptc-runtime` | Programmatic tool-calling execution interface |
 | | `ptc-runtime-node` | Node.js evaluators for programmatic tool calling, with optional retained state |
 | `sandbox` | `sandbox` | Process sandbox interface and confinement vocabulary |
 | | `sandbox-local` | Local sandbox backends: bubblewrap, the Landlock launcher, or the Windows ACL runner, probed before use |
 | | `sandbox-policy` | Per-call sandbox policy from deployment defaults and each session's mode and workspace |
 | | `sandbox-windows-acl` | Windows write-restriction sandbox through restricted tokens and capability SIDs |
-| `session` | `session-format` | Session storage format migration machinery |
+| `session-query` | `session-query` | Session query interface: reads, traces, and filters |
+| | `session-query-sqlite` | Session query backend with SQLite full-text search |
+| | `tool-session-list` | Read-only workspace and session listing tools |
+| `session` | `session-checkpoint-policy` | Durability checkpoints before model requests and tool side effects |
+| | `session-format` | Session storage format migration machinery |
+| | `session-format-catalog` | Catalog of session format codecs and migrations |
+| | `session-format-v0-to-v1` | Session format versions 0 and 1 and the migration to 1 |
+| | `session-format-v1-to-v2` | Session format version 2 and the migration to 2 |
+| | `session-format-v2-to-v3` | Migration of session artifacts to format version 3 |
+| | `session-format-v3-to-v4` | Migration of session artifacts to format version 4 and delivery validation |
 | | `session-persistence` | Durable session persistence interface |
+| | `session-persistence-jsonl` | JSONL session store |
+| | `session-persistence-sqlite` | SQLite session store |
 | | `session-projection` | Projections of per-session state derived from the session log |
 | | `session-projection-cache` | Persisted projection checkpoints with throttled write-behind |
 | | `session-stats` | Conversation counts and wall times per session |
-| | `session-turn-outline` | Turn outline of a session |
 | | `session-telemetry` | Session event capture, redaction, and handoff to a reporting backend |
+| | `session-telemetry-otel` | Session logs over OpenTelemetry, sent only when sharing is enabled |
 | | `session-title` | Session titles derived from the log, with pluggable title providers |
+| | `session-turn-outline` | Turn outline of a session |
 | | `working-directory` | Session working directories with durable changes and model context |
 | `settings` | `settings` | User settings interface |
-| `shell` | `shell` | Shell executor interface |
-| | `bash-local` | Local bash executor |
+| `shell` | `bash-local` | Local bash executor |
 | | `bash-sandbox` | Bash executor that confines every command through the sandbox |
 | | `pwsh-local` | Local Windows shell executor |
+| | `shell` | Shell executor interface |
+| | `shell-env` | Managed `GAME_AGENT_*` shell environment registry |
+| | `tool-bash` | Bash tool with optional background jobs and sandbox escalation |
+| | `tool-bash-persistent` | Persistent bash tool backed by a pseudo-terminal session |
+| | `tool-pwsh` | Windows shell tool over the shell executor interface |
+| | `tool-pwsh-persistent` | Persistent Windows shell tool backed by a pseudo-terminal session |
 | `skill` | `skill` | Agent skill provider registry |
 | `spill` | `spill` | Storage for oversized tool output, returning a retrieval locator |
 | | `spill-local` | Session-scoped local files for spilled output |
+| | `spill-policy` | Token-budgeted retention of tool results with recoverable paths |
 | `storage` | `storage` | Storage hub: named backends and mounted data forms |
 | | `storage-domain` | Schema-validated, event-emitting key-value domains |
 | | `storage-json` | JSON file key-value backend |
@@ -120,6 +164,15 @@ Capability packages are plugins of the kernel. They are constrained by declared 
 | | `subprocess-local` | Local subprocess implementation, including pseudo-terminals |
 | | `win32-process` | Win32 process, standard I/O, and job object primitives |
 | `telemetry` | `otel` | OpenTelemetry log channels for ordinary events and session logs |
+| `terminal` | `terminal` | Persistent pseudo-terminal session interface |
+| | `terminal-bash` | Persistent shell pseudo-terminal backend |
+| `test-support` | `agent-loop-testkit` | Agent loop drivers and inbox doubles for tests |
+| | `llm-mock-server` | Scriptable model HTTP server with injectable faults for recovery tests |
+| | `llm-replay` | Replays model output recorded in a session log, for tests without a model key |
+| | `loader-smoke` | Runtime for smoke tests of real configuration loading |
+| | `session-snapshot` | Session log snapshots with output normalization for tests |
+| | `tool-testkit` | Tool definition and execution fixtures for tests |
+| `todo` | `tool-todo` | Todo list tool over the session log |
 | `typert` | `typert-protocol` | Remote method metadata and provider protocols |
 | | `typert-registry` | Runtime registry of generated reflection and schemas |
 | `util` | `util-ripgrep` | Packaged ripgrep resolution and output streaming |

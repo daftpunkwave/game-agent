@@ -1,0 +1,37 @@
+{
+  "name": "@game-agent/agent-preset",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Declare an Agent capability composition in Kernel YAML",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/schema": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/agent-preset-registry": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent-preset-registry": "workspace:*",
+    "@game-agent/compaction-tool-result-pruner": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-include": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "@game-agent/skill": "workspace:*"
+  }
+}

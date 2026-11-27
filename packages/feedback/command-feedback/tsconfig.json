@@ -1,0 +1,31 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../identity/anonymous-user-id"
+    },
+    {
+      "path": "../../util/brand"
+    },
+    {
+      "path": "../../interaction/commands"
+    },
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../core/session"
+    },
+    {
+      "path": "../../typert/protocol"
+    }
+  ]
+}

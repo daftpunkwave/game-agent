@@ -1,0 +1,40 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../compaction/compaction"
+    },
+    {
+      "path": "../../compaction/compaction-image-offload"
+    },
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../llm"
+    },
+    {
+      "path": "../llm-retry"
+    },
+    {
+      "path": "../../kernel/schema"
+    },
+    {
+      "path": "../../core/session"
+    },
+    {
+      "path": "../../session/session-projection"
+    },
+    {
+      "path": "../../util/values"
+    }
+  ]
+}

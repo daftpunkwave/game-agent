@@ -1,8 +1,11 @@
 /**
  * Responsibilities: Verify launcher resolution, grant arguments, and the behavior when no platform helper is installed.
  * Contracts: Uses injected resolvers and a nonexistent launcher path; never runs a real launcher.
- * Constraints: No native helper package is installed in the workspace, so the probe must report `unusable`.
+ * Constraints: No native helper package is installed in the workspace, so the probe must report `unusable`; the file lock test runs only where `flock(2)` exists.
  */
+import { closeSync, mkdtempSync, openSync, rmSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { tryLockExclusive } from '../src/flock.ts'
 import { LAUNCHER_BIN, grantArgs, launcherPath, probe } from '../src/landlock-run.ts'
@@ -30,8 +33,24 @@ describe('landlock-run', () => {
   })
 })
 
+const posix = process.platform === 'linux' || process.platform === 'darwin'
+
 describe('flock', () => {
-  it('rejects when no native binding is available', async () => {
-    await expect(tryLockExclusive(0)).rejects.toThrow()
+  it.skipIf(posix)('rejects on platforms without flock(2)', async () => {
+    await expect(tryLockExclusive(0)).rejects.toMatchObject({ code: 'ERR_FLOCK_UNSUPPORTED_PLATFORM' })
+  })
+
+  it.runIf(posix)('locks a file once and refuses a second open file description', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'game-agent-flock-'))
+    const first = openSync(join(dir, 'lock'), 'w')
+    const second = openSync(join(dir, 'lock'), 'r')
+    try {
+      await expect(tryLockExclusive(first)).resolves.toBeUndefined()
+      await expect(tryLockExclusive(second)).rejects.toMatchObject({ syscall: 'flock' })
+    } finally {
+      closeSync(first)
+      closeSync(second)
+      rmSync(dir, { recursive: true, force: true })
+    }
   })
 })

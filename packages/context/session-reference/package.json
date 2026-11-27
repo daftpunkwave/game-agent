@@ -1,0 +1,80 @@
+{
+  "name": "@game-agent/session-reference",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Cross-session snapshot references and durable untrusted model context (ctx.sessionReferenceResolver)",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./types": {
+      "@game-agent/source": "./src/types.ts",
+      "types": "./lib/types.d.ts",
+      "default": "./lib/types.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "@game-agent/util-text-search": "workspace:*",
+    "@game-agent/util-values": "workspace:*",
+    "zod": "4.6.6"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/compaction": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/output-retention": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/session-projection-cache": "workspace:*",
+    "@game-agent/session-query": "workspace:*",
+    "@game-agent/session-title": "workspace:*",
+    "@game-agent/spill": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/typert-protocol": "workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@game-agent/session-projection-cache": {
+      "optional": true
+    },
+    "@game-agent/spill": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/compaction": "workspace:*",
+    "@game-agent/fs-local": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-include": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/output-retention": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/session-projection-cache": "workspace:*",
+    "@game-agent/session-query": "workspace:*",
+    "@game-agent/session-query-sqlite": "workspace:*",
+    "@game-agent/session-title": "workspace:*",
+    "@game-agent/spill": "workspace:*",
+    "@game-agent/spill-local": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/tool-executor-native": "workspace:*",
+    "@game-agent/tool-fs": "workspace:*",
+    "@game-agent/tool-testkit": "workspace:*",
+    "@game-agent/tools": "workspace:*",
+    "@game-agent/typert-protocol": "workspace:*",
+    "@game-agent/working-directory": "workspace:*"
+  }
+}

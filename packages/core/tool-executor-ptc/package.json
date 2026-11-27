@@ -1,0 +1,72 @@
+{
+  "name": "@game-agent/tool-executor-ptc",
+  "version": "0.0.0",
+  "private": true,
+  "description": "PTC program execution, tool bindings, and generated SDK prompts",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./run-code": {
+      "@game-agent/source": "./src/run-code.ts",
+      "types": "./lib/run-code.d.ts",
+      "default": "./lib/run-code.js"
+    },
+    "./types": {
+      "@game-agent/source": "./src/types.ts",
+      "types": "./lib/types.d.ts",
+      "default": "./lib/types.js"
+    },
+    "./client": {
+      "@game-agent/source": "./src/client.ts",
+      "types": "./lib/client.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "@game-agent/util-values": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/ptc-runtime": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*",
+    "@game-agent/scope": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/tools": "workspace:*",
+    "@game-agent/user-approval": "workspace:*",
+    "@game-agent/working-directory": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop-testkit": "workspace:*",
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/ptc-runtime": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*",
+    "@game-agent/scope": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/tool-executor-native": "workspace:*",
+    "@game-agent/tool-testkit": "workspace:*",
+    "@game-agent/tools": "workspace:*",
+    "@game-agent/user-approval": "workspace:*",
+    "@game-agent/working-directory": "workspace:*"
+  }
+}

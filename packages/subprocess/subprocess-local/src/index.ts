@@ -321,7 +321,7 @@ export class LocalSubprocessRuntime extends SubprocessRuntime {
       // Windows' own console host (the standby pool runs Server 2022 and
       // Windows 10 22H2) renders the persistent-pwsh prompt tail in a form the
       // readiness path cannot match; the console host node-pty ships emits it
-      // verbatim, see [Agent Note](../../../../.agents/notes/implemented/bug-fix/2026-09-28-pty-bundled-console-host.md).
+      // verbatim, see an earlier design note.
       ...(platform === 'win32' ? { useConptyDll: true } : {}),
     }
     const linuxScope = containmentMode === 'linux-scope' ? this.linuxScopeDecision : undefined

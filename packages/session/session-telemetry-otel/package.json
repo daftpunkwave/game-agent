@@ -1,0 +1,54 @@
+{
+  "name": "@game-agent/session-telemetry-otel",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Feedback-authorized Session logs over byte-bounded OpenTelemetry HTTP requests",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/schema": "workspace:*",
+    "@opentelemetry/api-logs": "0.222.0"
+  },
+  "peerDependencies": {
+    "@game-agent/anonymous-user-id": "workspace:*",
+    "@game-agent/command-feedback": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/message-feedback": "workspace:*",
+    "@game-agent/otel": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-telemetry": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/anonymous-user-id": "workspace:*",
+    "@game-agent/app-boot": "workspace:*",
+    "@game-agent/bash-local": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/command-feedback": "workspace:*",
+    "@game-agent/http-proxy": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/kernel-logger-console": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/loader-smoke": "workspace:*",
+    "@game-agent/message-feedback": "workspace:*",
+    "@game-agent/otel": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-checkpoint-policy": "workspace:*",
+    "@game-agent/session-persistence-jsonl": "workspace:*",
+    "@game-agent/session-telemetry": "workspace:*",
+    "@game-agent/subprocess-local": "workspace:*"
+  }
+}

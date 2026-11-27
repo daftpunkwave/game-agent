@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop": "workspace:*",
+    "@game-agent/agent-loop-testkit": "workspace:*",
     "@game-agent/brand": "workspace:*",
     "@game-agent/kernel": "workspace:*",
     "@game-agent/llm": "workspace:*",
@@ -44,6 +46,8 @@
     "@game-agent/session": "workspace:*",
     "@game-agent/session-projection": "workspace:*",
     "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/tool-executor-native": "workspace:*",
+    "@game-agent/tool-testkit": "workspace:*",
     "@game-agent/user-approval": "workspace:*"
   }
 }

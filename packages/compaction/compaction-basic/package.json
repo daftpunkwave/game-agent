@@ -1,0 +1,62 @@
+{
+  "name": "@game-agent/compaction-basic",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Token-meter-driven compaction policy and LLM summarization backend",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "@game-agent/util-values": "workspace:*",
+    "zod": "4.6.6"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/commands": "workspace:*",
+    "@game-agent/compaction": "workspace:*",
+    "@game-agent/compaction-tool-result-pruner": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/token-meter": "workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@game-agent/compaction-tool-result-pruner": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop": "workspace:*",
+    "@game-agent/agent-loop-testkit": "workspace:*",
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/commands": "workspace:*",
+    "@game-agent/compaction": "workspace:*",
+    "@game-agent/compaction-image-offload": "workspace:*",
+    "@game-agent/compaction-tool-result-pruner": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-include": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/llm-retry": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/token-meter": "workspace:*",
+    "@game-agent/tool-testkit": "workspace:*",
+    "@game-agent/tools": "workspace:*"
+  }
+}

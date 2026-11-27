@@ -33,6 +33,7 @@
     "@game-agent/app-boot": "workspace:*",
     "@game-agent/brand": "workspace:*",
     "@game-agent/kernel": "workspace:*",
+    "@game-agent/loader-smoke": "workspace:*",
     "@game-agent/session": "workspace:*"
   }
 }

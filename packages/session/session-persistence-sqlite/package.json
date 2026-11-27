@@ -1,0 +1,42 @@
+{
+  "name": "@game-agent/session-persistence-sqlite",
+  "version": "0.0.0",
+  "private": true,
+  "description": "SQLite Session event storage backend",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/native-system": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "@game-agent/session-format": "workspace:*",
+    "@game-agent/session-format-v3-to-v4": "workspace:*",
+    "@game-agent/session-persistence-jsonl": "workspace:*",
+    "koffi": "3.1.1",
+    "p-limit": "7.3.3",
+    "zod": "4.6.6"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-persistence": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-persistence": "workspace:*"
+  }
+}

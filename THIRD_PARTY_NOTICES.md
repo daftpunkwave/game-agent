@@ -245,12 +245,13 @@ Installed from npm and not copied into this repository; their licenses ship with
 
 | Package | License | Used by |
 |---|---|---|
+| `@agentclientprotocol/sdk` | Apache-2.0 | `packages/test-support/session-snapshot` |
 | `@babel/code-frame` | MIT | `packages/boot/hmr`, `packages/kernel/hmr` |
 | `@eslint-community/regexpp` | MIT | `packages/boot/app-boot` |
 | `@js-temporal/polyfill` | ISC | `packages/util/time` |
 | `@modelcontextprotocol/client` | Apache-2.0 | `packages/transport/transport-mcp` |
 | `@opentelemetry/api` | Apache-2.0 | `packages/telemetry/otel` |
-| `@opentelemetry/api-logs` | Apache-2.0 | `packages/telemetry/otel` |
+| `@opentelemetry/api-logs` | Apache-2.0 | `packages/session/session-telemetry-otel`, `packages/telemetry/otel` |
 | `@opentelemetry/core` | Apache-2.0 | `packages/telemetry/otel` |
 | `@opentelemetry/otlp-exporter-base` | Apache-2.0 | `packages/telemetry/otel` |
 | `@opentelemetry/otlp-transformer` | Apache-2.0 | `packages/telemetry/otel` |
@@ -258,22 +259,29 @@ Installed from npm and not copied into this repository; their licenses ship with
 | `@opentelemetry/sdk-logs` | Apache-2.0 | `packages/telemetry/otel` |
 | `@standard-schema/spec` | MIT | `packages/kernel/kernel`, `packages/kernel/schema` |
 | `@vscode/ripgrep` | MIT | `packages/util/ripgrep` |
+| `@xterm/headless` | MIT | `packages/terminal/terminal-bash` |
 | `acorn` | MIT | `packages/ptc-runtime/ptc-runtime-node` |
 | `acorn-walk` | MIT | `packages/ptc-runtime/ptc-runtime-node` |
 | `ajv` | MIT | `packages/boot/app-boot` |
 | `birpc` | MIT | `packages/ptc-runtime/ptc-runtime-node` |
 | `chokidar` | MIT | `packages/boot/hmr`, `packages/credentials/credentials-local`, `packages/fs/fs-local`, `packages/kernel/hmr` |
+| `diff` | BSD-3-Clause | `packages/fs/tool-fs` |
+| `execa` | MIT | `packages/test-support/loader-smoke` |
 | `fuzzysort` | MIT | `packages/util/text-search` |
 | `got` | MIT | `packages/telemetry/otel` |
-| `koffi` | MIT | `packages/fs/fs-local`, `packages/sandbox/sandbox-windows-acl`, `packages/subprocess/subprocess-local`, `packages/subprocess/win32-process` |
+| `js-yaml` | MIT | `packages/test-support/session-snapshot` |
+| `koffi` | MIT | `packages/fs/fs-local`, `packages/native/system`, `packages/sandbox/sandbox-windows-acl`, `packages/session/session-persistence-jsonl`, `packages/session/session-persistence-sqlite`, `packages/subprocess/subprocess-local`, `packages/subprocess/win32-process` |
 | `mime` | MIT | `packages/util/file-drag` |
 | `node-addon-require-builtin` | MIT | `packages/boot/app-boot`, `packages/boot/hmr`, `packages/kernel/loader` |
 | `node-pty` | MIT | `packages/subprocess/subprocess-local` |
+| `p-limit` | MIT | `packages/session/session-persistence-jsonl`, `packages/session/session-persistence-sqlite` |
 | `picomatch` | MIT | `packages/boot/hmr`, `packages/kernel/hmr` |
 | `resolve.exports` | MIT | `packages/boot/app-boot` |
 | `rrule` | BSD-3-Clause | `packages/util/time` |
 | `semver` | ISC | `packages/boot/app-boot` |
 | `supports-color` | MIT | `packages/kernel/logger-console` |
+| `tsx` | MIT | `packages/test-support/loader-smoke` |
 | `undici` | MIT | `packages/util/http-proxy` |
+| `vitest` | MIT | `packages/test-support/session-snapshot` |
 | `yaml` | ISC | `packages/boot/config-editor`, `packages/credentials/credentials-local`, `packages/kernel/include`, `packages/sandbox/sandbox-windows-acl`, `packages/settings/settings` |
-| `zod` | MIT | `packages/context/time-context`, `packages/core/agent`, `packages/core/system-prompt`, `packages/interaction/commands`, `packages/interaction/permission-presets`, `packages/interaction/user-approval`, `packages/llm/llm`, `packages/llm/llm-retry`, `packages/sandbox/sandbox-policy`, `packages/session/session-projection`, `packages/session/session-projection-cache`, `packages/session/session-stats`, `packages/session/session-title`, `packages/session/session-turn-outline`, `packages/session/working-directory`, `packages/storage/storage-domain`, `packages/typert/protocol`, `packages/typert/registry`, `packages/util/chunked-list`, `packages/workspace/workspace` |
+| `zod` | MIT | `packages/compaction/compaction-basic`, `packages/context/session-reference`, `packages/context/time-context`, `packages/core/agent`, `packages/core/agent-loop`, `packages/core/system-prompt`, `packages/feedback/command-feedback`, `packages/feedback/message-feedback`, `packages/interaction/commands`, `packages/interaction/permission-presets`, `packages/interaction/user-approval`, `packages/interaction/user-questions`, `packages/llm/llm`, `packages/llm/llm-retry`, `packages/llm/token-meter`, `packages/preset/agent-preset-registry`, `packages/sandbox/sandbox-policy`, `packages/session-query/session-query`, `packages/session/session-persistence-sqlite`, `packages/session/session-projection`, `packages/session/session-projection-cache`, `packages/session/session-stats`, `packages/session/session-title`, `packages/session/session-turn-outline`, `packages/session/working-directory`, `packages/storage/storage-domain`, `packages/todo/tool-todo`, `packages/typert/protocol`, `packages/typert/registry`, `packages/util/chunked-list`, `packages/workspace/workspace` |

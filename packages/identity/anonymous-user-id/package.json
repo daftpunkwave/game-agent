@@ -1,0 +1,20 @@
+{
+  "name": "@game-agent/anonymous-user-id",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Random identifier of one game-agent installation, kept in the game-agent home",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/home-paths": "workspace:*"
+  }
+}

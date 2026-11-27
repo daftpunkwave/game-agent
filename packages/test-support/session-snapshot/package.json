@@ -1,0 +1,54 @@
+{
+  "name": "@game-agent/session-snapshot",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Session-log snapshot core with an ACP protocol adapter, expected-output normalization, and fixture invariants",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@agentclientprotocol/sdk": "1.4.0",
+    "@game-agent/kernel-include": "workspace:*",
+    "@game-agent/llm-replay": "workspace:*",
+    "@game-agent/loader-smoke": "workspace:*",
+    "@game-agent/session-format": "workspace:*",
+    "js-yaml": "^4.3.2",
+    "vitest": "^4.1.11"
+  },
+  "peerDependencies": {
+    "@game-agent/http-proxy": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop": "workspace:*",
+    "@game-agent/agent-preset-registry": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/compaction": "workspace:*",
+    "@game-agent/fs": "workspace:*",
+    "@game-agent/http-proxy": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/persona": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/tool-testkit": "workspace:*",
+    "@game-agent/tools": "workspace:*",
+    "@game-agent/user-questions": "workspace:*",
+    "@game-agent/working-directory": "workspace:*",
+    "@types/js-yaml": "^4.0.9"
+  }
+}

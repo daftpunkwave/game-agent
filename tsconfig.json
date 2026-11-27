@@ -34,10 +34,31 @@
       "path": "./packages/boot/hmr"
     },
     {
+      "path": "./packages/compaction/command-compact"
+    },
+    {
       "path": "./packages/compaction/compaction"
     },
     {
+      "path": "./packages/compaction/compaction-basic"
+    },
+    {
+      "path": "./packages/compaction/compaction-image-offload"
+    },
+    {
+      "path": "./packages/compaction/compaction-tool-result-pruner"
+    },
+    {
+      "path": "./packages/context/agent-instructions"
+    },
+    {
       "path": "./packages/context/file-reference"
+    },
+    {
+      "path": "./packages/context/file-reference-local"
+    },
+    {
+      "path": "./packages/context/session-reference"
     },
     {
       "path": "./packages/context/time-context"
@@ -47,6 +68,9 @@
     },
     {
       "path": "./packages/core/agent-default-model"
+    },
+    {
+      "path": "./packages/core/agent-loop"
     },
     {
       "path": "./packages/core/agent-runtime"
@@ -64,6 +88,12 @@
       "path": "./packages/core/system-prompt"
     },
     {
+      "path": "./packages/core/tool-executor-native"
+    },
+    {
+      "path": "./packages/core/tool-executor-ptc"
+    },
+    {
       "path": "./packages/core/tools"
     },
     {
@@ -74,6 +104,12 @@
     },
     {
       "path": "./packages/credentials/credentials-local"
+    },
+    {
+      "path": "./packages/feedback/command-feedback"
+    },
+    {
+      "path": "./packages/feedback/message-feedback"
     },
     {
       "path": "./packages/fleet/fleet"
@@ -94,13 +130,46 @@
       "path": "./packages/fs/fs-sandbox"
     },
     {
+      "path": "./packages/fs/tool-fs"
+    },
+    {
+      "path": "./packages/fs/tool-fs-search"
+    },
+    {
+      "path": "./packages/fs/tool-str-replace-editor"
+    },
+    {
+      "path": "./packages/guard/repeat-tool-reminder"
+    },
+    {
+      "path": "./packages/guard/timeout-policy"
+    },
+    {
+      "path": "./packages/identity/anonymous-user-id"
+    },
+    {
       "path": "./packages/interaction/commands"
     },
     {
       "path": "./packages/interaction/permission-presets"
     },
     {
+      "path": "./packages/interaction/tool-ask-user"
+    },
+    {
       "path": "./packages/interaction/user-approval"
+    },
+    {
+      "path": "./packages/interaction/user-questions"
+    },
+    {
+      "path": "./packages/jobs/jobs"
+    },
+    {
+      "path": "./packages/jobs/jobs-local"
+    },
+    {
+      "path": "./packages/jobs/tool-jobs"
     },
     {
       "path": "./packages/kernel/group"
@@ -142,7 +211,16 @@
       "path": "./packages/llm/model-openai-compatible"
     },
     {
+      "path": "./packages/llm/token-meter"
+    },
+    {
       "path": "./packages/native/system"
+    },
+    {
+      "path": "./packages/preset/agent-preset"
+    },
+    {
+      "path": "./packages/preset/agent-preset-registry"
     },
     {
       "path": "./packages/preset/persona"
@@ -178,10 +256,34 @@
       "path": "./packages/sandbox/sandbox-windows-acl"
     },
     {
+      "path": "./packages/session/session-checkpoint-policy"
+    },
+    {
       "path": "./packages/session/session-format"
     },
     {
+      "path": "./packages/session/session-format-catalog"
+    },
+    {
+      "path": "./packages/session/session-format-v0-to-v1"
+    },
+    {
+      "path": "./packages/session/session-format-v1-to-v2"
+    },
+    {
+      "path": "./packages/session/session-format-v2-to-v3"
+    },
+    {
+      "path": "./packages/session/session-format-v3-to-v4"
+    },
+    {
       "path": "./packages/session/session-persistence"
+    },
+    {
+      "path": "./packages/session/session-persistence-jsonl"
+    },
+    {
+      "path": "./packages/session/session-persistence-sqlite"
     },
     {
       "path": "./packages/session/session-projection"
@@ -196,6 +298,9 @@
       "path": "./packages/session/session-telemetry"
     },
     {
+      "path": "./packages/session/session-telemetry-otel"
+    },
+    {
       "path": "./packages/session/session-title"
     },
     {
@@ -203,6 +308,15 @@
     },
     {
       "path": "./packages/session/working-directory"
+    },
+    {
+      "path": "./packages/session-query/session-query"
+    },
+    {
+      "path": "./packages/session-query/session-query-sqlite"
+    },
+    {
+      "path": "./packages/session-query/tool-session-list"
     },
     {
       "path": "./packages/settings/settings"
@@ -220,6 +334,21 @@
       "path": "./packages/shell/shell"
     },
     {
+      "path": "./packages/shell/shell-env"
+    },
+    {
+      "path": "./packages/shell/tool-bash"
+    },
+    {
+      "path": "./packages/shell/tool-bash-persistent"
+    },
+    {
+      "path": "./packages/shell/tool-pwsh"
+    },
+    {
+      "path": "./packages/shell/tool-pwsh-persistent"
+    },
+    {
       "path": "./packages/skill/skill"
     },
     {
@@ -227,6 +356,9 @@
     },
     {
       "path": "./packages/spill/spill-local"
+    },
+    {
+      "path": "./packages/spill/spill-policy"
     },
     {
       "path": "./packages/storage/storage"
@@ -254,6 +386,33 @@
     },
     {
       "path": "./packages/telemetry/trace"
+    },
+    {
+      "path": "./packages/terminal/terminal"
+    },
+    {
+      "path": "./packages/terminal/terminal-bash"
+    },
+    {
+      "path": "./packages/test-support/agent-loop-testkit"
+    },
+    {
+      "path": "./packages/test-support/llm-mock-server"
+    },
+    {
+      "path": "./packages/test-support/llm-replay"
+    },
+    {
+      "path": "./packages/test-support/loader-smoke"
+    },
+    {
+      "path": "./packages/test-support/session-snapshot"
+    },
+    {
+      "path": "./packages/test-support/tool-testkit"
+    },
+    {
+      "path": "./packages/todo/tool-todo"
     },
     {
       "path": "./packages/transport/transport-mcp"
