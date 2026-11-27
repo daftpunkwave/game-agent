@@ -40,6 +40,8 @@
     "@game-agent/jobs-local": "workspace:*",
     "@game-agent/kernel": "workspace:*",
     "@game-agent/llm": "workspace:*",
+    "@game-agent/llm-messages-api-key": "workspace:*",
+    "@game-agent/messages-auth": "workspace:*",
     "@game-agent/ptc-runtime": "workspace:*",
     "@game-agent/scope": "workspace:*",
     "@game-agent/session": "workspace:*",

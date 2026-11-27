@@ -19,6 +19,7 @@ const HEADER_EXEMPT_PREFIXES = ['packages/kernel/']
  */
 const TSDOC_HEADER_PREFIXES = [
   'packages/api/remote-access/',
+  'packages/attachment/attachment-local/',
   'packages/attachment/attachment/',
   'packages/boot/app-boot/',
   'packages/boot/cmdline/',
@@ -68,8 +69,11 @@ const TSDOC_HEADER_PREFIXES = [
   'packages/jobs/jobs/',
   'packages/jobs/tool-jobs/',
   'packages/llm/llm-api-extensions/',
+  'packages/llm/llm-messages-api-key/',
+  'packages/llm/llm-messages/',
   'packages/llm/llm-retry/',
   'packages/llm/llm/',
+  'packages/llm/messages-auth/',
   'packages/llm/token-meter/',
   'packages/preset/agent-preset-registry/',
   'packages/preset/agent-preset/',

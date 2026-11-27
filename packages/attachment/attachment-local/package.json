@@ -1,0 +1,36 @@
+{
+  "name": "@game-agent/attachment-local",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Private content-addressed GAME_AGENT_HOME attachment storage",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/lazy-require": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "sharp": "0.35.5"
+  },
+  "peerDependencies": {
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/home-paths": "workspace:*",
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/home-paths": "workspace:*",
+    "@game-agent/kernel": "workspace:*"
+  }
+}

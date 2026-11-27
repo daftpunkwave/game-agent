@@ -1,0 +1,76 @@
+{
+  "name": "@game-agent/llm-messages",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Messages API adapter: request translation, streaming, Files API image upload, and model listing",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/kit": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "@game-agent/util-values": "workspace:*",
+    "eventsource-parser": "^3.1.0",
+    "semver": "^7.8.5"
+  },
+  "peerDependencies": {
+    "@game-agent/anonymous-user-id": "workspace:*",
+    "@game-agent/atomic-write": "workspace:*",
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/fs": "workspace:*",
+    "@game-agent/home-paths": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/launch-environment": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/llm-api-extensions": "workspace:*",
+    "@game-agent/timeout": "workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@game-agent/kernel-loader": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/agent-loop": "workspace:*",
+    "@game-agent/anonymous-user-id": "workspace:*",
+    "@game-agent/atomic-write": "workspace:*",
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/attachment-local": "workspace:*",
+    "@game-agent/authorization": "workspace:*",
+    "@game-agent/credentials": "workspace:*",
+    "@game-agent/credentials-local": "workspace:*",
+    "@game-agent/fs": "workspace:*",
+    "@game-agent/home-paths": "workspace:*",
+    "@game-agent/http-proxy": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-include": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/launch-environment": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/llm-api-extensions": "workspace:*",
+    "@game-agent/llm-messages-api-key": "workspace:*",
+    "@game-agent/messages-auth": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/settings": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/timeout": "workspace:*",
+    "@game-agent/tool-executor-native": "workspace:*",
+    "@game-agent/tool-testkit": "workspace:*",
+    "@game-agent/tools": "workspace:*",
+    "@types/semver": "^7.8.0"
+  }
+}

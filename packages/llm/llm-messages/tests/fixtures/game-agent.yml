@@ -1,0 +1,33 @@
+- name: '@game-agent/llm'
+- name: '@game-agent/session'
+- name: '@game-agent/session-projection'
+- name: '@game-agent/system-prompt'
+- name: '@game-agent/tools'
+- name: '@game-agent/tool-executor-native'
+- name: '@game-agent/agent'
+- name: '@game-agent/agent-loop'
+  config:
+    agents: []
+- name: '@game-agent/credentials-local'
+  config:
+    path: {{credentials}}
+    watch: false
+- name: '@game-agent/messages-auth'
+- name: '@game-agent/llm-messages-api-key'
+  config:
+    apiKeyEnv: MODEL_API_KEY
+    baseURL: {{endpoint}}
+    thinking: enabled
+    reasoningEffort: high
+    maxTokens: 256000
+    streamIdleTimeoutMs: 300000
+    models:
+      - id: example-flash-next
+        name: Example-V4.1-Flash
+        contextWindow: 1048576
+        inputModalities: [text, image]
+        systemPromptUpdate: in-history
+        toolUpdate: addition-only
+      - id: example-pro
+        name: Example-V4-Pro
+        contextWindow: 1048576

@@ -39,6 +39,7 @@
     "@game-agent/compaction-basic": "workspace:*",
     "@game-agent/kernel": "workspace:*",
     "@game-agent/llm": "workspace:*",
+    "@game-agent/llm-messages": "workspace:*",
     "@game-agent/session": "workspace:*",
     "@game-agent/session-projection": "workspace:*",
     "@game-agent/token-meter": "workspace:*"

@@ -1,0 +1,61 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../identity/anonymous-user-id"
+    },
+    {
+      "path": "../../util/atomic-write"
+    },
+    {
+      "path": "../../attachment/attachment"
+    },
+    {
+      "path": "../../util/brand"
+    },
+    {
+      "path": "../../fs/fs"
+    },
+    {
+      "path": "../../util/home-paths"
+    },
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../kernel/loader"
+    },
+    {
+      "path": "../../kernel/kit"
+    },
+    {
+      "path": "../../util/launch-environment"
+    },
+    {
+      "path": "../llm"
+    },
+    {
+      "path": "../llm-api-extensions"
+    },
+    {
+      "path": "../../kernel/schema"
+    },
+    {
+      "path": "../../settings/settings"
+    },
+    {
+      "path": "../../util/timeout"
+    },
+    {
+      "path": "../../util/values"
+    }
+  ]
+}
