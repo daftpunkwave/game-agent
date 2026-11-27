@@ -24,7 +24,7 @@ afterEach(() => {
   vi.unstubAllEnvs()
 })
 
-describe('gameAgent path helpers', () => {
+describe('game-agent path helpers', () => {
   it('owns the shared default game-agent home directory name', () => {
     expect(GAME_AGENT_HOME_DIR_NAME).toBe('.game-agent')
     expect(DEFAULT_GAME_AGENT_HOME_DISPLAY).toBe('~/.game-agent')

@@ -1,0 +1,34 @@
+{
+  "name": "@game-agent/subprocess",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Subprocess seam (ctx.subprocess) — managed process groups, bounded spill-backed output, and escalated kills behind one abstract service",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./control": {
+      "@game-agent/source": "./src/control.ts",
+      "types": "./lib/control.d.ts",
+      "default": "./lib/control.js"
+    }
+  },
+  "peerDependencies": {
+    "@game-agent/error": "workspace:*",
+    "@game-agent/http-proxy": "workspace:*",
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/error": "workspace:*",
+    "@game-agent/http-proxy": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/launch-environment": "workspace:*"
+  }
+}

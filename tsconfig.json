@@ -13,10 +13,25 @@
   ],
   "references": [
     {
+      "path": "./packages/attachment/attachment"
+    },
+    {
       "path": "./packages/behavior/behavior-tree"
     },
     {
       "path": "./packages/boot/app"
+    },
+    {
+      "path": "./packages/boot/app-boot"
+    },
+    {
+      "path": "./packages/boot/cmdline"
+    },
+    {
+      "path": "./packages/boot/config-editor"
+    },
+    {
+      "path": "./packages/boot/hmr"
     },
     {
       "path": "./packages/core/agent-runtime"
@@ -25,7 +40,25 @@
       "path": "./packages/core/decision"
     },
     {
+      "path": "./packages/core/scope"
+    },
+    {
+      "path": "./packages/core/session"
+    },
+    {
+      "path": "./packages/credentials/authorization"
+    },
+    {
+      "path": "./packages/credentials/credentials"
+    },
+    {
+      "path": "./packages/credentials/credentials-local"
+    },
+    {
       "path": "./packages/fleet/fleet"
+    },
+    {
+      "path": "./packages/fs/fs-patch"
     },
     {
       "path": "./packages/kernel/group"
@@ -55,6 +88,12 @@
       "path": "./packages/kernel/timer"
     },
     {
+      "path": "./packages/llm/llm"
+    },
+    {
+      "path": "./packages/llm/llm-api-extensions"
+    },
+    {
       "path": "./packages/llm/model-openai-compatible"
     },
     {
@@ -70,6 +109,30 @@
       "path": "./packages/protocol/intent-ledger"
     },
     {
+      "path": "./packages/session/session-format"
+    },
+    {
+      "path": "./packages/storage/storage"
+    },
+    {
+      "path": "./packages/storage/storage-domain"
+    },
+    {
+      "path": "./packages/storage/storage-json"
+    },
+    {
+      "path": "./packages/storage/storage-sqlite"
+    },
+    {
+      "path": "./packages/subprocess/subprocess"
+    },
+    {
+      "path": "./packages/subprocess/subprocess-local"
+    },
+    {
+      "path": "./packages/subprocess/win32-process"
+    },
+    {
       "path": "./packages/telemetry/trace"
     },
     {
@@ -77,6 +140,12 @@
     },
     {
       "path": "./packages/transport/transport-simulated"
+    },
+    {
+      "path": "./packages/typert/protocol"
+    },
+    {
+      "path": "./packages/typert/registry"
     },
     {
       "path": "./packages/util/atomic-write"
@@ -122,6 +191,9 @@
     },
     {
       "path": "./packages/util/ports"
+    },
+    {
+      "path": "./packages/util/ripgrep"
     },
     {
       "path": "./packages/util/text-search"

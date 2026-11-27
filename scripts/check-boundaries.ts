@@ -1,5 +1,5 @@
 /**
- * Responsibilities: Enforce package boundaries: declared dependencies, no deep imports, an acyclic package graph, layer rules between package groups, no Node I/O modules in cognition packages, and isolation of third-party SDKs.
+ * Responsibilities: Enforce package boundaries: declared dependencies, imports only through declared package entries, an acyclic package graph, layer rules for the game protocol and agent runtime packages, no Node I/O modules in cognition packages, and isolation of third-party SDKs.
  * Contracts: Scans `packages/<group>/<name>` and `apps/<name>`; prints every violation and exits with code 1 when any exists.
  * Constraints: Static text analysis of import specifiers; run with `node scripts/check-boundaries.ts` from the repository root.
  */
@@ -12,9 +12,15 @@ interface WorkspacePackage {
   readonly dir: string
   readonly dependencies: ReadonlySet<string>
   readonly devDependencies: ReadonlySet<string>
+  /** Subpaths declared in `exports`, such as `./types`; `./src/*` is not a public entry. */
+  readonly entries: ReadonlySet<string>
 }
 
-/** Package groups each group may import at runtime (tests may use any declared dependency). */
+/**
+ * Package groups each layered package may import at runtime (tests may use any declared dependency). The layer
+ * rules apply to the game protocol and agent runtime packages in LAYERED_PACKAGES; capability packages (storage,
+ * sessions, models, tools, and the like) are constrained by declared dependencies and the acyclic graph.
+ */
 const ALLOWED_GROUPS: Readonly<Record<string, readonly string[]>> = {
   kernel: ['kernel'],
   util: ['kernel', 'util'],
@@ -29,6 +35,25 @@ const ALLOWED_GROUPS: Readonly<Record<string, readonly string[]>> = {
   apps: ['kernel', 'util', 'protocol', 'telemetry', 'behavior', 'core', 'llm', 'transport', 'fleet', 'boot'],
 }
 
+/** Packages that follow the group layer rules in ALLOWED_GROUPS. */
+const LAYERED_PACKAGES = new Set([
+  '@game-agent/agent-runtime',
+  '@game-agent/app',
+  '@game-agent/behavior-tree',
+  '@game-agent/cli',
+  '@game-agent/contracts',
+  '@game-agent/decision',
+  '@game-agent/fleet',
+  '@game-agent/gateway',
+  '@game-agent/inbox',
+  '@game-agent/intent-ledger',
+  '@game-agent/model-openai-compatible',
+  '@game-agent/ports',
+  '@game-agent/trace',
+  '@game-agent/transport-mcp',
+  '@game-agent/transport-simulated',
+])
+
 /** Third-party packages confined to specific groups. */
 const CONFINED_IMPORTS: readonly { readonly prefix: string; readonly groups: readonly string[] }[] = [
   { prefix: '@modelcontextprotocol/', groups: ['transport'] },
@@ -41,7 +66,7 @@ const CONFINED_IMPORTS: readonly { readonly prefix: string; readonly groups: rea
 const COGNITION_PACKAGES = new Set(['@game-agent/behavior-tree', '@game-agent/decision', '@game-agent/agent-runtime'])
 const COGNITION_FORBIDDEN = ['node:net', 'node:http', 'node:https', 'node:child_process', 'node:fs', 'node:fs/promises', 'ws']
 
-const IMPORT_PATTERN = /(?:^|\n)\s*(?:import|export)\s[^'"]*?from\s+['"]([^'"]+)['"]|import\(\s*['"]([^'"]+)['"]\s*\)|(?:^|\n)\s*import\s+['"]([^'"]+)['"]/g
+const IMPORT_PATTERN = /(?:^|\n)\s*(?:import|export)\s[^'"]*?from\s+['"]([^'"]+)['"]|(?<![.\w$])import\(\s*['"]([^'"]+)['"]\s*\)|(?:^|\n)\s*import\s+['"]([^'"]+)['"]/g
 
 async function listDirectories(path: string): Promise<string[]> {
   try {
@@ -67,8 +92,14 @@ async function loadPackage(dir: string, group: string): Promise<WorkspacePackage
     dependencies?: Record<string, string>
     devDependencies?: Record<string, string>
     peerDependencies?: Record<string, string>
+    exports?: unknown
   }
+  const exportsField = manifest.exports
+  const entries = typeof exportsField === 'object' && exportsField !== null && Object.keys(exportsField).every((key) => key.startsWith('.'))
+    ? Object.keys(exportsField).filter((key) => key !== './src/*')
+    : ['.']
   return {
+    entries: new Set(entries),
     name: manifest.name,
     group,
     dir,
@@ -114,7 +145,9 @@ async function main(): Promise<number> {
     for (const name of await listDirectories(join(root, 'packages', group))) packages.push(await loadPackage(join(root, 'packages', group, name), group))
   }
   for (const name of await listDirectories(join(root, 'apps'))) packages.push(await loadPackage(join(root, 'apps', name), 'apps'))
-  const workspaceGroups = new Map(packages.map((item) => [item.name, item.group]))
+  const workspace = new Map(packages.map((item) => [item.name, item]))
+  const rootManifest = JSON.parse(await readFile(join(root, 'package.json'), 'utf8')) as { devDependencies?: Record<string, string> }
+  const rootDevDependencies = new Set(Object.keys(rootManifest.devDependencies ?? {}))
 
   const violations: string[] = []
   for (const item of packages) {
@@ -124,13 +157,14 @@ async function main(): Promise<number> {
         const where = relative(root, file).replaceAll('\\', '/')
         for (const match of text.matchAll(IMPORT_PATTERN)) {
           const specifier = match[1] ?? match[2] ?? match[3]
-          if (specifier === undefined || specifier.startsWith('.') || specifier.startsWith('node:') && !COGNITION_FORBIDDEN.includes(specifier)) continue
+          if (specifier === undefined || specifier.startsWith('.') || specifier.includes('${') || specifier.startsWith('node:') && !COGNITION_FORBIDDEN.includes(specifier)) continue
           const name = packageNameOf(specifier)
           if (kind === 'src' && COGNITION_PACKAGES.has(item.name) && COGNITION_FORBIDDEN.includes(specifier)) {
             violations.push(`${where}: ${item.name} is a cognition package and must not import ${specifier}`)
             continue
           }
-          if (specifier.startsWith('node:') || name === 'vitest') continue
+          // Tests may use the repository-wide test tooling declared in the root devDependencies.
+          if (specifier.startsWith('node:') || kind === 'tests' && rootDevDependencies.has(name)) continue
           if (name === item.name) {
             // Tests may exercise the public entry of the package under test by name; sources import their own files relatively.
             if (kind !== 'tests') violations.push(`${where}: import files of the same package relatively, not as ${specifier}`)
@@ -139,9 +173,12 @@ async function main(): Promise<number> {
           const typeOnly = /^\s*(?:import|export)\s+type\s/.test(match[0])
           const declared = item.dependencies.has(name) || ((kind === 'tests' || typeOnly) && item.devDependencies.has(name))
           if (!declared) violations.push(`${where}: ${name} is imported but not declared in ${kind === 'src' ? 'dependencies' : 'dependencies or devDependencies'}`)
-          if (name.startsWith('@game-agent/') && specifier !== name) violations.push(`${where}: deep import ${specifier}; use the package entry ${name}`)
-          const targetGroup = workspaceGroups.get(name)
-          if (kind === 'src' && targetGroup !== undefined && !(ALLOWED_GROUPS[item.group] ?? []).includes(targetGroup)) {
+          const target = workspace.get(name)
+          if (target !== undefined && specifier !== name && !target.entries.has(`.${specifier.slice(name.length)}`)) {
+            violations.push(`${where}: ${specifier} is not an entry declared in the exports of ${name}`)
+          }
+          const targetGroup = target?.group
+          if (kind === 'src' && LAYERED_PACKAGES.has(item.name) && targetGroup !== undefined && !(ALLOWED_GROUPS[item.group] ?? []).includes(targetGroup)) {
             violations.push(`${where}: ${item.group} packages must not depend on ${targetGroup} package ${name}`)
           }
           for (const confined of CONFINED_IMPORTS) {

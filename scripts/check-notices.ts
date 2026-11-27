@@ -1,9 +1,9 @@
 /**
  * Responsibilities: Keep the runtime dependency table of THIRD_PARTY_NOTICES.md in step with the package manifests and the license allow list.
- * Contracts: Collects third-party `dependencies`, `peerDependencies`, and `optionalDependencies` of every `packages/<group>/<name>` and `apps/<name>` manifest; reads each installed package's `license`; reports a dependency missing from the table, a table row no manifest uses, a wrong license or "Used by" column, and a license outside `allow-licenses` of `.github/dependency-review-config.yml`. Exits with code 1 when any problem exists.
+ * Contracts: Collects third-party `dependencies`, `peerDependencies`, and `optionalDependencies` of every `packages/<group>/<name>` and `apps/<name>` manifest; reads each installed package's `license`; reports a dependency missing from the table, a table row no manifest uses, a wrong license or "Used by" column, and a license outside `allow-licenses` of `.github/dependency-review-config.yml`. Exits with code 1 when any problem exists. With `--write` (`pnpm sync:notices`), first rewrites the table from the manifests and installed licenses; the allow list is still enforced.
  * Constraints: Requires `pnpm install` to have run; reads files only; development dependencies are out of scope because they do not ship with the runtime.
  */
-import { readFile, readdir } from 'node:fs/promises'
+import { readFile, readdir, writeFile } from 'node:fs/promises'
 import { join, relative } from 'node:path'
 
 const NOTICES_FILE = 'THIRD_PARTY_NOTICES.md'
@@ -56,6 +56,21 @@ async function readTable(root: string): Promise<Map<string, TableRow>> {
   return rows
 }
 
+/** Replace the rows of the runtime dependency table, keeping everything else in the file. */
+async function writeTable(root: string, users: ReadonlyMap<string, readonly string[]>, licenses: ReadonlyMap<string, string>): Promise<void> {
+  const path = join(root, NOTICES_FILE)
+  const lines = (await readFile(path, 'utf8')).replaceAll('\r\n', '\n').split('\n')
+  const heading = lines.findIndex((line) => line.startsWith(TABLE_HEADING))
+  const separator = lines.findIndex((line, index) => index > heading && line.startsWith('|---'))
+  let end = separator + 1
+  while (end < lines.length && lines[end]?.startsWith('| ')) end += 1
+  const rows = [...users]
+    .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))
+    .map(([name, usedBy]) => `| \`${name}\` | ${licenses.get(name) ?? 'UNKNOWN'} | ${[...usedBy].sort().map((item) => `\`${item}\``).join(', ')} |`)
+  lines.splice(separator + 1, end - separator - 1, ...rows)
+  await writeFile(path, lines.join('\n'))
+}
+
 async function main(): Promise<number> {
   const root = process.cwd()
   const dirs: string[] = []
@@ -84,6 +99,7 @@ async function main(): Promise<number> {
     }
   }
 
+  if (process.argv.includes('--write')) await writeTable(root, users, licenses)
   const allowed = await allowedLicenses(root)
   const table = await readTable(root)
   for (const [name, usedBy] of [...users].sort(([a], [b]) => a.localeCompare(b))) {

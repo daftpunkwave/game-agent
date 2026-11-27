@@ -1,0 +1,29 @@
+{
+  "name": "@game-agent/util-ripgrep",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Packaged ripgrep resolution and subprocess streaming helpers",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    }
+  },
+  "dependencies": {
+    "@vscode/ripgrep": "^1.18.0"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/subprocess": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/subprocess": "workspace:*"
+  }
+}

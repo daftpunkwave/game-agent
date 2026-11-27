@@ -1,0 +1,51 @@
+{
+  "name": "@game-agent/app-boot",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared boot glue for the app bins: .env loading, fail-loud Loader guards, snapshot-aware config resolution, and the Loader boot sequence",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./worker/profile-resolution-bootstrap": {
+      "@game-agent/source": "./src/profile-resolution/worker-bootstrap.ts",
+      "types": "./lib/profile-resolution/worker-bootstrap.d.ts",
+      "default": "./lib/profile-resolution/worker-bootstrap.js"
+    }
+  },
+  "dependencies": {
+    "@eslint-community/regexpp": "^4.12.2",
+    "@game-agent/atomic-write": "workspace:*",
+    "@game-agent/package-manifest": "workspace:*",
+    "ajv": "^8.20.0",
+    "node-addon-require-builtin": "^0.1.10",
+    "resolve.exports": "^2.0.3",
+    "semver": "^7.8.5"
+  },
+  "peerDependencies": {
+    "@game-agent/home-paths": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-group": "workspace:*",
+    "@game-agent/kernel-include": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/launch-environment": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/home-paths": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-group": "workspace:*",
+    "@game-agent/kernel-include": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/kernel-timer": "workspace:*",
+    "@game-agent/launch-environment": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "@types/semver": "^7.8.0"
+  }
+}

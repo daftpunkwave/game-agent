@@ -178,12 +178,18 @@ importers:
       '@types/node':
         specifier: ^24.10.0
         version: 24.19.3
+      fast-check:
+        specifier: ^4.9.0
+        version: 4.11.0
+      tsx:
+        specifier: ^4.23.13
+        version: 4.23.15
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
       vitest:
         specifier: ^4.1.11
-        version: 4.1.12(@types/node@24.19.3)(vite@8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(yaml@2.9.1))
+        version: 4.1.12(@types/node@24.19.3)(vite@8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
 
   apps/cli:
     dependencies:
@@ -230,6 +236,18 @@ importers:
         specifier: workspace:*
         version: link:../../packages/transport/transport-simulated
 
+  packages/attachment/attachment:
+    devDependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/error':
+        specifier: workspace:*
+        version: link:../../util/error
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+
   packages/behavior/behavior-tree:
     dependencies:
       '@game-agent/contracts':
@@ -260,6 +278,147 @@ importers:
       '@game-agent/transport-simulated':
         specifier: workspace:*
         version: link:../../transport/transport-simulated
+
+  packages/boot/app-boot:
+    dependencies:
+      '@eslint-community/regexpp':
+        specifier: ^4.12.2
+        version: 4.12.3
+      '@game-agent/atomic-write':
+        specifier: workspace:*
+        version: link:../../util/atomic-write
+      '@game-agent/package-manifest':
+        specifier: workspace:*
+        version: link:../../util/package-manifest
+      ajv:
+        specifier: ^8.20.0
+        version: 8.20.0
+      node-addon-require-builtin:
+        specifier: ^0.1.10
+        version: 0.1.10
+      resolve.exports:
+        specifier: ^2.0.3
+        version: 2.0.4
+      semver:
+        specifier: ^7.8.5
+        version: 7.8.6
+    devDependencies:
+      '@game-agent/home-paths':
+        specifier: workspace:*
+        version: link:../../util/home-paths
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-group':
+        specifier: workspace:*
+        version: link:../../kernel/group
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/kernel-timer':
+        specifier: workspace:*
+        version: link:../../kernel/timer
+      '@game-agent/launch-environment':
+        specifier: workspace:*
+        version: link:../../util/launch-environment
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@types/semver':
+        specifier: ^7.8.0
+        version: 7.8.0
+
+  packages/boot/cmdline:
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      commander:
+        specifier: ^15.0.0
+        version: 15.1.0
+
+  packages/boot/config-editor:
+    dependencies:
+      '@game-agent/atomic-write':
+        specifier: workspace:*
+        version: link:../../util/atomic-write
+      yaml:
+        specifier: ^2.8.1
+        version: 2.9.1
+    devDependencies:
+      '@game-agent/app-boot':
+        specifier: workspace:*
+        version: link:../app-boot
+      '@game-agent/hmr':
+        specifier: workspace:*
+        version: link:../hmr
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+
+  packages/boot/hmr:
+    dependencies:
+      '@babel/code-frame':
+        specifier: ^7.29.0
+        version: 7.29.7
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      chokidar:
+        specifier: 5.0.0
+        version: 5.0.0
+      node-addon-require-builtin:
+        specifier: ^0.1.10
+        version: 0.1.10
+      picomatch:
+        specifier: ^4.0.7
+        version: 4.0.7
+    devDependencies:
+      '@game-agent/app-boot':
+        specifier: workspace:*
+        version: link:../app-boot
+      '@game-agent/atomic-write':
+        specifier: workspace:*
+        version: link:../../util/atomic-write
+      '@game-agent/cmdline':
+        specifier: workspace:*
+        version: link:../cmdline
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/kernel-include':
+        specifier: workspace:*
+        version: link:../../kernel/include
+      '@game-agent/kernel-loader':
+        specifier: workspace:*
+        version: link:../../kernel/loader
+      '@game-agent/kernel-timer':
+        specifier: workspace:*
+        version: link:../../kernel/timer
+      '@types/babel__code-frame':
+        specifier: ^7.27.0
+        version: 7.27.0
+      '@types/picomatch':
+        specifier: ^4.0.3
+        version: 4.0.3
+      esbuild:
+        specifier: ^0.28.2
+        version: 0.28.2
 
   packages/core/agent-runtime:
     dependencies:
@@ -298,6 +457,90 @@ importers:
         specifier: workspace:*
         version: link:../../protocol/contracts
 
+  packages/core/scope:
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+
+  packages/core/session:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/llm':
+        specifier: workspace:*
+        version: link:../../llm/llm
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/scope':
+        specifier: workspace:*
+        version: link:../scope
+      '@game-agent/typert-protocol':
+        specifier: workspace:*
+        version: link:../../typert/protocol
+      '@game-agent/typert-registry':
+        specifier: workspace:*
+        version: link:../../typert/registry
+
+  packages/credentials/authorization:
+    devDependencies:
+      '@game-agent/credentials':
+        specifier: workspace:*
+        version: link:../credentials
+      '@game-agent/error':
+        specifier: workspace:*
+        version: link:../../util/error
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+
+  packages/credentials/credentials:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/launch-environment':
+        specifier: workspace:*
+        version: link:../../util/launch-environment
+
+  packages/credentials/credentials-local:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      chokidar:
+        specifier: 5.0.0
+        version: 5.0.0
+      yaml:
+        specifier: ^2.9.0
+        version: 2.9.1
+    devDependencies:
+      '@game-agent/atomic-write':
+        specifier: workspace:*
+        version: link:../../util/atomic-write
+      '@game-agent/credentials':
+        specifier: workspace:*
+        version: link:../credentials
+      '@game-agent/home-paths':
+        specifier: workspace:*
+        version: link:../../util/home-paths
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/launch-environment':
+        specifier: workspace:*
+        version: link:../../util/launch-environment
+
   packages/fleet/fleet:
     dependencies:
       '@game-agent/atomic-write':
@@ -315,6 +558,12 @@ importers:
       '@game-agent/ports':
         specifier: workspace:*
         version: link:../../util/ports
+
+  packages/fs/fs-patch:
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
 
   packages/kernel/group:
     dependencies:
@@ -433,6 +682,49 @@ importers:
         specifier: workspace:*
         version: link:../kit
 
+  packages/llm/llm:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      '@game-agent/timeout':
+        specifier: workspace:*
+        version: link:../../util/timeout
+      '@game-agent/typert-protocol':
+        specifier: workspace:*
+        version: link:../../typert/protocol
+      '@game-agent/util-crypto':
+        specifier: workspace:*
+        version: link:../../util/crypto
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/attachment':
+        specifier: workspace:*
+        version: link:../../attachment/attachment
+      '@game-agent/error':
+        specifier: workspace:*
+        version: link:../../util/error
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/package-manifest':
+        specifier: workspace:*
+        version: link:../../util/package-manifest
+
+  packages/llm/llm-api-extensions:
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+
   packages/llm/model-openai-compatible:
     dependencies:
       '@game-agent/contracts':
@@ -486,6 +778,120 @@ importers:
         specifier: workspace:*
         version: link:../../util/ports
 
+  packages/session/session-format:
+    dependencies:
+      '@game-agent/util-values':
+        specifier: workspace:*
+        version: link:../../util/values
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+
+  packages/storage/storage:
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+
+  packages/storage/storage-domain:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/storage':
+        specifier: workspace:*
+        version: link:../storage
+
+  packages/storage/storage-json:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/storage':
+        specifier: workspace:*
+        version: link:../storage
+
+  packages/storage/storage-sqlite:
+    dependencies:
+      '@game-agent/schema':
+        specifier: workspace:*
+        version: link:../../kernel/schema
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/storage':
+        specifier: workspace:*
+        version: link:../storage
+
+  packages/subprocess/subprocess:
+    devDependencies:
+      '@game-agent/error':
+        specifier: workspace:*
+        version: link:../../util/error
+      '@game-agent/http-proxy':
+        specifier: workspace:*
+        version: link:../../util/http-proxy
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/launch-environment':
+        specifier: workspace:*
+        version: link:../../util/launch-environment
+
+  packages/subprocess/subprocess-local:
+    dependencies:
+      '@game-agent/lazy-require':
+        specifier: workspace:*
+        version: link:../../util/lazy-require
+      '@game-agent/win32-process':
+        specifier: workspace:*
+        version: link:../win32-process
+      koffi:
+        specifier: 3.1.1
+        version: 3.1.1
+      node-pty:
+        specifier: 1.2.0-beta.15
+        version: 1.2.0-beta.15
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/subprocess':
+        specifier: workspace:*
+        version: link:../subprocess
+      '@game-agent/timeout':
+        specifier: workspace:*
+        version: link:../../util/timeout
+
+  packages/subprocess/win32-process:
+    dependencies:
+      '@game-agent/lazy-require':
+        specifier: workspace:*
+        version: link:../../util/lazy-require
+      koffi:
+        specifier: 3.1.1
+        version: 3.1.1
+    devDependencies:
+      '@game-agent/error':
+        specifier: workspace:*
+        version: link:../../util/error
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+
   packages/telemetry/trace:
     dependencies:
       '@game-agent/contracts':
@@ -515,6 +921,35 @@ importers:
       '@game-agent/ports':
         specifier: workspace:*
         version: link:../../util/ports
+
+  packages/typert/protocol:
+    dependencies:
+      '@game-agent/brand':
+        specifier: workspace:*
+        version: link:../../util/brand
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/error':
+        specifier: workspace:*
+        version: link:../../util/error
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+
+  packages/typert/registry:
+    dependencies:
+      zod:
+        specifier: 4.6.6
+        version: 4.6.6
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/typert-protocol':
+        specifier: workspace:*
+        version: link:../protocol
 
   packages/util/atomic-write:
     devDependencies:
@@ -619,6 +1054,19 @@ importers:
         version: link:../../kernel/kernel
 
   packages/util/ports: {}
+
+  packages/util/ripgrep:
+    dependencies:
+      '@vscode/ripgrep':
+        specifier: ^1.18.0
+        version: 1.18.0
+    devDependencies:
+      '@game-agent/kernel':
+        specifier: workspace:*
+        version: link:../../kernel/kernel
+      '@game-agent/subprocess':
+        specifier: workspace:*
+        version: link:../../subprocess/subprocess
 
   packages/util/text-search:
     dependencies:
@@ -839,12 +1287,91 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@eslint-community/regexpp@4.12.3':
+    resolution: {integrity: sha512-R76UKbvsqI68DJJVTVyqFKqU98CN4+B+acxNfEA2IFarSzP0SjtKf/3+fFiXzTyv5Fj3PxLkGHe2wnVWWMxobQ==}
+    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+
   '@jridgewell/sourcemap-codec@1.6.0':
     resolution: {integrity: sha512-T7jf+5zgsZHwNJ4lvQ7/aezbyk0nNX+zJVWpmHA7VYsEx7a7qr5Rg5IbtJFqkgze5Y2sruq1RUY8Q837Od7iFw==}
 
   '@js-temporal/polyfill@0.5.1':
     resolution: {integrity: sha512-hloP58zRVCRSpgDxmqCWJNlizAlUgJFqG2ypq79DCvyv9tHjRYMDOcPFjzfl/A1/YxDvRCZz8wvZvmapQnKwFQ==}
     engines: {node: '>=12'}
+
+  '@koromix/koffi-darwin-arm64@3.1.1':
+    resolution: {integrity: sha512-+Dl0zQDh1Wb55AWOn9hp7K30qgkODvrvN+ZNkFOh81Q0oFX/rpJQtocgjAuYk2zFAcajSeVDumkcHMPwnKSXzA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@koromix/koffi-darwin-x64@3.1.1':
+    resolution: {integrity: sha512-cDFAKn1qdZBFLrp7dAc9QUDw3l4xAhTJbOdPWWb0LxssVicUdHcRCLZGrDsmPW2tpH6LGNNeLgqRpAoD2Mo8iA==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@koromix/koffi-freebsd-arm64@3.1.1':
+    resolution: {integrity: sha512-zaP7FJISI/scQW9Wa5QicY3a09WmtKBWSbmC+5nfCqPzwWe7Hx2so74Er7mPsDfCiMMR0Ya+evKbJQDkfyXicg==}
+    cpu: [arm64]
+    os: [freebsd]
+
+  '@koromix/koffi-freebsd-ia32@3.1.1':
+    resolution: {integrity: sha512-7GejVb688TLM8rbjfc0oezJrATxZc0dn801xWEDJekN2DgmRXu7HquGqWQ6z3NeSq7ZxEggz4T3xtlbCysQapA==}
+    cpu: [ia32]
+    os: [freebsd]
+
+  '@koromix/koffi-freebsd-x64@3.1.1':
+    resolution: {integrity: sha512-XLiCFP9OFCyOoGTjAimtDKLhzhfo34WcP1ShVWxRzNCWDGjfz8BYjwd69cp/cDSUXZbxamqs4+/6vmkePq9wxA==}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@koromix/koffi-linux-arm64@3.1.1':
+    resolution: {integrity: sha512-HA9xINK7G4dRAkpfnBWD9VfuyIBgW1SuK+KPHjksUwRMOnhgqP8J/JqgrAzdzcDiefGBkqEacIP776OUwz7knQ==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@koromix/koffi-linux-ia32@3.1.1':
+    resolution: {integrity: sha512-jG7IFytmP8K5Qtbx0ro0ZeuX3JjSsLxmYhq+nmXDdrtOAlxIsWGynuiDLS6Jk3vOchVii2m6Y2f/L3GLG2fG5A==}
+    cpu: [ia32]
+    os: [linux]
+
+  '@koromix/koffi-linux-loong64@3.1.1':
+    resolution: {integrity: sha512-CIsT1cNnih8FuU52Me/IVlJBpH28SQfoDeYPctJswgJzaARktusF7m4MUbtR1PBDjuquCVM4/vFyNdOzfPonvA==}
+    cpu: [loong64]
+    os: [linux]
+
+  '@koromix/koffi-linux-riscv64@3.1.1':
+    resolution: {integrity: sha512-9D6RmqeKsSvs3U6jILJU9PcAjMwKKyn7yLxNBb5k6z9PCoUoGJ3/BrhXAX0qjrLLwEiIpP/hS/40RuXvH8Lc3Q==}
+    cpu: [riscv64]
+    os: [linux]
+
+  '@koromix/koffi-linux-x64@3.1.1':
+    resolution: {integrity: sha512-pyTcX5fePeYbt7TZAwRby69wdlRx3PT+g15ra5IYdat/Pgh3qAKEYeZ+uu7WpPGOy43p/oSRqqZoa2kORzozlA==}
+    cpu: [x64]
+    os: [linux]
+
+  '@koromix/koffi-openbsd-ia32@3.1.1':
+    resolution: {integrity: sha512-iPnPzvG2HOfdzaiG1drdkt86sAqmTPDv9mAf+5gL7mRzkeeQC88EVGboRy7eXwdXn7R+v0ntA3iQxdHrBn6yXw==}
+    cpu: [ia32]
+    os: [openbsd]
+
+  '@koromix/koffi-openbsd-x64@3.1.1':
+    resolution: {integrity: sha512-/Xqc3R0SVoMCYjMPZnJ9bULtRo364+dKmnQhfDrI83tSpxUHRw7HRNf12vBeL+hPgKxSBjtMpWfQ/ZIyVyLFag==}
+    cpu: [x64]
+    os: [openbsd]
+
+  '@koromix/koffi-win32-arm64@3.1.1':
+    resolution: {integrity: sha512-JhqHauEwQvdcWUERxrV5HH/DT9W7hY1A1eU6/o8tB+yck+D3kt5elpRDBt9KjpW6h+vHPy3V0sjDvO0CXyabTA==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@koromix/koffi-win32-ia32@3.1.1':
+    resolution: {integrity: sha512-ZRuyYmlGS/rCc966qqs0qREXDW4FRdul7rDF1VgSWHbVmdc196PUgUT+blq/GjZgTwqzeEXtMRgM+cU8krHjvA==}
+    cpu: [ia32]
+    os: [win32]
+
+  '@koromix/koffi-win32-x64@3.1.1':
+    resolution: {integrity: sha512-KqHPmvj6QILhNyI/To8QSihHsijeVGIYYPBOUnXEpcnH2LuLbargY4Hd6dDeTN3Z90uUUxN+1FWz1UnhVzFOiA==}
+    cpu: [x64]
+    os: [win32]
 
   '@modelcontextprotocol/client@2.4.0':
     resolution: {integrity: sha512-LgrD2OphHuG12vfKFKz6SOnq7bKHQmhGJIAYdD+MZBn2npHEyry6uD8zvktodtl5CQM85MO0anUyD9JwmUmxww==}
@@ -974,6 +1501,9 @@ packages:
   '@tybys/wasm-util@0.10.5':
     resolution: {integrity: sha512-dOGOPxlaNV+G046mZzN+9C0dAcQZeSKcXiVaM0TYy/LM4ttTmgSBDxYfovcYI8Em3+eAbiAYpvWLOv8+ZVRJKA==}
 
+  '@types/babel__code-frame@7.27.0':
+    resolution: {integrity: sha512-Dwlo+LrxDx/0SpfmJ/BKveHf7QXWvLBLc+x03l5sbzykj3oB9nHygCpSECF1a+s+QIxbghe+KHqC90vGtxLRAA==}
+
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
 
@@ -985,6 +1515,12 @@ packages:
 
   '@types/node@24.19.3':
     resolution: {integrity: sha512-oGTg5CEII0QAZVprxcT2xjcfKtZWOVSCk8nM5r3GwR1urRibeo2pj4pbYox9A326cJe6AzaV9DiC1uxiRSno2A==}
+
+  '@types/picomatch@4.0.3':
+    resolution: {integrity: sha512-iG0T6+nYJ9FAPmx9SsUlnwcq1ZVRuCXcVEvWnntoPlrOpwtSTKNDC9uVAxTsC3PUvJ+99n4RpAcNgBbHX3JSnQ==}
+
+  '@types/semver@7.8.0':
+    resolution: {integrity: sha512-1mAINjtQCXXeLkJ9ehXkwOcBpqtLxiVtKhpUf83DdRNdQKV0iXZpaHYqRr7nj+wvxuJzoAmAwXI+sCNMv1CzLQ==}
 
   '@vitest/expect@4.1.12':
     resolution: {integrity: sha512-vFlTt+YEu9WBpNjdGayNmlMVzrWPi1+sv853/7t2FU7hpO5gAFBKHzQmkCq5Xjpr+evegF2994LQT3hF3mRlqQ==}
@@ -1015,6 +1551,72 @@ packages:
   '@vitest/utils@4.1.12':
     resolution: {integrity: sha512-Q3awXrwOfEV+qc3WmO5ONyE0yO7Q1gQ9/oyHxGLZ/pl7N3NO/ZztqQwKLuwMkV+CA1JYSIeO3gkHnRDIo4AVaA==}
 
+  '@vscode/ripgrep-darwin-arm64@1.18.0':
+    resolution: {integrity: sha512-r3ktHSvbFycQNF6sl7sNDPocpsI7J+mEzh1IaZFkY0spm3k2Z9t8hPAeOK7+p0l6p6/swkQC14XWX01low+94Q==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@vscode/ripgrep-darwin-x64@1.18.0':
+    resolution: {integrity: sha512-25b4gWbL138dGuQU244ebCKKc0q05ULBMoFSz9oAEUHNeqK/lOJViDS7DRvbDazzAzSEdan391Znks/R5mkaTQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@vscode/ripgrep-linux-arm64@1.18.0':
+    resolution: {integrity: sha512-lQ/5zTG++U0E3IhVgS4EPTTn/U4okncaRMM5GOFfOYZywS4nuD31GhkHbNYlDk5CuDC68+hYJ0/eQeyCKJDA+g==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@vscode/ripgrep-linux-arm@1.18.0':
+    resolution: {integrity: sha512-GDAvufNDHu8zqLEmXstalQF0Wh6wQvdsBi/Vg3Yi3CK4a8XoFXqqXVEHEZ9xQz3t0NfoSEc9JbvK9DDS6FxyxQ==}
+    cpu: [arm]
+    os: [linux]
+
+  '@vscode/ripgrep-linux-ia32@1.18.0':
+    resolution: {integrity: sha512-YWLkSUtFd4Jh5EepIhA9RJSfv3uMAVMo+2rBIGHPBnvgLrZciIs2cDKei1/p6Wc/aCzUoHyMAg2R6tw4ZCBKGg==}
+    cpu: [ia32]
+    os: [linux]
+
+  '@vscode/ripgrep-linux-ppc64@1.18.0':
+    resolution: {integrity: sha512-quXVY8fwQ8O/lvU1yrSqSl3jlUzysRSb+AfUfCL/tRtphxsKlFvPAejryZ6vg4Bgvn8XL74xb4qMCDmWgYrT5w==}
+    cpu: [ppc64]
+    os: [linux]
+
+  '@vscode/ripgrep-linux-riscv64@1.18.0':
+    resolution: {integrity: sha512-f5kBQBrWfQt8Q7OhSORuNDei5dkYagBj3y4jImSUXGMy8B/Ke7SltSRcUtjPv166FAFfHCAmWuZp3+cWnX2/Vw==}
+    cpu: [riscv64]
+    os: [linux]
+
+  '@vscode/ripgrep-linux-s390x@1.18.0':
+    resolution: {integrity: sha512-rTOcJFGGcl2c07RUOWUo4U1ndnemKhY6A9hnMB18uk7jSgJc0d/QLBGWMWpumdtoJtpizn/wIv5mXIisJukusQ==}
+    cpu: [s390x]
+    os: [linux]
+
+  '@vscode/ripgrep-linux-x64@1.18.0':
+    resolution: {integrity: sha512-mQ3bVrUpnD2vs7QT0vX90Lt0cnUq467uFtEktIdsJJmW296RoSULRGqWgzG1AKxyBpNDD6l4ZO4qKf6SgyC23Q==}
+    cpu: [x64]
+    os: [linux]
+
+  '@vscode/ripgrep-win32-arm64@1.18.0':
+    resolution: {integrity: sha512-vfTIjq1OHnzUjxZcHVQAMbnggp8dpGf+0QKFOZHwWPqFwXxQC8eCWM+5NUdoJ6yrElCeMzoUTXoK/LdZaniB+Q==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@vscode/ripgrep-win32-ia32@1.18.0':
+    resolution: {integrity: sha512-//rfAE+BOw5AC2EMmepmiE36jUuevtQYNQqqlw1s3m9FlRxjxEut97RkRPHAu9BG4mSojatZx+kXZXNdyI9caQ==}
+    cpu: [ia32]
+    os: [win32]
+
+  '@vscode/ripgrep-win32-x64@1.18.0':
+    resolution: {integrity: sha512-KNPvtElldqILHdnAetujPaowkNbpqJy3ssIGGN6F6Kve9Qi+nNLI2DN01O83JjCEVQbCzl8Ov3QZ9Eov3BR8Dg==}
+    cpu: [x64]
+    os: [win32]
+
+  '@vscode/ripgrep@1.18.0':
+    resolution: {integrity: sha512-ns5lWe44tSfbTMbVUsyB+I1819PVSw4AdpgK0RNkzfWfwy6+3IUNSxwSrfTno1/oWaS/hERNz+XLWVyga2aJBQ==}
+
+  ajv@8.20.0:
+    resolution: {integrity: sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==}
+
   assertion-error@2.0.1:
     resolution: {integrity: sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==}
     engines: {node: '>=12'}
@@ -1026,6 +1628,14 @@ packages:
   chokidar@4.0.3:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
     engines: {node: '>= 14.16.0'}
+
+  chokidar@5.0.0:
+    resolution: {integrity: sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==}
+    engines: {node: '>= 20.19.0'}
+
+  commander@15.1.0:
+    resolution: {integrity: sha512-cgnQ88TRrWcC7pVq46RzJVRMktu3W2RcbnoidnfBsl1bmDCBwJS/udcIZpKoCrbAYYaCqsz1yZCVIgbIaU3ddQ==}
+    engines: {node: '>=22.12.0'}
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
@@ -1061,6 +1671,16 @@ packages:
     resolution: {integrity: sha512-KfYbmpRm0VbLjEvVa9yGwCi9GI34xvi7A/HXYWQO65CSD2u3MczUJSuwXKFIxlGsgBQizV9q5J9NHj4VG0n+pA==}
     engines: {node: '>=12.0.0'}
 
+  fast-check@4.11.0:
+    resolution: {integrity: sha512-V4Uc238rhQOdQlc+Gz7JG6SGBtrWnWL8d/6RyiBeCMcNKMhF6DZ0KkAVHJSyNV5r4lA0PmIpZ6iRpTVoz4qjoA==}
+    engines: {node: '>=12.17.0'}
+
+  fast-deep-equal@3.1.3:
+    resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
+
+  fast-uri@3.1.9:
+    resolution: {integrity: sha512-hS/0Wt3Ya043oKXs0sIxrMpKQITXhMLIrVAKKXi4gozGC9v7YRWVnXIZzjNPTO02M9BdxLCWqK1yRXgNziVyJQ==}
+
   fdir@6.5.0:
     resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
     engines: {node: '>=12.0.0'}
@@ -1089,6 +1709,12 @@ packages:
 
   jsbi@4.3.2:
     resolution: {integrity: sha512-9fqMSQbhJykSeii05nxKl4m6Eqn2P6rOlYiS+C5Dr/HPIU/7yZxu5qzbs40tgaFORiw2Amd0mirjxatXYMkIew==}
+
+  json-schema-traverse@1.0.0:
+    resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
+
+  koffi@3.1.1:
+    resolution: {integrity: sha512-mRX6AMeeKCxSOeOopqAcLAl5jcNvge7NAG8l7rF/8gGJATI0tdHFYjteIdE0mGOtWdsrJOij+PjnP8Q9c1gwgA==}
 
   lightningcss-android-arm64@1.33.0:
     resolution: {integrity: sha512-gEpRTalKdosp4Bb8qWtc2iOgE5SeIHlpS1up9bFq2wAyYhl1UdTObYiHe98zEM9SQvSoqQZ1IQD0JNpg3Ml5pg==}
@@ -1177,6 +1803,9 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  node-addon-api@7.1.1:
+    resolution: {integrity: sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ==}
+
   node-addon-native-custom-loader@0.1.10:
     resolution: {integrity: sha512-azSNOM5duU5c1ZiwHRr18a5i9dPMUaRbTiYnQB/kUn19uz6JjyLoKHG2gIcbzoHcE+X7gM9W+/V4bzH4jYzTMA==}
     engines: {node: '>=20'}
@@ -1243,6 +1872,9 @@ packages:
     resolution: {integrity: sha512-oSie9nna4k7/4GVGaLdHeHjZZ16KB5OQa0VnQ8vfIl83c0x6swZrmAqMih6RWq/9/7AdYnuuMXriQndymDEyyA==}
     engines: {node: '>=20'}
 
+  node-pty@1.2.0-beta.15:
+    resolution: {integrity: sha512-vORSzHXi4Ofl7HemVWpuudLqCPdaQb4LfpRCUpE5HPxhp4JYscl8zZwxh11p26v2wvW24WMwnMfLjhRLixrfxA==}
+
   obug@2.2.1:
     resolution: {integrity: sha512-XrsrhT5sybtKI6wakr2SPOlGZWWYbUXZ7a0jT8/QOeAPau+1X/bSegNe5YR75oJmEZQbKningirmGOEJCIk61Q==}
     engines: {node: '>=12.20.0'}
@@ -1269,9 +1901,24 @@ packages:
     resolution: {integrity: sha512-RVHEU9/Pp1Fnjr/MpAJsZoADukCKhfIi15OunEYiGktIkYLkPVvC1sioWolGDS7XByMTx9m/IGbro0Js13zhnQ==}
     engines: {node: ^10 || ^12 || >=14}
 
+  pure-rand@8.4.2:
+    resolution: {integrity: sha512-vvuOGgcuPJAirlHvuQw1TrOiw7ptaIXXmIbNuiNOY6lNGJJH49PQ1Kj4nd783nPdQhQdicgOjVI2yI/9BD6/Ng==}
+
   readdirp@4.1.2:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
     engines: {node: '>= 14.18.0'}
+
+  readdirp@5.1.1:
+    resolution: {integrity: sha512-Kko+Y5XQ6fM+Ce3dq3m9YGxnacYZYl9cA1wZjaF3Vbry2L3i1qVg8+CAgNPsXRArPMUMCaOR7oa9Nqntc43JKA==}
+    engines: {node: '>= 20.19.0'}
+
+  require-from-string@2.0.2:
+    resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
+    engines: {node: '>=0.10.0'}
+
+  resolve.exports@2.0.4:
+    resolution: {integrity: sha512-zepuGL0ulf+nt+XaFrlKeaiTJeyPFPLLY62+ncq1/VTHBdt3HsfXOH60priZ6tnXQozdGcDeIF5JVTanvIcYWQ==}
+    engines: {node: '>=10'}
 
   rolldown@1.2.19:
     resolution: {integrity: sha512-QIiV1J9d0pzN4jeeTH4sjPy0AZ6cAy2cG0ExeoE1+U8Rvj+hR3gYkokx0YbeUNGlZqiQJJ2utcETe0oKXwzsuA==}
@@ -1280,6 +1927,11 @@ packages:
 
   rrule@2.8.1:
     resolution: {integrity: sha512-hM3dHSBMeaJ0Ktp7W38BJZ7O1zOgaFEsn41PDk+yHoEtfLV+PoJt9E9xAlZiWgf/iqEqionN0ebHFZIDAp+iGw==}
+
+  semver@7.8.6:
+    resolution: {integrity: sha512-9lpSSU4Mly3mrtruwLs1eLK6+gzbzqeBFwRNjIjE+9LuDpWdYctrQlQ3ej1Ilgi7gknpsTRnPoLP8DpCHqHIJw==}
+    engines: {node: '>=10'}
+    hasBin: true
 
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -1323,6 +1975,11 @@ packages:
 
   tslib@2.9.1:
     resolution: {integrity: sha512-a4Ux9VKuIMHsOS7ENbEq6hK2ZGYIT27Rtl0E4eD9KqwxhKiQeMZE/9xb3IdYwWaSOyIBQLExhQgXDTYoiCxnWA==}
+
+  tsx@4.23.15:
+    resolution: {integrity: sha512-Yiex1Ovn8z2xPpOWckIiysV1SSyRMY9BkLF++q0yKiDxCqRhosKfMg3janKkiLBwZ5c/YryloKwGZcrEmtwxKw==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
 
   typescript@6.0.3:
     resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
@@ -1545,11 +2202,58 @@ snapshots:
   '@esbuild/win32-x64@0.28.2':
     optional: true
 
+  '@eslint-community/regexpp@4.12.3': {}
+
   '@jridgewell/sourcemap-codec@1.6.0': {}
 
   '@js-temporal/polyfill@0.5.1':
     dependencies:
       jsbi: 4.3.2
+
+  '@koromix/koffi-darwin-arm64@3.1.1':
+    optional: true
+
+  '@koromix/koffi-darwin-x64@3.1.1':
+    optional: true
+
+  '@koromix/koffi-freebsd-arm64@3.1.1':
+    optional: true
+
+  '@koromix/koffi-freebsd-ia32@3.1.1':
+    optional: true
+
+  '@koromix/koffi-freebsd-x64@3.1.1':
+    optional: true
+
+  '@koromix/koffi-linux-arm64@3.1.1':
+    optional: true
+
+  '@koromix/koffi-linux-ia32@3.1.1':
+    optional: true
+
+  '@koromix/koffi-linux-loong64@3.1.1':
+    optional: true
+
+  '@koromix/koffi-linux-riscv64@3.1.1':
+    optional: true
+
+  '@koromix/koffi-linux-x64@3.1.1':
+    optional: true
+
+  '@koromix/koffi-openbsd-ia32@3.1.1':
+    optional: true
+
+  '@koromix/koffi-openbsd-x64@3.1.1':
+    optional: true
+
+  '@koromix/koffi-win32-arm64@3.1.1':
+    optional: true
+
+  '@koromix/koffi-win32-ia32@3.1.1':
+    optional: true
+
+  '@koromix/koffi-win32-x64@3.1.1':
+    optional: true
 
   '@modelcontextprotocol/client@2.4.0':
     dependencies:
@@ -1635,6 +2339,8 @@ snapshots:
       tslib: 2.9.1
     optional: true
 
+  '@types/babel__code-frame@7.27.0': {}
+
   '@types/chai@5.2.3':
     dependencies:
       '@types/deep-eql': 4.0.2
@@ -1648,6 +2354,10 @@ snapshots:
     dependencies:
       undici-types: 7.24.6
 
+  '@types/picomatch@4.0.3': {}
+
+  '@types/semver@7.8.0': {}
+
   '@vitest/expect@4.1.12':
     dependencies:
       '@standard-schema/spec': 1.1.0
@@ -1657,13 +2367,13 @@ snapshots:
       chai: 6.3.0
       tinyrainbow: 3.2.0
 
-  '@vitest/mocker@4.1.12(vite@8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@vitest/mocker@4.1.12(vite@8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))':
     dependencies:
       '@vitest/spy': 4.1.12
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
 
   '@vitest/pretty-format@4.1.12':
     dependencies:
@@ -1689,6 +2399,64 @@ snapshots:
       convert-source-map: 2.0.0
       tinyrainbow: 3.2.0
 
+  '@vscode/ripgrep-darwin-arm64@1.18.0':
+    optional: true
+
+  '@vscode/ripgrep-darwin-x64@1.18.0':
+    optional: true
+
+  '@vscode/ripgrep-linux-arm64@1.18.0':
+    optional: true
+
+  '@vscode/ripgrep-linux-arm@1.18.0':
+    optional: true
+
+  '@vscode/ripgrep-linux-ia32@1.18.0':
+    optional: true
+
+  '@vscode/ripgrep-linux-ppc64@1.18.0':
+    optional: true
+
+  '@vscode/ripgrep-linux-riscv64@1.18.0':
+    optional: true
+
+  '@vscode/ripgrep-linux-s390x@1.18.0':
+    optional: true
+
+  '@vscode/ripgrep-linux-x64@1.18.0':
+    optional: true
+
+  '@vscode/ripgrep-win32-arm64@1.18.0':
+    optional: true
+
+  '@vscode/ripgrep-win32-ia32@1.18.0':
+    optional: true
+
+  '@vscode/ripgrep-win32-x64@1.18.0':
+    optional: true
+
+  '@vscode/ripgrep@1.18.0':
+    optionalDependencies:
+      '@vscode/ripgrep-darwin-arm64': 1.18.0
+      '@vscode/ripgrep-darwin-x64': 1.18.0
+      '@vscode/ripgrep-linux-arm': 1.18.0
+      '@vscode/ripgrep-linux-arm64': 1.18.0
+      '@vscode/ripgrep-linux-ia32': 1.18.0
+      '@vscode/ripgrep-linux-ppc64': 1.18.0
+      '@vscode/ripgrep-linux-riscv64': 1.18.0
+      '@vscode/ripgrep-linux-s390x': 1.18.0
+      '@vscode/ripgrep-linux-x64': 1.18.0
+      '@vscode/ripgrep-win32-arm64': 1.18.0
+      '@vscode/ripgrep-win32-ia32': 1.18.0
+      '@vscode/ripgrep-win32-x64': 1.18.0
+
+  ajv@8.20.0:
+    dependencies:
+      fast-deep-equal: 3.1.3
+      fast-uri: 3.1.9
+      json-schema-traverse: 1.0.0
+      require-from-string: 2.0.2
+
   assertion-error@2.0.1: {}
 
   chai@6.3.0: {}
@@ -1696,6 +2464,12 @@ snapshots:
   chokidar@4.0.3:
     dependencies:
       readdirp: 4.1.2
+
+  chokidar@5.0.0:
+    dependencies:
+      readdirp: 5.1.1
+
+  commander@15.1.0: {}
 
   convert-source-map@2.0.0: {}
 
@@ -1750,6 +2524,14 @@ snapshots:
 
   expect-type@1.4.0: {}
 
+  fast-check@4.11.0:
+    dependencies:
+      pure-rand: 8.4.2
+
+  fast-deep-equal@3.1.3: {}
+
+  fast-uri@3.1.9: {}
+
   fdir@6.5.0(picomatch@4.0.7):
     optionalDependencies:
       picomatch: 4.0.7
@@ -1766,6 +2548,26 @@ snapshots:
   js-tokens@4.0.0: {}
 
   jsbi@4.3.2: {}
+
+  json-schema-traverse@1.0.0: {}
+
+  koffi@3.1.1:
+    optionalDependencies:
+      '@koromix/koffi-darwin-arm64': 3.1.1
+      '@koromix/koffi-darwin-x64': 3.1.1
+      '@koromix/koffi-freebsd-arm64': 3.1.1
+      '@koromix/koffi-freebsd-ia32': 3.1.1
+      '@koromix/koffi-freebsd-x64': 3.1.1
+      '@koromix/koffi-linux-arm64': 3.1.1
+      '@koromix/koffi-linux-ia32': 3.1.1
+      '@koromix/koffi-linux-loong64': 3.1.1
+      '@koromix/koffi-linux-riscv64': 3.1.1
+      '@koromix/koffi-linux-x64': 3.1.1
+      '@koromix/koffi-openbsd-ia32': 3.1.1
+      '@koromix/koffi-openbsd-x64': 3.1.1
+      '@koromix/koffi-win32-arm64': 3.1.1
+      '@koromix/koffi-win32-ia32': 3.1.1
+      '@koromix/koffi-win32-x64': 3.1.1
 
   lightningcss-android-arm64@1.33.0:
     optional: true
@@ -1823,6 +2625,8 @@ snapshots:
   mime@4.1.2: {}
 
   nanoid@3.3.20: {}
+
+  node-addon-api@7.1.1: {}
 
   node-addon-native-custom-loader@0.1.10: {}
 
@@ -1885,6 +2689,10 @@ snapshots:
       node-addon-require-builtin-win32-ia32-msvc: 0.1.10
       node-addon-require-builtin-win32-x64-msvc: 0.1.10
 
+  node-pty@1.2.0-beta.15:
+    dependencies:
+      node-addon-api: 7.1.1
+
   obug@2.2.1: {}
 
   path-key@3.1.1: {}
@@ -1903,7 +2711,15 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.4
 
+  pure-rand@8.4.2: {}
+
   readdirp@4.1.2: {}
+
+  readdirp@5.1.1: {}
+
+  require-from-string@2.0.2: {}
+
+  resolve.exports@2.0.4: {}
 
   rolldown@1.2.19:
     dependencies:
@@ -1930,6 +2746,8 @@ snapshots:
   rrule@2.8.1:
     dependencies:
       tslib: 2.9.1
+
+  semver@7.8.6: {}
 
   shebang-command@2.0.0:
     dependencies:
@@ -1960,13 +2778,19 @@ snapshots:
 
   tslib@2.9.1: {}
 
+  tsx@4.23.15:
+    dependencies:
+      esbuild: 0.28.2
+    optionalDependencies:
+      fsevents: 2.3.3
+
   typescript@6.0.3: {}
 
   undici-types@7.24.6: {}
 
   undici@8.12.4: {}
 
-  vite@8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(yaml@2.9.1):
+  vite@8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
@@ -1977,12 +2801,13 @@ snapshots:
       '@types/node': 24.19.3
       esbuild: 0.28.2
       fsevents: 2.3.3
+      tsx: 4.23.15
       yaml: 2.9.1
 
-  vitest@4.1.12(@types/node@24.19.3)(vite@8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(yaml@2.9.1)):
+  vitest@4.1.12(@types/node@24.19.3)(vite@8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)):
     dependencies:
       '@vitest/expect': 4.1.12
-      '@vitest/mocker': 4.1.12(vite@8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(yaml@2.9.1))
+      '@vitest/mocker': 4.1.12(vite@8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
       '@vitest/pretty-format': 4.1.12
       '@vitest/runner': 4.1.12
       '@vitest/snapshot': 4.1.12
@@ -1999,7 +2824,7 @@ snapshots:
       tinyexec: 1.4.0
       tinyglobby: 0.2.17
       tinyrainbow: 3.2.0
-      vite: 8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@24.19.3)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.19.3

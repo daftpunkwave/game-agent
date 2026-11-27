@@ -2,6 +2,15 @@ packages:
   - packages/*/*
   - apps/*
 
-# esbuild ships prebuilt platform binaries as optional dependencies; its install script is not needed.
+# Dependencies whose install scripts run. Every other install script is skipped.
 allowBuilds:
+  # Prebuilt platform binaries ship as optional dependencies; the install script is not needed.
   esbuild: false
+  # Downloads the ripgrep executable that the file search tools run.
+  '@vscode/ripgrep': true
+  # Pseudo-terminal backend for persistent shells, including ConPTY on Windows.
+  node-pty: true
+  # Foreign function interface used for Windows process and file system calls.
+  koffi: true
+  # The kernel loader's optional native helper; its install script is not needed.
+  node-addon-require-builtin: false

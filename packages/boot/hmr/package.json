@@ -1,0 +1,46 @@
+{
+  "name": "@game-agent/hmr",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Coordinated module and profile configuration hot reload",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@babel/code-frame": "^7.29.0",
+    "@game-agent/schema": "workspace:*",
+    "chokidar": "5.0.0",
+    "node-addon-require-builtin": "^0.1.10",
+    "picomatch": "^4.0.7"
+  },
+  "peerDependencies": {
+    "@game-agent/app-boot": "workspace:*",
+    "@game-agent/cmdline": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-include": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/kernel-timer": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/app-boot": "workspace:*",
+    "@game-agent/atomic-write": "workspace:*",
+    "@game-agent/cmdline": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-include": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/kernel-timer": "workspace:*",
+    "@types/babel__code-frame": "^7.27.0",
+    "@types/picomatch": "^4.0.3",
+    "esbuild": "^0.28.2"
+  }
+}

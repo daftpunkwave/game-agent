@@ -1,0 +1,30 @@
+{
+  "name": "@game-agent/win32-process",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared low-level Win32 process, stdio, and Job Object primitives",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    }
+  },
+  "dependencies": {
+    "@game-agent/lazy-require": "workspace:*",
+    "koffi": "3.1.1"
+  },
+  "peerDependencies": {
+    "@game-agent/error": "workspace:*",
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/error": "workspace:*",
+    "@game-agent/kernel": "workspace:*"
+  }
+}

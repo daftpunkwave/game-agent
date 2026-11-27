@@ -33,17 +33,24 @@ Installed from npm and not copied into this repository; their licenses ship with
 
 | Package | License | Used by |
 |---|---|---|
-| `@babel/code-frame` | MIT | `packages/kernel/hmr` |
+| `@babel/code-frame` | MIT | `packages/boot/hmr`, `packages/kernel/hmr` |
+| `@eslint-community/regexpp` | MIT | `packages/boot/app-boot` |
 | `@js-temporal/polyfill` | ISC | `packages/util/time` |
 | `@modelcontextprotocol/client` | Apache-2.0 | `packages/transport/transport-mcp` |
 | `@standard-schema/spec` | MIT | `packages/kernel/kernel`, `packages/kernel/schema` |
-| `chokidar` | MIT | `packages/kernel/hmr` |
+| `@vscode/ripgrep` | MIT | `packages/util/ripgrep` |
+| `ajv` | MIT | `packages/boot/app-boot` |
+| `chokidar` | MIT | `packages/boot/hmr`, `packages/credentials/credentials-local`, `packages/kernel/hmr` |
 | `fuzzysort` | MIT | `packages/util/text-search` |
+| `koffi` | MIT | `packages/subprocess/subprocess-local`, `packages/subprocess/win32-process` |
 | `mime` | MIT | `packages/util/file-drag` |
-| `node-addon-require-builtin` | MIT | `packages/kernel/loader` |
-| `picomatch` | MIT | `packages/kernel/hmr` |
+| `node-addon-require-builtin` | MIT | `packages/boot/app-boot`, `packages/boot/hmr`, `packages/kernel/loader` |
+| `node-pty` | MIT | `packages/subprocess/subprocess-local` |
+| `picomatch` | MIT | `packages/boot/hmr`, `packages/kernel/hmr` |
+| `resolve.exports` | MIT | `packages/boot/app-boot` |
 | `rrule` | BSD-3-Clause | `packages/util/time` |
+| `semver` | ISC | `packages/boot/app-boot` |
 | `supports-color` | MIT | `packages/kernel/logger-console` |
 | `undici` | MIT | `packages/util/http-proxy` |
-| `yaml` | ISC | `packages/kernel/include` |
-| `zod` | MIT | `packages/util/chunked-list` |
+| `yaml` | ISC | `packages/boot/config-editor`, `packages/credentials/credentials-local`, `packages/kernel/include` |
+| `zod` | MIT | `packages/llm/llm`, `packages/storage/storage-domain`, `packages/typert/protocol`, `packages/typert/registry`, `packages/util/chunked-list` |
