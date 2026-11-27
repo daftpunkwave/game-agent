@@ -12,6 +12,7 @@
     "build": "tsc -b tsconfig.json",
     "test": "vitest run",
     "sync:projects": "node scripts/sync-projects.ts",
+    "sync:notices": "node scripts/check-notices.ts --write",
     "check:boundaries": "node scripts/check-boundaries.ts && node scripts/sync-projects.ts --check",
     "check:headers": "node scripts/check-headers.ts",
     "check:notices": "node scripts/check-notices.ts",
@@ -22,6 +23,8 @@
   },
   "devDependencies": {
     "@types/node": "^24.10.0",
+    "fast-check": "^4.9.0",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3",
     "vitest": "^4.1.11"
   }
