@@ -16,6 +16,7 @@ This document governs CI check interpretation, static analysis triage, and revie
   | `check (ubuntu-latest)`, `check (windows-latest)` | `check.yml` | `pnpm check` on Linux and Windows |
   | `conventions` | `pull-request.yml` | Conventional Commits and English-only title, description, and non-merge commits (`pnpm check:conventions`) |
   | `dependency-review` | `pull-request.yml` | No newly added dependency with a known vulnerability of moderate or higher severity |
+  | `denylist` | `pull-request.yml` | No denylisted term in tracked files, the title, the description, or commit messages (`pnpm check:denylist`); the list is held in the `DENYLIST` repository secret, never in tracked files |
 
 - **CI Runs on Pull Requests Only**: Workflows do not rerun on pushes to `main`, because an up-to-date pull request that passed the required checks squashes to the tree that was checked. Use the manual `workflow_dispatch` trigger of `check` or `repo-hygiene` to check `main` on demand.
 - Renaming a required job or matrix entry is a breaking change to the ruleset: update the ruleset's required checks in the same change, or every pull request stays blocked.

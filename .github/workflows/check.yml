@@ -1,6 +1,6 @@
 # Repository Check
 #
-# Responsibilities: Run the full repository gate (type checking, tests, package boundaries, file headers) on Linux and Windows for pull requests, and on demand.
+# Responsibilities: Run the full repository gate (type checking, tests, package boundaries, file headers, denylist) on Linux and Windows for pull requests, and on demand.
 # Contracts: Uses the pnpm version pinned in package.json and Node.js 24; reports one required check per runner, `check (ubuntu-latest)` and `check (windows-latest)`, each failing when `pnpm check` fails.
 # Constraints: Does not run on pushes to main: the `main` ruleset requires pull requests to be up to date with main and to pass this check, so the squashed tree is the tree already checked. Actions are pinned by commit SHA; jobs have read-only repository permissions; renaming a job or matrix entry requires updating the required checks of the `main` ruleset.
 name: check
@@ -44,4 +44,6 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Run repository gate
+        env:
+          DENYLIST: ${{ secrets.DENYLIST }}
         run: pnpm check

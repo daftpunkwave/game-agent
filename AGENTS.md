@@ -1,6 +1,6 @@
 # Coding Agent Instructions and Engineering Charter
 
-**game-agent** is a **TypeScript (Node.js 24+)** runtime that runs language-model agents as headless game clients. Games connect through transport adapters (MCP is one of them); every agent has a single ingress and a single egress gateway, an intent ledger, an event inbox, an agent-side behavior tree, and bounded AI decision nodes. The kernel is Cordis; the first interaction surface is the `game-agent` CLI. Read [docs/architecture.md](docs/architecture.md) before changing `packages/`.
+**game-agent** is a **TypeScript (Node.js 24+)** runtime that runs language-model agents as headless game clients. Games connect through transport adapters (MCP is one of them); every agent has a single ingress and a single egress gateway, an intent ledger, an event inbox, an agent-side behavior tree, and bounded AI decision nodes. The kernel is the in-repo `kernel` package group; the first interaction surface is the `game-agent` CLI. Read [docs/architecture.md](docs/architecture.md) before changing `packages/`.
 
 ## Meta-Directive
 
@@ -53,6 +53,7 @@ pnpm test               # vitest
 pnpm check:boundaries   # declared deps, no deep imports, acyclic graph, group rules, SDK confinement
 pnpm check:headers      # three-part file headers; no console.log, debugger, TODO, or FIXME in packages and apps
 pnpm check              # all of the above
+pnpm check:denylist     # denylisted terms in files (list from DENYLIST or DENYLIST_FILE; CI also checks PR text and commits)
 pnpm check:conventions  # Conventional Commits and English-only commit messages in origin/main..HEAD (CI also checks PR title and description)
 pnpm game-agent help    # run the CLI from source (Node.js native type stripping, no build step)
 ```
