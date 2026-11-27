@@ -39,7 +39,7 @@ This document is the authoritative engineering review checklist for authoring, s
 - Verify all identifiers follow [Naming & File Headers](../conventions/naming-and-headers.md) with zero blacklisted or vague names.
 
 ## 11. Documentation & Headers
-- Ensure comments explain **why** rather than **what**, obsolete comments are removed, and hand-written source files contain accurate 3-part headers (`Responsibilities`, `Contracts`, `Constraints`).
+- Ensure comments explain **why** rather than **what**, obsolete comments are removed, and hand-written source files contain accurate headers with the required `Responsibilities`, `Contracts`, and `Constraints` fields.
 
 ## 12. Testing Effectiveness
 - Verify tests assert concrete state transitions and outputs (no weak `toBeDefined`-only checks), remain order-independent, avoid brittle internal mocks, and never weaken assertions to hide bugs.

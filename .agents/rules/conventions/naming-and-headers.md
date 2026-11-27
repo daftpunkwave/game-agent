@@ -44,11 +44,19 @@ Avoid bare generic words unless paired with a clear domain qualifier or nested u
 
 ## 3. Core Source File Header Convention
 
-Every hand-written source file (core domain packages, adapters, runtime apps, tests, scripts) must include a concise top-of-file TSDoc header defining three elements:
+Every hand-written source file (core domain packages, adapters, runtime apps, tests, scripts) must open with a TSDoc header that contains three required fields:
 
 1. **Responsibilities**: The exact functional boundary and core task of the file.
 2. **Contracts**: Required inputs/dependencies, output guarantees, and runtime assumptions.
 3. **Constraints**: Dependency prohibitions, side-effect restrictions, and invariants.
+
+The three fields are a minimum, not a limit:
+
+- Each field starts a comment line with `<Field>:` and must have text, on that line or on the following lines (for example, a bullet list).
+- The fields may appear in any order.
+- The header may carry any other content: a summary sentence before the fields, further labelled notes, examples, and tags such as `@module`. Tag lines do not count as field text.
+
+`pnpm check:headers` enforces exactly these rules.
 
 Two kinds of packages use other header forms, both listed in `scripts/check-headers.ts`; the zero-leftover rules still apply to them:
 
@@ -61,6 +69,21 @@ Two kinds of packages use other header forms, both listed in `scripts/check-head
  * Responsibilities: Enforce 3-stage visibility cropping on inbound game payloads.
  * Contracts: Accepts raw server event type and payload; returns filtered data plus audit diffs.
  * Constraints: Stage order (whitelist -> coarsen -> budget) is immutable; never mutate input DTOs.
+ */
+```
+
+### Example with additional content
+```ts
+/**
+ * Visibility cropping for inbound game payloads.
+ *
+ * Responsibilities: Enforce 3-stage visibility cropping on inbound game payloads.
+ * Contracts:
+ *   - Accepts the raw server event type and payload.
+ *   - Returns filtered data plus audit diffs.
+ * Constraints: Stage order (whitelist -> coarsen -> budget) is immutable; never mutate input DTOs.
+ * Performance: Linear in payload size; no allocation when nothing is cropped.
+ * @module @game-agent/gateway/visibility
  */
 ```
 

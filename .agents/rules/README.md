@@ -22,5 +22,5 @@ This directory houses specialized execution rules for AI Coding Agents working o
 | `review/` | [twelve-dimensional-criteria.md](review/twelve-dimensional-criteria.md) | Twelve-dimensional code review checklist and final verification |
 | `review/` | [gates-and-triage.md](review/gates-and-triage.md) | CI gate triage, zero-tolerance red lines, non-blocking alert tracking |
 | `architecture/` | [engineering-iron-laws.md](architecture/engineering-iron-laws.md) | Pluginized decoupling, SRP (500-line guideline), DIP, single ingress/egress boundary, unidirectional dependencies |
-| `conventions/` | [naming-and-headers.md](conventions/naming-and-headers.md) | Intent-oriented naming, forbidden names, English-only convention, 3-part source file headers |
+| `conventions/` | [naming-and-headers.md](conventions/naming-and-headers.md) | Intent-oriented naming, forbidden names, English-only convention, source file headers with required fields |
 | `testing/` | [verification-and-testing.md](testing/verification-and-testing.md) | Targeted verification tiers, strong assertions, anti-fragile tests |
