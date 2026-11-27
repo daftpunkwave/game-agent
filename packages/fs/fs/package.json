@@ -1,0 +1,32 @@
+{
+  "name": "@game-agent/fs",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Abstract filesystem capability seam (ctx.fs) — vocabulary types, the FileSystem service (text IO + optional version-guarded atomic mutations), and the fs/* policy event vocabulary",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    }
+  },
+  "dependencies": {
+    "@game-agent/fs-patch": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/sandbox": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/sandbox": "workspace:*"
+  }
+}

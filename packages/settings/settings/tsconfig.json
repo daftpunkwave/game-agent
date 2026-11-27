@@ -1,0 +1,40 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../boot/app-boot"
+    },
+    {
+      "path": "../../util/brand"
+    },
+    {
+      "path": "../../boot/config-editor"
+    },
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../kernel/loader"
+    },
+    {
+      "path": "../../kernel/kit"
+    },
+    {
+      "path": "../../kernel/schema"
+    },
+    {
+      "path": "../../core/session"
+    },
+    {
+      "path": "../../util/values"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@game-agent/native-system",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Locators for native system helpers: the Linux Landlock launcher and exclusive POSIX file locks",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    "./landlock-run": {
+      "@game-agent/source": "./src/landlock-run.ts",
+      "types": "./lib/landlock-run.d.ts",
+      "default": "./lib/landlock-run.js"
+    },
+    "./flock": {
+      "@game-agent/source": "./src/flock.ts",
+      "types": "./lib/flock.d.ts",
+      "default": "./lib/flock.js"
+    }
+  }
+}

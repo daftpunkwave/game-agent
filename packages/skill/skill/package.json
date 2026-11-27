@@ -1,0 +1,35 @@
+{
+  "name": "@game-agent/skill",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Agent skill provider registry",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/schema": "workspace:*",
+    "@game-agent/util-values": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/error": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/scope": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/error": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/scope": "workspace:*"
+  }
+}

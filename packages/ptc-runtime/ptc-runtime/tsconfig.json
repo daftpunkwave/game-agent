@@ -1,0 +1,25 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../attachment/attachment"
+    },
+    {
+      "path": "../../util/error"
+    },
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../sandbox/sandbox"
+    }
+  ]
+}

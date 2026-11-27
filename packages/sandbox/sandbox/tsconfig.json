@@ -1,0 +1,28 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../util/error"
+    },
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../llm/llm"
+    },
+    {
+      "path": "../../core/session"
+    },
+    {
+      "path": "../../util/values"
+    }
+  ]
+}

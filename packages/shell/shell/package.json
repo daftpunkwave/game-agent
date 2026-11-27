@@ -1,0 +1,28 @@
+{
+  "name": "@game-agent/shell",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Abstract bash executor seam (ctx.shell)",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    }
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/subprocess": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/subprocess": "workspace:*"
+  }
+}

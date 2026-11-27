@@ -1,0 +1,37 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../llm/llm"
+    },
+    {
+      "path": "../../native/system"
+    },
+    {
+      "path": "../sandbox"
+    },
+    {
+      "path": "../sandbox-windows-acl"
+    },
+    {
+      "path": "../../kernel/schema"
+    },
+    {
+      "path": "../../core/session"
+    },
+    {
+      "path": "../../util/values"
+    }
+  ]
+}

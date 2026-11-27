@@ -37,12 +37,20 @@ Installed from npm and not copied into this repository; their licenses ship with
 | `@eslint-community/regexpp` | MIT | `packages/boot/app-boot` |
 | `@js-temporal/polyfill` | ISC | `packages/util/time` |
 | `@modelcontextprotocol/client` | Apache-2.0 | `packages/transport/transport-mcp` |
+| `@opentelemetry/api` | Apache-2.0 | `packages/telemetry/otel` |
+| `@opentelemetry/api-logs` | Apache-2.0 | `packages/telemetry/otel` |
+| `@opentelemetry/core` | Apache-2.0 | `packages/telemetry/otel` |
+| `@opentelemetry/otlp-exporter-base` | Apache-2.0 | `packages/telemetry/otel` |
+| `@opentelemetry/otlp-transformer` | Apache-2.0 | `packages/telemetry/otel` |
+| `@opentelemetry/resources` | Apache-2.0 | `packages/telemetry/otel` |
+| `@opentelemetry/sdk-logs` | Apache-2.0 | `packages/telemetry/otel` |
 | `@standard-schema/spec` | MIT | `packages/kernel/kernel`, `packages/kernel/schema` |
 | `@vscode/ripgrep` | MIT | `packages/util/ripgrep` |
 | `ajv` | MIT | `packages/boot/app-boot` |
-| `chokidar` | MIT | `packages/boot/hmr`, `packages/credentials/credentials-local`, `packages/kernel/hmr` |
+| `chokidar` | MIT | `packages/boot/hmr`, `packages/credentials/credentials-local`, `packages/fs/fs-local`, `packages/kernel/hmr` |
 | `fuzzysort` | MIT | `packages/util/text-search` |
-| `koffi` | MIT | `packages/subprocess/subprocess-local`, `packages/subprocess/win32-process` |
+| `got` | MIT | `packages/telemetry/otel` |
+| `koffi` | MIT | `packages/fs/fs-local`, `packages/sandbox/sandbox-windows-acl`, `packages/subprocess/subprocess-local`, `packages/subprocess/win32-process` |
 | `mime` | MIT | `packages/util/file-drag` |
 | `node-addon-require-builtin` | MIT | `packages/boot/app-boot`, `packages/boot/hmr`, `packages/kernel/loader` |
 | `node-pty` | MIT | `packages/subprocess/subprocess-local` |
@@ -52,5 +60,5 @@ Installed from npm and not copied into this repository; their licenses ship with
 | `semver` | ISC | `packages/boot/app-boot` |
 | `supports-color` | MIT | `packages/kernel/logger-console` |
 | `undici` | MIT | `packages/util/http-proxy` |
-| `yaml` | ISC | `packages/boot/config-editor`, `packages/credentials/credentials-local`, `packages/kernel/include` |
-| `zod` | MIT | `packages/llm/llm`, `packages/storage/storage-domain`, `packages/typert/protocol`, `packages/typert/registry`, `packages/util/chunked-list` |
+| `yaml` | ISC | `packages/boot/config-editor`, `packages/credentials/credentials-local`, `packages/kernel/include`, `packages/sandbox/sandbox-windows-acl`, `packages/settings/settings` |
+| `zod` | MIT | `packages/core/agent`, `packages/core/system-prompt`, `packages/llm/llm`, `packages/session/session-projection`, `packages/session/session-projection-cache`, `packages/session/session-stats`, `packages/session/session-turn-outline`, `packages/storage/storage-domain`, `packages/typert/protocol`, `packages/typert/registry`, `packages/util/chunked-list`, `packages/workspace/workspace` |

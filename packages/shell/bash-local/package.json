@@ -1,0 +1,35 @@
+{
+  "name": "@game-agent/bash-local",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Local-subprocess implementation of the game-agent bash executor seam",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/schema": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/shell": "workspace:*",
+    "@game-agent/subprocess": "workspace:*",
+    "@game-agent/timeout": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/shell": "workspace:*",
+    "@game-agent/subprocess": "workspace:*",
+    "@game-agent/subprocess-local": "workspace:*",
+    "@game-agent/timeout": "workspace:*"
+  }
+}

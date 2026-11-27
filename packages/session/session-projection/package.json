@@ -1,0 +1,37 @@
+{
+  "name": "@game-agent/session-projection",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Session-projection seam: the merge-extensible projection type table, the provider contract, and the ctx.sessionProjections registry serving whole current values of log-derived per-session state",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./types": {
+      "@game-agent/source": "./src/types.ts",
+      "types": "./lib/types.d.ts",
+      "default": "./lib/types.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "zod": "4.6.6"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/app-boot": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  }
+}

@@ -10,6 +10,9 @@
   ],
   "references": [
     {
+      "path": "../../attachment/attachment"
+    },
+    {
       "path": "../../util/brand"
     },
     {
@@ -17,6 +20,9 @@
     },
     {
       "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../util/package-manifest"
     },
     {
       "path": "../../kernel/schema"

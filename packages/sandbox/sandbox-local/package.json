@@ -1,0 +1,38 @@
+{
+  "name": "@game-agent/sandbox-local",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Local process-sandbox backends for the game-agent sandbox seam: bwrap, the npm-distributed landlock-run launcher, macOS Seatbelt, or the Windows ACL restricted-token runner — functionally probed, fail-closed",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/native-system": "workspace:*",
+    "@game-agent/sandbox-windows-acl": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "@game-agent/util-values": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/session": "workspace:*"
+  }
+}

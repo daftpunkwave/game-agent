@@ -10,6 +10,9 @@
   ],
   "references": [
     {
+      "path": "../brand"
+    },
+    {
       "path": "../../kernel/kernel"
     }
   ]
