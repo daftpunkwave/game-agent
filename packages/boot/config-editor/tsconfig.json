@@ -1,0 +1,31 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../app-boot"
+    },
+    {
+      "path": "../../util/atomic-write"
+    },
+    {
+      "path": "../hmr"
+    },
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../kernel/include"
+    },
+    {
+      "path": "../../kernel/loader"
+    }
+  ]
+}

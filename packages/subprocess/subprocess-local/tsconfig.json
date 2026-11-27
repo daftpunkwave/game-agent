@@ -1,0 +1,28 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../../util/lazy-require"
+    },
+    {
+      "path": "../subprocess"
+    },
+    {
+      "path": "../../util/timeout"
+    },
+    {
+      "path": "../win32-process"
+    }
+  ]
+}

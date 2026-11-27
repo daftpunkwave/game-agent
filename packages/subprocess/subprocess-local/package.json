@@ -1,0 +1,45 @@
+{
+  "name": "@game-agent/subprocess-local",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Local-subprocess implementation of the game-agent subprocess seam",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./output": {
+      "@game-agent/source": "./src/output.ts",
+      "types": "./lib/output.d.ts",
+      "default": "./lib/output.js"
+    },
+    "./locale/*.json": "./locale/*.json",
+    "./runner": {
+      "@game-agent/source": "./src/bin.ts",
+      "types": "./lib/bin.d.ts",
+      "default": "./lib/bin.js"
+    }
+  },
+  "dependencies": {
+    "@game-agent/lazy-require": "workspace:*",
+    "@game-agent/win32-process": "workspace:*",
+    "koffi": "3.1.1",
+    "node-pty": "1.2.0-beta.15"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/subprocess": "workspace:*",
+    "@game-agent/timeout": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/subprocess": "workspace:*",
+    "@game-agent/timeout": "workspace:*"
+  }
+}

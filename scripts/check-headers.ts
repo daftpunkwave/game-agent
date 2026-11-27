@@ -18,6 +18,29 @@ const HEADER_EXEMPT_PREFIXES = ['packages/kernel/']
  * Their test files carry no header.
  */
 const TSDOC_HEADER_PREFIXES = [
+  'packages/attachment/attachment/',
+  'packages/boot/app-boot/',
+  'packages/boot/cmdline/',
+  'packages/boot/config-editor/',
+  'packages/boot/hmr/',
+  'packages/core/scope/',
+  'packages/core/session/',
+  'packages/credentials/authorization/',
+  'packages/credentials/credentials-local/',
+  'packages/credentials/credentials/',
+  'packages/fs/fs-patch/',
+  'packages/llm/llm-api-extensions/',
+  'packages/llm/llm/',
+  'packages/session/session-format/',
+  'packages/storage/storage-domain/',
+  'packages/storage/storage-json/',
+  'packages/storage/storage-sqlite/',
+  'packages/storage/storage/',
+  'packages/subprocess/subprocess-local/',
+  'packages/subprocess/subprocess/',
+  'packages/subprocess/win32-process/',
+  'packages/typert/protocol/',
+  'packages/typert/registry/',
   'packages/util/atomic-write/',
   'packages/util/brand/',
   'packages/util/chunked-list/',
@@ -32,6 +55,7 @@ const TSDOC_HEADER_PREFIXES = [
   'packages/util/lazy-require/',
   'packages/util/output-retention/',
   'packages/util/package-manifest/',
+  'packages/util/ripgrep/',
   'packages/util/text-search/',
   'packages/util/time/',
   'packages/util/timeout/',
@@ -107,7 +131,8 @@ async function main(): Promise<number> {
     }
     if (where.startsWith('scripts/')) continue
     for (const leftover of LEFTOVER_PATTERNS) {
-      if (leftover.label === 'console.log' && CONSOLE_OUTPUT_FILES.has(where)) continue
+      // Tests may embed console.log in scripts they run in child processes; the rule targets source files.
+      if (leftover.label === 'console.log' && (CONSOLE_OUTPUT_FILES.has(where) || !where.includes('/src/'))) continue
       if (leftover.pattern.test(text)) violations.push(`${where}: contains ${leftover.label}`)
     }
   }

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "SQLite storage",
+    "description": "Store game-agent key-value data in SQLite."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@game-agent/fs-patch",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pure Codex-style patch parser and LF text updater with structured match failures",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    }
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  }
+}
