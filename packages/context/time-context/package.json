@@ -1,0 +1,48 @@
+{
+  "name": "@game-agent/time-context",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Durable per-step context with the current time and elapsed time",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/schema": "workspace:*",
+    "@game-agent/util-values": "workspace:*",
+    "zod": "4.6.6"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/util-time": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/app-boot": "workspace:*",
+    "@game-agent/bash-local": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/subprocess-local": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/tools": "workspace:*",
+    "@game-agent/util-time": "workspace:*"
+  }
+}

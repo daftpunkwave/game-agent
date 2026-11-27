@@ -1,0 +1,49 @@
+{
+  "name": "@game-agent/tools",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Tool registry and execution pipeline",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./pipeline": {
+      "@game-agent/source": "./src/pipeline.ts",
+      "types": "./lib/pipeline.d.ts",
+      "default": "./lib/pipeline.js"
+    }
+  },
+  "dependencies": {
+    "@game-agent/schema": "workspace:*",
+    "@game-agent/util-values": "workspace:*"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/scope": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/user-approval": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/scope": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/system-prompt": "workspace:*",
+    "@game-agent/user-approval": "workspace:*"
+  }
+}

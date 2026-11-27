@@ -64,10 +64,15 @@ Capability packages are plugins of the kernel. They are constrained by declared 
 | | `cmdline` | Immutable command-line handoff from the launcher to app plugins |
 | | `hmr` | Coordinated hot reload of modules and profile configuration |
 | | `config-editor` | Persist plugin configuration through profile patches |
+| `compaction` | `compaction` | Context compaction interface |
+| `context` | `file-reference` | File reference discovery and the shared `@file` grammar |
+| | `time-context` | Per-step context with the current and elapsed time |
 | `core` | `agent` | Agent interface, registry, initiator scope, and event vocabulary |
+| | `agent-default-model` | Default model selection shared by agent entry points |
 | | `scope` | Scoped context registration and scope-filtered event dispatch |
 | | `session` | Event-sourced session store |
 | | `system-prompt` | System prompt section registry and assembly |
+| | `tools` | Tool registry and execution pipeline |
 | `credentials` | `credentials` | Credential interface: settings hold references, providers hold values |
 | | `credentials-local` | Credentials from `$GAME_AGENT_HOME/.env` under the process environment |
 | | `authorization` | Flows that obtain a credential through a conversation with a person |
@@ -75,13 +80,20 @@ Capability packages are plugins of the kernel. They are constrained by declared 
 | | `fs-local` | Local file system implementation |
 | | `fs-observation-policy` | Read-before-edit and version-guarded writes over the file system interface |
 | | `fs-patch` | Patch parser and line-ending-preserving text updater |
+| | `fs-sandbox` | File system that confines writes and edits by the sandbox mode of each call |
+| `interaction` | `commands` | Registry of human commands contributed by plugins |
+| | `permission-presets` | Permission presets that bundle the sandbox mode and approval policy |
+| | `user-approval` | One-shot approval decisions, denied unless an answerer allows them |
 | `llm` | `llm` | Provider-neutral model service interface |
 | | `llm-api-extensions` | Additive request-field registry for provider adapters |
+| | `llm-retry` | Retry policy for model requests, routed by provider |
 | `native` | `native-system` | Locators for native helpers: the Linux Landlock launcher and exclusive file locks (no helper binaries are shipped yet) |
 | `preset` | `persona` | Persona section composed into the system prompt |
 | `ptc-runtime` | `ptc-runtime` | Programmatic tool-calling execution interface |
+| | `ptc-runtime-node` | Node.js evaluators for programmatic tool calling, with optional retained state |
 | `sandbox` | `sandbox` | Process sandbox interface and confinement vocabulary |
 | | `sandbox-local` | Local sandbox backends: bubblewrap, the Landlock launcher, or the Windows ACL runner, probed before use |
+| | `sandbox-policy` | Per-call sandbox policy from deployment defaults and each session's mode and workspace |
 | | `sandbox-windows-acl` | Windows write-restriction sandbox through restricted tokens and capability SIDs |
 | `session` | `session-format` | Session storage format migration machinery |
 | | `session-persistence` | Durable session persistence interface |
@@ -89,9 +101,13 @@ Capability packages are plugins of the kernel. They are constrained by declared 
 | | `session-projection-cache` | Persisted projection checkpoints with throttled write-behind |
 | | `session-stats` | Conversation counts and wall times per session |
 | | `session-turn-outline` | Turn outline of a session |
+| | `session-telemetry` | Session event capture, redaction, and handoff to a reporting backend |
+| | `session-title` | Session titles derived from the log, with pluggable title providers |
+| | `working-directory` | Session working directories with durable changes and model context |
 | `settings` | `settings` | User settings interface |
 | `shell` | `shell` | Shell executor interface |
 | | `bash-local` | Local bash executor |
+| | `bash-sandbox` | Bash executor that confines every command through the sandbox |
 | | `pwsh-local` | Local Windows shell executor |
 | `skill` | `skill` | Agent skill provider registry |
 | `spill` | `spill` | Storage for oversized tool output, returning a retrieval locator |

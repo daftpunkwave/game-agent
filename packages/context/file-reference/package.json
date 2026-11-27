@@ -1,0 +1,37 @@
+{
+  "name": "@game-agent/file-reference",
+  "version": "0.0.0",
+  "private": true,
+  "description": "File-reference discovery contract and shared @file grammar",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./grammar": {
+      "@game-agent/source": "./src/grammar.ts",
+      "types": "./lib/grammar.d.ts",
+      "default": "./lib/grammar.js"
+    },
+    "./types": {
+      "@game-agent/source": "./src/types.ts",
+      "types": "./lib/types.d.ts",
+      "default": "./lib/types.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/kernel": "workspace:*"
+  }
+}

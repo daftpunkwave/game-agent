@@ -1,0 +1,53 @@
+{
+  "name": "@game-agent/commands",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Plugin-owned human command registry for game-agent UIs",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./types": {
+      "@game-agent/source": "./src/types.ts",
+      "types": "./lib/types.d.ts",
+      "default": "./lib/types.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./builtin": {
+      "@game-agent/source": "./src/builtin.ts",
+      "types": "./lib/builtin.d.ts",
+      "default": "./lib/builtin.js"
+    }
+  },
+  "dependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/util-crypto": "workspace:*",
+    "zod": "4.6.6"
+  },
+  "peerDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/scope": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/typert-protocol": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/agent": "workspace:*",
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*",
+    "@game-agent/scope": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/typert-protocol": "workspace:*"
+  }
+}

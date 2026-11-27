@@ -68,7 +68,7 @@ const CONFINED_IMPORTS: readonly { readonly prefix: string; readonly groups: rea
 const COGNITION_PACKAGES = new Set(['@game-agent/behavior-tree', '@game-agent/decision', '@game-agent/agent-runtime'])
 const COGNITION_FORBIDDEN = ['node:net', 'node:http', 'node:https', 'node:child_process', 'node:fs', 'node:fs/promises', 'ws']
 
-const IMPORT_PATTERN = /(?:^|\n)\s*(?:import|export)\s[^'"]*?from\s+['"]([^'"]+)['"]|(?<![.\w$])import\(\s*['"]([^'"]+)['"]\s*\)|(?:^|\n)\s*import\s+['"]([^'"]+)['"]/g
+const IMPORT_PATTERN = /(?:^|\n)\s*(?:import|export)\s(?:(?!\b(?:import|export)\b)[^'"])*?from\s+['"]([^'"]+)['"]|(?<![.\w$])import\(\s*['"]([^'"]+)['"]\s*\)|(?:^|\n)\s*import\s+['"]([^'"]+)['"]/g
 
 async function listDirectories(path: string): Promise<string[]> {
   try {
@@ -160,7 +160,8 @@ async function main(): Promise<number> {
         const where = relative(root, file).replaceAll('\\', '/')
         for (const match of text.matchAll(IMPORT_PATTERN)) {
           const specifier = match[1] ?? match[2] ?? match[3]
-          if (specifier === undefined || specifier.startsWith('.') || specifier.includes('${') || specifier.startsWith('node:') && !COGNITION_FORBIDDEN.includes(specifier)) continue
+          // Relative paths, template-built names, and URL-scheme specifiers (for example virtual modules a test registers) are not packages.
+          if (specifier === undefined || specifier.startsWith('.') || specifier.includes('${') || /^[a-z][a-z0-9+.-]*:/.test(specifier) && !specifier.startsWith('node:') || specifier.startsWith('node:') && !COGNITION_FORBIDDEN.includes(specifier)) continue
           const name = packageNameOf(specifier)
           if (kind === 'src' && COGNITION_PACKAGES.has(item.name) && COGNITION_FORBIDDEN.includes(specifier)) {
             violations.push(`${where}: ${item.name} is a cognition package and must not import ${specifier}`)

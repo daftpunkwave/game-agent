@@ -1,0 +1,60 @@
+{
+  "name": "@game-agent/ptc-runtime-node",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Node PTC execution with async function, REPL, scoped REPL and VM Script evaluators and optional retained state",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json",
+    "./configuration": {
+      "@game-agent/source": "./src/configuration.ts",
+      "types": "./lib/configuration.d.ts",
+      "default": "./lib/configuration.js"
+    },
+    "./process": {
+      "@game-agent/source": "./src/process.ts",
+      "types": "./lib/process.d.ts",
+      "default": "./lib/process.js"
+    },
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@game-agent/schema": "workspace:*",
+    "@game-agent/util-values": "workspace:*",
+    "acorn": "^8.18.0",
+    "acorn-walk": "^8.3.5",
+    "birpc": "4.2.0"
+  },
+  "peerDependencies": {
+    "@game-agent/fs": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/ptc-runtime": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/subprocess": "workspace:*",
+    "@game-agent/timeout": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/fs": "workspace:*",
+    "@game-agent/fs-local": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/ptc-runtime": "workspace:*",
+    "@game-agent/sandbox": "workspace:*",
+    "@game-agent/sandbox-local": "workspace:*",
+    "@game-agent/sandbox-policy": "workspace:*",
+    "@game-agent/session": "workspace:*",
+    "@game-agent/session-projection": "workspace:*",
+    "@game-agent/subprocess": "workspace:*",
+    "@game-agent/subprocess-local": "workspace:*",
+    "@game-agent/timeout": "workspace:*"
+  }
+}

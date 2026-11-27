@@ -10,7 +10,8 @@
       "@game-agent/source": "./src/index.ts",
       "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "dependencies": {
     "@babel/code-frame": "^7.29.0",

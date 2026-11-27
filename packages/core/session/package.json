@@ -24,6 +24,7 @@
     "./src/*": {
       "@game-agent/source": "./src/*"
     },
+    "./package.json": "./package.json",
     "./surface": {
       "@game-agent/source": "./src/surface.ts",
       "types": "./lib/surface.d.ts",
