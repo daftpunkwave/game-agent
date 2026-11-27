@@ -64,15 +64,38 @@ Capability packages are plugins of the kernel. They are constrained by declared 
 | | `cmdline` | Immutable command-line handoff from the launcher to app plugins |
 | | `hmr` | Coordinated hot reload of modules and profile configuration |
 | | `config-editor` | Persist plugin configuration through profile patches |
-| `core` | `scope` | Scoped context registration and scope-filtered event dispatch |
+| `core` | `agent` | Agent interface, registry, initiator scope, and event vocabulary |
+| | `scope` | Scoped context registration and scope-filtered event dispatch |
 | | `session` | Event-sourced session store |
+| | `system-prompt` | System prompt section registry and assembly |
 | `credentials` | `credentials` | Credential interface: settings hold references, providers hold values |
 | | `credentials-local` | Credentials from `$GAME_AGENT_HOME/.env` under the process environment |
 | | `authorization` | Flows that obtain a credential through a conversation with a person |
-| `fs` | `fs-patch` | Patch parser and line-ending-preserving text updater |
+| `fs` | `fs` | File system interface: text I/O and optional version-guarded atomic writes |
+| | `fs-local` | Local file system implementation |
+| | `fs-observation-policy` | Read-before-edit and version-guarded writes over the file system interface |
+| | `fs-patch` | Patch parser and line-ending-preserving text updater |
 | `llm` | `llm` | Provider-neutral model service interface |
 | | `llm-api-extensions` | Additive request-field registry for provider adapters |
+| `native` | `native-system` | Locators for native helpers: the Linux Landlock launcher and exclusive file locks (no helper binaries are shipped yet) |
+| `preset` | `persona` | Persona section composed into the system prompt |
+| `ptc-runtime` | `ptc-runtime` | Programmatic tool-calling execution interface |
+| `sandbox` | `sandbox` | Process sandbox interface and confinement vocabulary |
+| | `sandbox-local` | Local sandbox backends: bubblewrap, the Landlock launcher, or the Windows ACL runner, probed before use |
+| | `sandbox-windows-acl` | Windows write-restriction sandbox through restricted tokens and capability SIDs |
 | `session` | `session-format` | Session storage format migration machinery |
+| | `session-persistence` | Durable session persistence interface |
+| | `session-projection` | Projections of per-session state derived from the session log |
+| | `session-projection-cache` | Persisted projection checkpoints with throttled write-behind |
+| | `session-stats` | Conversation counts and wall times per session |
+| | `session-turn-outline` | Turn outline of a session |
+| `settings` | `settings` | User settings interface |
+| `shell` | `shell` | Shell executor interface |
+| | `bash-local` | Local bash executor |
+| | `pwsh-local` | Local Windows shell executor |
+| `skill` | `skill` | Agent skill provider registry |
+| `spill` | `spill` | Storage for oversized tool output, returning a retrieval locator |
+| | `spill-local` | Session-scoped local files for spilled output |
 | `storage` | `storage` | Storage hub: named backends and mounted data forms |
 | | `storage-domain` | Schema-validated, event-emitting key-value domains |
 | | `storage-json` | JSON file key-value backend |
@@ -80,6 +103,8 @@ Capability packages are plugins of the kernel. They are constrained by declared 
 | `subprocess` | `subprocess` | Subprocess interface: managed process groups, bounded output, escalated kills |
 | | `subprocess-local` | Local subprocess implementation, including pseudo-terminals |
 | | `win32-process` | Win32 process, standard I/O, and job object primitives |
+| `telemetry` | `otel` | OpenTelemetry log channels for ordinary events and session logs |
 | `typert` | `typert-protocol` | Remote method metadata and provider protocols |
 | | `typert-registry` | Runtime registry of generated reflection and schemas |
 | `util` | `util-ripgrep` | Packaged ripgrep resolution and output streaming |
+| `workspace` | `workspace` | Workspace registry: durable workspace records and session attachment |
