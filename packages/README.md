@@ -1,6 +1,6 @@
 # Packages
 
-Workspace packages live at `packages/<group>/<name>` and are published under the `@game-agent/` scope. Group rules are enforced by `pnpm check:boundaries`.
+Workspace packages live at `packages/<group>/<name>` and are published under the `@game-agent/` scope. Group rules are enforced by `pnpm check:boundaries`. The table below lists the game protocol and agent runtime packages, which follow the layer rules in the "May depend on" column; the [capability packages](#capability-packages) follow only the dependency rules.
 
 | Group | May depend on | Package | Responsibility |
 |---|---|---|---|
@@ -51,4 +51,35 @@ Additional rules:
 
 - `behavior` and `core` source must not import network, filesystem, or process modules.
 - Every group may import the `kernel` group; `kernel` imports nothing else from the workspace. `@modelcontextprotocol/*` is imported only by `transport`.
-- Packages are imported through their entry point only; deep imports and undeclared dependencies are rejected.
+- Packages are imported through the entries declared in their `exports`; other deep imports and undeclared dependencies are rejected. Tests may also use the test tooling in the root `devDependencies`.
+
+## Capability packages
+
+Capability packages are plugins of the kernel. They are constrained by declared dependencies, declared package entries, and the acyclic package graph; the layer rules above do not apply to them.
+
+| Group | Package | Responsibility |
+|---|---|---|
+| `attachment` | `attachment` | Durable, immutable attachment storage interface |
+| `boot` | `app-boot` | Boot sequence: `.env` loading, configuration resolution, loader guards |
+| | `cmdline` | Immutable command-line handoff from the launcher to app plugins |
+| | `hmr` | Coordinated hot reload of modules and profile configuration |
+| | `config-editor` | Persist plugin configuration through profile patches |
+| `core` | `scope` | Scoped context registration and scope-filtered event dispatch |
+| | `session` | Event-sourced session store |
+| `credentials` | `credentials` | Credential interface: settings hold references, providers hold values |
+| | `credentials-local` | Credentials from `$GAME_AGENT_HOME/.env` under the process environment |
+| | `authorization` | Flows that obtain a credential through a conversation with a person |
+| `fs` | `fs-patch` | Patch parser and line-ending-preserving text updater |
+| `llm` | `llm` | Provider-neutral model service interface |
+| | `llm-api-extensions` | Additive request-field registry for provider adapters |
+| `session` | `session-format` | Session storage format migration machinery |
+| `storage` | `storage` | Storage hub: named backends and mounted data forms |
+| | `storage-domain` | Schema-validated, event-emitting key-value domains |
+| | `storage-json` | JSON file key-value backend |
+| | `storage-sqlite` | SQLite key-value backend |
+| `subprocess` | `subprocess` | Subprocess interface: managed process groups, bounded output, escalated kills |
+| | `subprocess-local` | Local subprocess implementation, including pseudo-terminals |
+| | `win32-process` | Win32 process, standard I/O, and job object primitives |
+| `typert` | `typert-protocol` | Remote method metadata and provider protocols |
+| | `typert-registry` | Runtime registry of generated reflection and schemas |
+| `util` | `util-ripgrep` | Packaged ripgrep resolution and output streaming |

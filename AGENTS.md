@@ -50,13 +50,14 @@ scripts/                  repository gates
 pnpm install
 pnpm build              # tsc -b: type-check everything and compile each package and app from src/ to lib/
 pnpm test               # vitest
-pnpm check:boundaries   # declared deps, no deep imports, acyclic graph, group rules, no Node I/O in cognition packages, SDK confinement; tsconfig references match package dependencies
-pnpm check:headers      # file headers with Responsibilities, Contracts, and Constraints (other content allowed); no console.log, debugger, TODO, or FIXME in packages and apps
+pnpm check:boundaries   # declared deps, imports through declared entries, acyclic graph, layer rules for protocol and runtime packages, no Node I/O in cognition packages, SDK confinement; tsconfig references match package dependencies
+pnpm check:headers      # file headers with Responsibilities, Contracts, and Constraints (other content allowed); no debugger, TODO, or FIXME in packages and apps, and no console.log in their source files
 pnpm check:notices      # THIRD_PARTY_NOTICES.md matches runtime dependencies; their licenses are on the allow list
 pnpm check:smoke        # every compiled package entry loads and the compiled CLI runs under Node.js
 pnpm check              # all of the above
 pnpm check:conventions  # Conventional Commits and English-only commit messages in origin/main..HEAD (CI also checks PR title and description)
 pnpm sync:projects      # regenerate tsconfig.json files after adding a package or changing workspace dependencies
+pnpm sync:notices       # regenerate the runtime dependency table of THIRD_PARTY_NOTICES.md after changing third-party dependencies
 pnpm game-agent help    # run the compiled CLI (after pnpm build)
 ```
 
