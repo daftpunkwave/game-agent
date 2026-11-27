@@ -129,7 +129,8 @@ async function main(): Promise<number> {
           }
           if (specifier.startsWith('node:') || name === 'vitest') continue
           if (name === item.name) {
-            violations.push(`${where}: import the package under test relatively, not as ${specifier}`)
+            // Tests may exercise the public entry of the package under test by name; sources import their own files relatively.
+            if (kind !== 'tests') violations.push(`${where}: import files of the same package relatively, not as ${specifier}`)
             continue
           }
           const typeOnly = /^\s*(?:import|export)\s+type\s/.test(match[0])

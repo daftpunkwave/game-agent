@@ -5,7 +5,7 @@
  */
 import { readFile } from 'node:fs/promises'
 import { writeFileAtomic } from '@game-agent/atomic-write'
-import { GameAgentError } from '@game-agent/errors'
+import { GameAgentError } from '@game-agent/error'
 import { FLEET_FORMAT, emptyFleet, type FleetDocument } from './model.ts'
 
 /** Read a fleet document, or an empty one when the file does not exist. */

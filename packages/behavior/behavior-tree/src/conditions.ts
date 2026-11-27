@@ -4,7 +4,7 @@
  * Constraints: Predicates read only the blackboard and the time they are given; game-specific predicates are registered by plugins.
  */
 import type { JsonObject, JsonValue } from '@game-agent/contracts'
-import { GameAgentError } from '@game-agent/errors'
+import { GameAgentError } from '@game-agent/error'
 
 /** Inputs available to a predicate. */
 export interface ConditionInput {

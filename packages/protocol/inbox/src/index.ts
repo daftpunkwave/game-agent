@@ -22,7 +22,8 @@ export interface InboxOptions {
 
 /** Cursor-addressed event inbox for one agent. */
 export class EventInbox {
-  private readonly entries = new Deque<InboxEntry>()
+  /** Retained entries in ascending cursor order. */
+  private readonly entries: InboxEntry[] = []
   private readonly recentIds = new Deque<string>()
   private readonly recentIdSet = new Set<string>()
   private nextCursor = 1
@@ -40,7 +41,7 @@ export class EventInbox {
 
   /** Number of entries currently retained. */
   get size(): number {
-    return this.entries.size
+    return this.entries.length
   }
 
   /** Number of entries discarded because the inbox was full. */
@@ -57,9 +58,9 @@ export class EventInbox {
     this.remember(event.eventId)
     const entry: InboxEntry = { cursor: this.nextCursor, event }
     this.nextCursor += 1
-    this.entries.pushBack(entry)
-    if (this.entries.size > this.options.capacity) {
-      this.entries.popFront()
+    this.entries.push(entry)
+    if (this.entries.length > this.options.capacity) {
+      this.entries.shift()
       this.droppedCount += 1
     }
     return entry
@@ -82,9 +83,9 @@ export class EventInbox {
 
   /** Release every entry at or before `cursor`. */
   acknowledge(cursor: number): void {
-    while (this.entries.size > 0 && (this.entries.peekFront()?.cursor ?? Number.POSITIVE_INFINITY) <= cursor) {
-      this.entries.popFront()
-    }
+    let released = 0
+    while (released < this.entries.length && (this.entries[released]?.cursor ?? Number.POSITIVE_INFINITY) <= cursor) released += 1
+    this.entries.splice(0, released)
   }
 
   private remember(eventId: string): void {

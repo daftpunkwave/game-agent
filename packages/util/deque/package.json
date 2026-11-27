@@ -2,9 +2,16 @@
   "name": "@game-agent/deque",
   "version": "0.0.0",
   "private": true,
+  "description": "Zero-dependency circular deque with amortized constant-time end operations and bounded vacant storage",
   "type": "module",
   "license": "MIT",
   "exports": {
     ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*"
   }
 }

@@ -3,7 +3,7 @@
  * Contracts: Every edit returns a new definition with `version` incremented; the input is never mutated. Paths use `root/<index>/...`.
  * Constraints: Edits do not validate semantics; callers run `validateTreeDefinition` before publishing.
  */
-import { GameAgentError } from '@game-agent/errors'
+import { GameAgentError } from '@game-agent/error'
 import { ROOT_PATH, childPath, childrenOf, type NodeDefinition, type TreeDefinition } from './definition.ts'
 
 function segments(path: string): number[] {

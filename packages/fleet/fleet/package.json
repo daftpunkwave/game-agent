@@ -11,7 +11,7 @@
     "@game-agent/atomic-write": "workspace:*",
     "@game-agent/behavior-tree": "workspace:*",
     "@game-agent/contracts": "workspace:*",
-    "@game-agent/errors": "workspace:*",
+    "@game-agent/error": "workspace:*",
     "@game-agent/ports": "workspace:*"
   }
 }

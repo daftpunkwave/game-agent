@@ -5,7 +5,7 @@
  * Constraints: Subcommands live in `commands/`; this file only routes.
  */
 import { fileURLToPath } from 'node:url'
-import { GameAgentError } from '@game-agent/errors'
+import { GameAgentError } from '@game-agent/error'
 import { fleetCommand } from './commands/fleet.ts'
 import { runCommand } from './commands/run.ts'
 import { simulateCommand } from './commands/simulate.ts'

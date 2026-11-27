@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@game-agent/contracts": "workspace:*",
-    "@game-agent/errors": "workspace:*",
+    "@game-agent/error": "workspace:*",
     "@game-agent/ports": "workspace:*"
   }
 }

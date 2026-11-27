@@ -7,8 +7,33 @@ import { readFile, readdir } from 'node:fs/promises'
 import { join, relative } from 'node:path'
 
 const REQUIRED_LABELS = ['Responsibilities:', 'Contracts:', 'Constraints:']
-/** Package groups that document every export with TSDoc instead of a file header. */
+/** Packages whose files carry no file header; every export is documented with TSDoc instead. */
 const HEADER_EXEMPT_PREFIXES = ['packages/kernel/']
+/**
+ * Packages whose source files open with a TSDoc module comment instead of the three-part header.
+ * Their test files carry no header.
+ */
+const TSDOC_HEADER_PREFIXES = [
+  'packages/util/atomic-write/',
+  'packages/util/brand/',
+  'packages/util/chunked-list/',
+  'packages/util/code-language/',
+  'packages/util/crypto/',
+  'packages/util/deque/',
+  'packages/util/error/',
+  'packages/util/file-drag/',
+  'packages/util/home-paths/',
+  'packages/util/http-proxy/',
+  'packages/util/launch-environment/',
+  'packages/util/lazy-require/',
+  'packages/util/output-retention/',
+  'packages/util/package-manifest/',
+  'packages/util/text-search/',
+  'packages/util/time/',
+  'packages/util/timeout/',
+  'packages/util/values/',
+  'packages/util/workspace-path/',
+]
 /** Files whose purpose is console output, exempt from the console.log leftover rule. */
 const CONSOLE_OUTPUT_FILES = new Set(['packages/kernel/logger-console/src/shared.ts'])
 const LEFTOVER_PATTERNS: readonly { readonly label: string; readonly pattern: RegExp }[] = [
@@ -41,8 +66,12 @@ async function main(): Promise<number> {
     const where = relative(root, file).replaceAll('\\', '/')
     const body = text.startsWith('#!') ? text.slice(text.indexOf('\n') + 1) : text
     const header = body.startsWith('/**') ? body.slice(0, body.indexOf('*/') + 2) : ''
-    const missing = HEADER_EXEMPT_PREFIXES.some((prefix) => where.startsWith(prefix)) ? [] : REQUIRED_LABELS.filter((label) => !header.includes(label))
-    if (missing.length > 0) violations.push(`${where}: file header is missing ${missing.join(', ')}`)
+    if (TSDOC_HEADER_PREFIXES.some((prefix) => where.startsWith(prefix))) {
+      if (where.includes('/src/') && header === '') violations.push(`${where}: source file does not open with a TSDoc comment`)
+    } else if (!HEADER_EXEMPT_PREFIXES.some((prefix) => where.startsWith(prefix))) {
+      const missing = REQUIRED_LABELS.filter((label) => !header.includes(label))
+      if (missing.length > 0) violations.push(`${where}: file header is missing ${missing.join(', ')}`)
+    }
     if (where.startsWith('scripts/')) continue
     for (const leftover of LEFTOVER_PATTERNS) {
       if (leftover.label === 'console.log' && CONSOLE_OUTPUT_FILES.has(where)) continue

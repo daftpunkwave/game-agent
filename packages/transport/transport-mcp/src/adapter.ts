@@ -17,7 +17,7 @@ import type {
   TransportCapabilities,
 } from '@game-agent/contracts'
 import { isJsonObject } from '@game-agent/contracts'
-import { GameAgentError } from '@game-agent/errors'
+import { GameAgentError } from '@game-agent/error'
 import { systemClock, type Clock } from '@game-agent/ports'
 import { connectMcpSession, type McpConnection, type McpSession, type McpSessionFactory } from './session.ts'
 

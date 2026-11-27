@@ -6,7 +6,6 @@
 import { appendFile, mkdir } from 'node:fs/promises'
 import { dirname } from 'node:path'
 import type { JsonObject } from '@game-agent/contracts'
-import { Deque } from '@game-agent/deque'
 
 /** Coarse classification used by monitors and filters. */
 export type TraceCategory = 'tick' | 'intent' | 'settlement' | 'ingress' | 'decision' | 'operator' | 'fault'
@@ -58,7 +57,7 @@ export function filterTrace(records: Iterable<TraceRecord>, filter: TraceFilter)
 
 /** Bounded in-memory sink; the oldest records are discarded first. */
 export class MemoryTraceSink implements TraceSink {
-  private readonly buffer = new Deque<TraceRecord>()
+  private readonly buffer: TraceRecord[] = []
   private readonly capacity: number
 
   /** @param capacity - maximum number of retained records. */
@@ -67,8 +66,8 @@ export class MemoryTraceSink implements TraceSink {
   }
 
   write(record: TraceRecord): void {
-    this.buffer.pushBack(record)
-    if (this.buffer.size > this.capacity) this.buffer.popFront()
+    this.buffer.push(record)
+    if (this.buffer.length > this.capacity) this.buffer.shift()
   }
 
   /** Retained records, oldest first. */

@@ -1,0 +1,17 @@
+{
+  "name": "@game-agent/launch-environment",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Immutable game-agent launch environment that records which layer supplied each value",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/kernel": "workspace:*"
+  }
+}

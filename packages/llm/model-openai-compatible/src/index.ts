@@ -5,7 +5,7 @@
  */
 import { isJsonObject, type JsonValue } from '@game-agent/contracts'
 import type { ModelAdapter, ModelRequest, ModelResponse, ModelToolCall, ModelUsage } from '@game-agent/decision'
-import { GameAgentError } from '@game-agent/errors'
+import { GameAgentError } from '@game-agent/error'
 
 /** Connection settings for one provider endpoint. */
 export interface OpenAiCompatibleConfig {

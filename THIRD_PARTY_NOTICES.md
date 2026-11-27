@@ -34,9 +34,15 @@ Installed from npm and not copied into this repository; their licenses ship with
 | Package | License | Used by |
 |---|---|---|
 | `@babel/code-frame` | MIT | `packages/kernel/hmr` |
+| `@js-temporal/polyfill` | ISC | `packages/util/time` |
 | `@modelcontextprotocol/client` | Apache-2.0 | `packages/transport/transport-mcp` |
 | `@standard-schema/spec` | MIT | `packages/kernel/kernel`, `packages/kernel/schema` |
 | `chokidar` | MIT | `packages/kernel/hmr` |
+| `fuzzysort` | MIT | `packages/util/text-search` |
+| `mime` | MIT | `packages/util/file-drag` |
 | `picomatch` | MIT | `packages/kernel/hmr` |
+| `rrule` | BSD-3-Clause | `packages/util/time` |
 | `supports-color` | MIT | `packages/kernel/logger-console` |
+| `undici` | MIT | `packages/util/http-proxy` |
 | `yaml` | ISC | `packages/kernel/include` |
+| `zod` | MIT | `packages/util/chunked-list` |

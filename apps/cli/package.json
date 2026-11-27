@@ -16,7 +16,7 @@
     "@game-agent/behavior-tree": "workspace:*",
     "@game-agent/contracts": "workspace:*",
     "@game-agent/decision": "workspace:*",
-    "@game-agent/errors": "workspace:*",
+    "@game-agent/error": "workspace:*",
     "@game-agent/fleet": "workspace:*",
     "@game-agent/gateway": "workspace:*",
     "@game-agent/kernel": "workspace:*",
