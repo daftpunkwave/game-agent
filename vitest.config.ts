@@ -62,9 +62,23 @@ const POSIX_ONLY = process.platform === 'win32'
       'packages/subprocess/subprocess-local/tests/process-inspector.spec.ts',
       'packages/subprocess/subprocess-local/tests/spawn.spec.ts',
       'packages/subprocess/subprocess-local/tests/terminal.spec.ts',
+      // Suites that need a real POSIX shell or POSIX sandbox backends (bubblewrap, Landlock, Seatbelt profiles).
+      'packages/shell/bash-local/tests/**/*.spec.ts',
+      'packages/shell/bash-sandbox/tests/**/*.spec.ts',
+      'packages/shell/tool-bash/tests/**/*.spec.ts',
+      'packages/terminal/terminal-bash/tests/**/*.spec.ts',
+      'packages/sandbox/sandbox-local/tests/**/*.spec.ts',
       // The 4,800-case linked-package resolution matrix builds directory links in bulk; on Windows its forked
       // worker exits or stalls partway through. The resolution logic is platform-neutral and runs on Linux.
       'packages/boot/app-boot/tests/linked-resolution-matrix.spec.ts',
+      // Hosted CI runners execute as an elevated administrator, who holds WRITE_DAC and WRITE_OWNER implicitly. These
+      // suites verify ACL behavior for a standard user, so they run on developer machines but not on hosted runners.
+      ...process.env.GITHUB_ACTIONS === 'true'
+        ? [
+            'packages/sandbox/sandbox-windows-acl/tests/diagnose-script.spec.ts',
+            'packages/sandbox/sandbox-windows-acl/tests/runner.spec.ts',
+          ]
+        : [],
     ]
   : []
 

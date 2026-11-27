@@ -1,0 +1,4 @@
+- id: sandbox
+  name: '@game-agent/sandbox-local'
+- id: skills
+  name: '@game-agent/skill'

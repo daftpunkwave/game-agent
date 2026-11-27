@@ -22,6 +22,9 @@
       "path": "../scope"
     },
     {
+      "path": "../../typert/protocol"
+    },
+    {
       "path": "../../util/values"
     }
   ]

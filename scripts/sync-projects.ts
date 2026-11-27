@@ -5,8 +5,9 @@
  * Contracts: Without arguments, rewrites each `tsconfig.json` under `packages/<group>/<name>` and `apps/<name>`
  * and the root `tsconfig.json`, keeping any extra compiler options a project already sets. With `--check`, writes
  * nothing, prints every difference, and exits with code 1 when one exists.
- * Constraints: References come from `dependencies` and `peerDependencies` only; `devDependencies` serve tests,
- * which the root project type-checks, and would otherwise create reference cycles. Output is deterministic.
+ * Constraints: References come from `dependencies`, `peerDependencies`, and the `devDependencies` that source
+ * files import (type-only augmentation imports); other `devDependencies` serve tests, which the root project
+ * type-checks, and would otherwise create reference cycles. Output is deterministic.
  */
 import { readFile, readdir, writeFile } from 'node:fs/promises'
 import { join, relative } from 'node:path'
@@ -56,19 +57,39 @@ async function collectProjects(): Promise<Project[]> {
     for (const name of await listDirectories(join(root, 'packages', group))) dirs.push(join(root, 'packages', group, name))
   }
   for (const name of await listDirectories(join(root, 'apps'))) dirs.push(join(root, 'apps', name))
-  const manifests: { dir: string; manifest: { name?: string; dependencies?: Record<string, string>; peerDependencies?: Record<string, string> } }[] = []
+  const manifests: { dir: string; manifest: { name?: string; dependencies?: Record<string, string>; peerDependencies?: Record<string, string>; devDependencies?: Record<string, string> } }[] = []
   for (const dir of dirs) {
     const manifest = await readJson<{ name?: string }>(join(dir, 'package.json'))
     if (manifest?.name !== undefined) manifests.push({ dir, manifest })
   }
   const names = new Set(manifests.map(({ manifest }) => manifest.name))
-  return manifests.map(({ dir, manifest }) => ({
-    name: manifest.name as string,
-    dir,
-    workspaceDependencies: [...new Set([...Object.keys(manifest.dependencies ?? {}), ...Object.keys(manifest.peerDependencies ?? {})])]
-      .filter((dependency) => names.has(dependency))
-      .sort(),
-  }))
+  const projects: Project[] = []
+  for (const { dir, manifest } of manifests) {
+    const sourceImports = await importedPackages(join(dir, 'src'))
+    const devFromSource = Object.keys(manifest.devDependencies ?? {}).filter((dependency) => sourceImports.has(dependency))
+    projects.push({
+      name: manifest.name as string,
+      dir,
+      workspaceDependencies: [...new Set([...Object.keys(manifest.dependencies ?? {}), ...Object.keys(manifest.peerDependencies ?? {}), ...devFromSource])]
+        .filter((dependency) => names.has(dependency) && dependency !== manifest.name)
+        .sort(),
+    })
+  }
+  return projects
+}
+
+const IMPORT_SPECIFIER = /(?:from\s+|import\(\s*|^\s*import\s+)['"](@game-agent\/[a-z0-9-]+)/gm
+
+/** Workspace package names imported by the TypeScript files under a directory. */
+async function importedPackages(dir: string): Promise<Set<string>> {
+  const found = new Set<string>()
+  const entries = await readdir(dir, { withFileTypes: true, recursive: true }).catch(() => [])
+  for (const entry of entries) {
+    if (!entry.isFile() || !/\.(ts|tsx|mts|cts)$/.test(entry.name)) continue
+    const text = await readFile(join(entry.parentPath, entry.name), 'utf8')
+    for (const match of text.matchAll(IMPORT_SPECIFIER)) if (match[1] !== undefined) found.add(match[1])
+  }
+  return found
 }
 
 function stringify(value: unknown): string {

@@ -1,0 +1,30 @@
+{
+  "name": "@game-agent/ptc-runtime",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Abstract PTC execution seam (ctx.ptcRuntime)",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    }
+  },
+  "peerDependencies": {
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/error": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/sandbox": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/attachment": "workspace:*",
+    "@game-agent/error": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/sandbox": "workspace:*"
+  }
+}

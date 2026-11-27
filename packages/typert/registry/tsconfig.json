@@ -11,6 +11,9 @@
   "references": [
     {
       "path": "../../kernel/kernel"
+    },
+    {
+      "path": "../protocol"
     }
   ]
 }

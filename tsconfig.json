@@ -34,6 +34,9 @@
       "path": "./packages/boot/hmr"
     },
     {
+      "path": "./packages/core/agent"
+    },
+    {
       "path": "./packages/core/agent-runtime"
     },
     {
@@ -46,6 +49,9 @@
       "path": "./packages/core/session"
     },
     {
+      "path": "./packages/core/system-prompt"
+    },
+    {
       "path": "./packages/credentials/authorization"
     },
     {
@@ -56,6 +62,15 @@
     },
     {
       "path": "./packages/fleet/fleet"
+    },
+    {
+      "path": "./packages/fs/fs"
+    },
+    {
+      "path": "./packages/fs/fs-local"
+    },
+    {
+      "path": "./packages/fs/fs-observation-policy"
     },
     {
       "path": "./packages/fs/fs-patch"
@@ -97,6 +112,12 @@
       "path": "./packages/llm/model-openai-compatible"
     },
     {
+      "path": "./packages/native/system"
+    },
+    {
+      "path": "./packages/preset/persona"
+    },
+    {
       "path": "./packages/protocol/contracts"
     },
     {
@@ -109,7 +130,55 @@
       "path": "./packages/protocol/intent-ledger"
     },
     {
+      "path": "./packages/ptc-runtime/ptc-runtime"
+    },
+    {
+      "path": "./packages/sandbox/sandbox"
+    },
+    {
+      "path": "./packages/sandbox/sandbox-local"
+    },
+    {
+      "path": "./packages/sandbox/sandbox-windows-acl"
+    },
+    {
       "path": "./packages/session/session-format"
+    },
+    {
+      "path": "./packages/session/session-persistence"
+    },
+    {
+      "path": "./packages/session/session-projection"
+    },
+    {
+      "path": "./packages/session/session-projection-cache"
+    },
+    {
+      "path": "./packages/session/session-stats"
+    },
+    {
+      "path": "./packages/session/session-turn-outline"
+    },
+    {
+      "path": "./packages/settings/settings"
+    },
+    {
+      "path": "./packages/shell/bash-local"
+    },
+    {
+      "path": "./packages/shell/pwsh-local"
+    },
+    {
+      "path": "./packages/shell/shell"
+    },
+    {
+      "path": "./packages/skill/skill"
+    },
+    {
+      "path": "./packages/spill/spill"
+    },
+    {
+      "path": "./packages/spill/spill-local"
     },
     {
       "path": "./packages/storage/storage"
@@ -131,6 +200,9 @@
     },
     {
       "path": "./packages/subprocess/win32-process"
+    },
+    {
+      "path": "./packages/telemetry/otel"
     },
     {
       "path": "./packages/telemetry/trace"
@@ -209,6 +281,9 @@
     },
     {
       "path": "./packages/util/workspace-path"
+    },
+    {
+      "path": "./packages/workspace/workspace"
     },
     {
       "path": "./apps/cli"

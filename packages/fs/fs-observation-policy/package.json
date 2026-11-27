@@ -1,0 +1,29 @@
+{
+  "name": "@game-agent/fs-observation-policy",
+  "version": "0.0.0",
+  "private": true,
+  "description": "File-context policy plugin — observed-state, read-before-edit, and version-guarded write/edit added over the ctx.fs provider seam through the fs/* event gate (no service API)",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "@game-agent/source": "./src/index.ts",
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": {
+      "@game-agent/source": "./src/*"
+    },
+    "./locale/*.json": "./locale/*.json"
+  },
+  "peerDependencies": {
+    "@game-agent/fs": "workspace:*",
+    "@game-agent/kernel": "workspace:*"
+  },
+  "devDependencies": {
+    "@game-agent/brand": "workspace:*",
+    "@game-agent/fs": "workspace:*",
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/llm": "workspace:*"
+  }
+}
