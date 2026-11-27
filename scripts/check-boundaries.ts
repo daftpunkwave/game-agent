@@ -14,6 +14,8 @@ interface WorkspacePackage {
   readonly devDependencies: ReadonlySet<string>
   /** Subpaths declared in `exports`, such as `./types`; `./src/*` is not a public entry. */
   readonly entries: ReadonlySet<string>
+  /** Whether `exports` maps `./src/*` for the source condition, which lets tests reach individual modules. */
+  readonly exposesSource: boolean
 }
 
 /**
@@ -100,6 +102,7 @@ async function loadPackage(dir: string, group: string): Promise<WorkspacePackage
     : ['.']
   return {
     entries: new Set(entries),
+    exposesSource: typeof exportsField === 'object' && exportsField !== null && Object.hasOwn(exportsField, './src/*'),
     name: manifest.name,
     group,
     dir,
@@ -174,7 +177,10 @@ async function main(): Promise<number> {
           const declared = item.dependencies.has(name) || ((kind === 'tests' || typeOnly) && item.devDependencies.has(name))
           if (!declared) violations.push(`${where}: ${name} is imported but not declared in ${kind === 'src' ? 'dependencies' : 'dependencies or devDependencies'}`)
           const target = workspace.get(name)
-          if (target !== undefined && specifier !== name && !target.entries.has(`.${specifier.slice(name.length)}`)) {
+          const subpath = `.${specifier.slice(name.length)}`
+          // Tests may reach individual source modules (for example to mock them) when the package maps ./src/*.
+          const testSourceImport = kind === 'tests' && target?.exposesSource === true && subpath.startsWith('./src/')
+          if (target !== undefined && specifier !== name && !target.entries.has(subpath) && !testSourceImport) {
             violations.push(`${where}: ${specifier} is not an entry declared in the exports of ${name}`)
           }
           const targetGroup = target?.group
