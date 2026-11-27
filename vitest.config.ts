@@ -92,6 +92,12 @@ const PLATFORM_EXCLUDED = process.platform === 'win32'
         : [],
     ]
 
+/**
+ * Per-test deadline. Hosted Windows runners need far longer than the 5-second default for the first SQLite or
+ * process-backed case of a file, which pays the native binding and process start-up cost.
+ */
+const TEST_TIMEOUT_MS = process.platform === 'win32' && process.env.GITHUB_ACTIONS === 'true' ? 30_000 : 5_000
+
 const shared = {
   plugins: [standardDecorators()],
   resolve: { conditions: [SOURCE_CONDITION, 'module', 'browser', 'development|production'] },
@@ -115,6 +121,8 @@ export default defineConfig({
           exclude: ['**/node_modules/**', ...PROCESS_BOUND, ...PLATFORM_EXCLUDED],
           environment: 'node',
           pool: 'forks',
+          testTimeout: TEST_TIMEOUT_MS,
+          hookTimeout: Math.max(TEST_TIMEOUT_MS, 10_000),
           setupFiles: ['./scripts/test-setup.ts'],
         },
       },
@@ -126,6 +134,8 @@ export default defineConfig({
           exclude: ['**/node_modules/**', ...PLATFORM_EXCLUDED],
           environment: 'node',
           pool: 'forks',
+          testTimeout: TEST_TIMEOUT_MS,
+          hookTimeout: Math.max(TEST_TIMEOUT_MS, 10_000),
           execArgv: ['--experimental-vm-modules'],
           setupFiles: ['./scripts/test-setup.ts'],
         },
