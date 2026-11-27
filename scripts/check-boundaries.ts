@@ -16,23 +16,22 @@ interface WorkspacePackage {
 
 /** Package groups each group may import at runtime (tests may use any declared dependency). */
 const ALLOWED_GROUPS: Readonly<Record<string, readonly string[]>> = {
-  util: ['util'],
-  protocol: ['util', 'protocol', 'telemetry'],
-  telemetry: ['util', 'protocol'],
-  behavior: ['util', 'protocol'],
-  core: ['util', 'protocol', 'telemetry', 'behavior', 'core'],
-  llm: ['util', 'protocol', 'core'],
-  transport: ['util', 'protocol'],
-  fleet: ['util', 'protocol', 'behavior'],
-  boot: ['util', 'protocol', 'telemetry', 'behavior', 'core'],
-  bundle: ['util', 'protocol', 'behavior', 'boot'],
-  apps: ['util', 'protocol', 'telemetry', 'behavior', 'core', 'llm', 'transport', 'fleet', 'boot', 'bundle'],
+  kernel: ['kernel'],
+  util: ['kernel', 'util'],
+  protocol: ['kernel', 'util', 'protocol', 'telemetry'],
+  telemetry: ['kernel', 'util', 'protocol'],
+  behavior: ['kernel', 'util', 'protocol'],
+  core: ['kernel', 'util', 'protocol', 'telemetry', 'behavior', 'core'],
+  llm: ['kernel', 'util', 'protocol', 'core'],
+  transport: ['kernel', 'util', 'protocol'],
+  fleet: ['kernel', 'util', 'protocol', 'behavior'],
+  boot: ['kernel', 'util', 'protocol', 'telemetry', 'behavior', 'core'],
+  apps: ['kernel', 'util', 'protocol', 'telemetry', 'behavior', 'core', 'llm', 'transport', 'fleet', 'boot'],
 }
 
 /** Third-party packages confined to specific groups. */
 const CONFINED_IMPORTS: readonly { readonly prefix: string; readonly groups: readonly string[] }[] = [
   { prefix: '@modelcontextprotocol/', groups: ['transport'] },
-  { prefix: '@deepseek-ai/cordis', groups: ['boot', 'bundle', 'apps'] },
 ]
 
 /** Node modules that cognition packages must not touch. */
@@ -64,12 +63,13 @@ async function loadPackage(dir: string, group: string): Promise<WorkspacePackage
     name: string
     dependencies?: Record<string, string>
     devDependencies?: Record<string, string>
+    peerDependencies?: Record<string, string>
   }
   return {
     name: manifest.name,
     group,
     dir,
-    dependencies: new Set(Object.keys(manifest.dependencies ?? {})),
+    dependencies: new Set([...Object.keys(manifest.dependencies ?? {}), ...Object.keys(manifest.peerDependencies ?? {})]),
     devDependencies: new Set(Object.keys(manifest.devDependencies ?? {})),
   }
 }
@@ -132,7 +132,8 @@ async function main(): Promise<number> {
             violations.push(`${where}: import the package under test relatively, not as ${specifier}`)
             continue
           }
-          const declared = item.dependencies.has(name) || (kind === 'tests' && item.devDependencies.has(name))
+          const typeOnly = /^\s*(?:import|export)\s+type\s/.test(match[0])
+          const declared = item.dependencies.has(name) || ((kind === 'tests' || typeOnly) && item.devDependencies.has(name))
           if (!declared) violations.push(`${where}: ${name} is imported but not declared in ${kind === 'src' ? 'dependencies' : 'dependencies or devDependencies'}`)
           if (name.startsWith('@game-agent/') && specifier !== name) violations.push(`${where}: deep import ${specifier}; use the package entry ${name}`)
           const targetGroup = workspaceGroups.get(name)

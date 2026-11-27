@@ -7,5 +7,37 @@
     "apps/*/tests/**/*.ts",
     "scripts/**/*.ts",
     "vitest.config.ts"
+  ],
+  "exclude": [
+    "packages/kernel/*/src/**"
+  ],
+  "references": [
+    {
+      "path": "./packages/kernel/kernel"
+    },
+    {
+      "path": "./packages/kernel/kit"
+    },
+    {
+      "path": "./packages/kernel/schema"
+    },
+    {
+      "path": "./packages/kernel/loader"
+    },
+    {
+      "path": "./packages/kernel/include"
+    },
+    {
+      "path": "./packages/kernel/group"
+    },
+    {
+      "path": "./packages/kernel/timer"
+    },
+    {
+      "path": "./packages/kernel/logger-console"
+    },
+    {
+      "path": "./packages/kernel/hmr"
+    }
   ]
 }

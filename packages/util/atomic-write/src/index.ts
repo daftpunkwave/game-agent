@@ -1,7 +1,7 @@
 /**
  * Responsibilities: Replace a file atomically so concurrent readers observe either the previous or the next complete content.
  * Contracts: Writes a random-suffix sibling with exclusive create and the requested mode, then renames it over the target.
- * Constraints: Crash durability (fsync) is out of scope; Windows transient rename failures are retried a bounded number of times. Adapted from DeepSeek Harness `packages/util/atomic-write` (MIT).
+ * Constraints: Crash durability (fsync) is out of scope; Windows transient rename failures are retried a bounded number of times.
  */
 import { randomBytes } from 'node:crypto'
 import { mkdir, rename, rm, writeFile } from 'node:fs/promises'

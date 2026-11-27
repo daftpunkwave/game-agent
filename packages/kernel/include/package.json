@@ -1,0 +1,19 @@
+{
+  "name": "@game-agent/kernel-include",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Includes and patches configuration files from other configuration files",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@game-agent/kit": "workspace:*",
+    "yaml": "^2.9.0"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*"
+  }
+}

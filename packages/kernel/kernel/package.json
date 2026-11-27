@@ -1,0 +1,16 @@
+{
+  "name": "@game-agent/kernel",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Plugin kernel: services, scoped lifecycles, dependency injection, events, and reversible effects",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@game-agent/kit": "workspace:*",
+    "@standard-schema/spec": "^1.1.0"
+  }
+}

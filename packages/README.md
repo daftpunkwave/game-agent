@@ -4,6 +4,15 @@ Workspace packages live at `packages/<group>/<name>` and are published under the
 
 | Group | May depend on | Package | Responsibility |
 |---|---|---|---|
+| `kernel` | `kernel` | `kernel` | Services, scoped lifecycles, dependency injection, events, reversible effects |
+| | | `kit` | Small general-purpose utilities |
+| | | `schema` | Composable configuration schemas |
+| | | `loader` | Loads and reloads plugins from configuration files |
+| | | `include` | Includes and patches configuration files |
+| | | `group` | Groups plugin entries in configuration |
+| | | `timer` | Timers released with the owning plugin |
+| | | `logger-console` | Console output for the kernel logger |
+| | | `hmr` | Hot module replacement for plugins during development |
 | `util` | `util` | `errors` | Base error with a stable `code` |
 | | | `deque` | Circular double-ended queue |
 | | | `atomic-write` | Atomic file replacement |
@@ -20,11 +29,10 @@ Workspace packages live at `packages/<group>/<name>` and are published under the
 | `transport` | `util`, `protocol` | `transport-mcp` | MCP access (the only package that imports the MCP SDK) |
 | | | `transport-simulated` | In-process simulated game |
 | `fleet` | `util`, `protocol`, `behavior` | `fleet` | Profiles, template versions, rollout, audit, file storage |
-| `boot` | `util`, `protocol`, `telemetry`, `behavior`, `core` | `app` | Cordis host service and per-agent scheduler |
-| `bundle` | `util`, `protocol`, `behavior`, `boot` | `dsh` | DeepSeek Harness preset and `game_agent` tool |
+| `boot` | `kernel`, `util`, `protocol`, `telemetry`, `behavior`, `core` | `app` | Kernel host service and per-agent scheduler |
 
 Additional rules:
 
 - `behavior` and `core` source must not import network, filesystem, or process modules.
-- `@deepseek-ai/cordis` is imported only by `boot`, `bundle`, and `apps`; `@modelcontextprotocol/*` only by `transport`.
+- Every group may import the `kernel` group; `kernel` imports nothing else from the workspace. `@modelcontextprotocol/*` is imported only by `transport`.
 - Packages are imported through their entry point only; deep imports and undeclared dependencies are rejected.

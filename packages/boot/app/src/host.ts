@@ -1,14 +1,14 @@
 /**
- * Responsibilities: Provide the `gameAgents` Cordis service that starts, schedules, lists, and stops agent runtimes inside one process (one shard).
+ * Responsibilities: Provide the `gameAgents` kernel service that starts, schedules, lists, and stops agent runtimes inside one process (one shard).
  * Contracts: Each agent gets its own scheduler; faults are traced per agent; unloading the plugin stops every agent it started.
  * Constraints: Composition only; transports, models, and policies are supplied by the caller in `AgentRuntimeOptions`.
  */
-import { Context, Service } from '@deepseek-ai/cordis'
+import { Context, Service } from '@game-agent/kernel'
 import { AgentRuntime, type AgentRuntimeOptions, type AgentStatus } from '@game-agent/agent-runtime'
 import type { Clock } from '@game-agent/ports'
 import { AgentScheduler, type TimerPort } from './scheduler.ts'
 
-declare module '@deepseek-ai/cordis' {
+declare module '@game-agent/kernel' {
   interface Context {
     gameAgents: GameAgentHost
   }

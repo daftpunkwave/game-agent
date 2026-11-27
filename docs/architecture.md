@@ -69,7 +69,7 @@ A `decision` node calls `DecisionEngine.decide` exactly once with: a fixed syste
 
 ## 8. Composition and scheduling
 
-The kernel is Cordis (`@deepseek-ai/cordis`). `GameAgentHost` is a Cordis service registered as `ctx.gameAgents`; it starts agent runtimes and gives each an `AgentScheduler` that:
+The kernel is the in-repo `@game-agent/kernel` package (with `schema`, `loader`, `include`, `group`, `timer`, `logger-console`, and `hmr` in the same group). `GameAgentHost` is a kernel service registered as `ctx.gameAgents`; it starts agent runtimes and gives each an `AgentScheduler` that:
 
 - steps immediately when the runtime reports new events or finished work,
 - otherwise steps at the tree's `wakeAt` or at a heartbeat, whichever comes first,
@@ -78,11 +78,7 @@ The kernel is Cordis (`@deepseek-ai/cordis`). `GameAgentHost` is a Cordis servic
 
 Unloading the plugin stops every agent it started.
 
-## 9. Local play inside DeepSeek Harness
-
-`@game-agent/dsh-bundle` is a Cordis plugin loaded through a DeepSeek Harness profile. It registers a `game-agent` session preset built from the base preset's plugin rows plus the game connection rows (for example DeepSeek Harness's MCP client pointed at a local game), and a `game_agent` tool for inspecting agents and validating or outlining trees. Choosing the preset when starting a new conversation creates a game-playing session. The bundle has been verified against Cordis with stand-ins for the preset and tool services, not yet against a running DeepSeek Harness build.
-
-## 10. Fleet operations
+## 9. Fleet operations
 
 `@game-agent/fleet` keeps a plain JSON document of agent profiles and published tree templates:
 
@@ -91,6 +87,6 @@ Unloading the plugin stops every agent it started.
 - **Templates** are immutable once published. Rollout is `pinned` by default; `staged` moves a stable, hash-selected percentage of agents to a newer version, so one bad edit never reaches every agent at once.
 - **Audit.** Every mutating command records operator, action, affected agents, and details.
 
-## 11. Observability
+## 10. Observability
 
 Every gateway stage, node outcome, decision, reconciliation, and fault produces a `TraceRecord` with an agent id, a category (`tick`, `intent`, `settlement`, `ingress`, `decision`, `operator`, `fault`), game-defined tags (for example `resource-gain`, `combat`, `spending`), and structured details. Sinks keep records in memory or append them to JSON Lines files; `filterTrace` selects by agent, category, tag, and time.
