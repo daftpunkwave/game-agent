@@ -67,12 +67,12 @@ function manifestOf(ctx: Context, name: string, parentURL: string): object | und
  * @param ctx Context carrying launcher-owned profile facts; non-profile contexts retain their rows.
  * @param entries Complete effective entry list, after patch composition.
  * @param parentURL Resolution base of the tree that will import these rows.
- * @param binName Diagnostic prefix for a denied row; defaults to `gameAgent`.
+ * @param binName Diagnostic prefix for a denied row; defaults to `game-agent`.
  * @returns Detached rows with incompatible entries denied; reads the profile compatibility file once.
  * @throws For malformed compatibility permissions or a profile composition without a resolution base.
  */
 export function prepareProfileEntries(
-  ctx: Context, entries: readonly EntryOptions[], parentURL: string | undefined, binName = 'gameAgent',
+  ctx: Context, entries: readonly EntryOptions[], parentURL: string | undefined, binName = 'game-agent',
 ): EntryOptions[] {
   // Admission runs before the composed tree mounts, so no plugin-owned logger exporter exists yet;
   // composition-stage diagnostics go to stderr like the profile launcher's skipped-bundle report.
@@ -108,7 +108,7 @@ function preflight(
       // Requirement metadata that cannot be read or validated is refused rather than silently admitted.
       /* v8 ignore next -- every reader and parser used here rejects with an Error. */
       const detail = error instanceof Error ? error.message : String(error)
-      return `its declared gameAgent requirements cannot be validated: ${detail}`
+      return `its declared game-agent requirements cannot be validated: ${detail}`
     }
   }
   const deny = (row: EntryOptions, reason: string): void => {
@@ -174,11 +174,11 @@ function preflight(
  * @param ctx Profile context prepared by the launcher.
  * @param patches Original ordered profile patches; these remain unchanged.
  * @param parentURL Root Include's resolution base.
- * @param binName Diagnostic prefix for a denied row; defaults to `gameAgent`.
+ * @param binName Diagnostic prefix for a denied row; defaults to `game-agent`.
  * @returns One prepared insertion patch for profiles, or the original patches for non-profile callers.
  */
 export function prepareProfilePatches(
-  ctx: Context, patches: PatchOptions[], parentURL: string, binName = 'gameAgent',
+  ctx: Context, patches: PatchOptions[], parentURL: string, binName = 'game-agent',
 ): PatchOptions[] {
   if (ctx.get('profileContext') === undefined) return patches
   const entries = applyEntryPatches([], structuredClone(patches), patchWarning(ctx)).data

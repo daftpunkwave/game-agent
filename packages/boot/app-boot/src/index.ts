@@ -1,5 +1,5 @@
 /**
- * Shared boot glue for `gameAgent` profiles, including the CLI packaged by the Python runtime wheel: load the gitignored
+ * Shared boot glue for `game-agent` profiles, including the CLI packaged by the Python runtime wheel: load the gitignored
  * `.env`, install the fail-loud Loader guards, resolve the config path (snapshot-aware), load the
  * optional user patch layers from the game-agent home (`~/.game-agent`), expose its path resolver to
  * config expressions, and drive the Kernel Loader against a leaf `game-agent.yml` until the tree settles.
@@ -752,7 +752,7 @@ function groupedDump(
  * @param patches - initial app and user patches, applied in order.
  * @param bareModuleBaseUrl - optional installed-host base for bare package
  * names; relative names continue to resolve beside the configuration file.
- * @param binName - diagnostic prefix for a profile plugin denied by compatibility policy; defaults to `gameAgent`.
+ * @param binName - diagnostic prefix for a profile plugin denied by compatibility policy; defaults to `game-agent`.
  * @returns the created root Include entry, or `undefined` when a surface
  * disposed the whole tree (taking the Loader service with it) while the
  * entry creation was in flight.
@@ -762,7 +762,7 @@ export async function mountRootInclude(
   absoluteConfigPath: string,
   patches: readonly PatchOptions[] = [],
   bareModuleBaseUrl?: string,
-  binName = 'gameAgent',
+  binName = 'game-agent',
 ): Promise<Entry | undefined> {
   ctx.loader.builtins.include = bareModuleBaseUrl === undefined
     ? Include

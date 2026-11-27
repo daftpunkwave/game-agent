@@ -301,7 +301,7 @@ describe('loadProfile', () => {
     expect(profile.layers.map(layer => layer.packageName)).toEqual(['bundle-a'])
   })
 
-  it('resolves each gameAgent.profile.bundles entry to its patch layer in order, plus the user layer', () => {
+  it('resolves each game-agent.profile.bundles entry to its patch layer in order, plus the user layer', () => {
     const anchor = stageInstallation({
       'bundle-a': { patch: '- insert:\n    - id: a\n      name: pkg-a\n' },
       'bundle-b': { patch: '- id: a\n  config:\n    v: 2\n' },
@@ -318,7 +318,7 @@ describe('loadProfile', () => {
       profile.patches,
     ])
     expect(entries).toEqual([{ id: 'a', name: 'pkg-a', config: { v: 3 } }])
-    // A hand-made profile without the user layer file or gameAgent section: empty layers, no throw.
+    // A hand-made profile without the user layer file or game-agent section: empty layers, no throw.
     rmSync(join(dir, PROFILE_PATCH_FILENAME))
     expect(loadProfile('t', 'demo', anchor, home).patches).toEqual([])
     writeProfileManifest(dir, { name: 'bare' })
@@ -326,7 +326,7 @@ describe('loadProfile', () => {
     expect(bare.layers).toEqual([])
   })
 
-  it('applies a gameAgent.bundle.patch list in order, anchoring inserted paths beside each file', () => {
+  it('applies a game-agent.bundle.patch list in order, anchoring inserted paths beside each file', () => {
     const anchor = stageInstallation({ 'multi': { patch: '[]\n' }, 'broken': { patch: '[]\n' } })
     const bundleDir = join(anchor, '..', 'node_modules', 'multi')
     mkdirSync(join(bundleDir, 'layers'), { recursive: true })
@@ -353,7 +353,7 @@ describe('loadProfile', () => {
       { id: 'b', name: pathToFileURL(join(bundleDir, 'layers', 'local.js')).href },
     ])
     expect(profile.skippedBundles).toEqual([
-      { packageName: 'broken', reason: 'Error: gameAgent.bundle.patch must be a file path or a list of file paths' },
+      { packageName: 'broken', reason: 'Error: game-agent.bundle.patch must be a file path or a list of file paths' },
     ])
   })
 
@@ -365,53 +365,6 @@ describe('loadProfile', () => {
     loadProfile('t', 'web', anchor, home)
     expect(readProfileManifest('t', resolveProfileDir('web', home)).gameAgent?.profile?.bundles)
       .toEqual([...PROFILE_TEMPLATES.web?.bundles ?? []])
-  })
-
-  it('normalizes only the exact installation-owned headless bundle tuple', () => {
-    const anchor = stageInstallation({
-      '@game-agent/base': { patch: '[]\n' },
-      '@game-agent/web-app': { patch: '[]\n' },
-      '@game-agent/headless': { patch: '[]\n' },
-      'custom-bundle': { patch: '[]\n' },
-    })
-    const home = tmp()
-    const stock = resolveProfileDir('headless', home)
-    initProfile(stock, [
-      '@game-agent/base', '@game-agent/web-app', '@game-agent/headless',
-    ])
-    const retiredManifest = readProfileManifest('t', stock)
-    writeProfileManifest(stock, retiredManifest)
-    loadProfile('t', 'headless', anchor, home)
-    expect(readProfileManifest('t', stock).gameAgent?.profile).toEqual({
-      bundles: ['@game-agent/base', '@game-agent/headless'],
-    })
-
-    const customHome = tmp()
-    const custom = resolveProfileDir('headless', customHome)
-    initProfile(custom, [
-      '@game-agent/base', '@game-agent/web-app', '@game-agent/headless', 'custom-bundle',
-    ])
-    loadProfile('t', 'headless', anchor, customHome)
-    expect(readProfileManifest('t', custom).gameAgent?.profile?.bundles).toEqual([
-      '@game-agent/base', '@game-agent/web-app', '@game-agent/headless', 'custom-bundle',
-    ])
-  })
-
-  it.each(['@game-agent/experimental-schedule-bundle', '@game-agent/experimental-agent-team-profile'])('removes retired %s and keeps the rest of an application-owned manifest', (retired) => {
-    const anchor = stageInstallation({
-      '@game-agent/base': { patch: '[]\n' },
-      'custom-bundle': { patch: '[]\n' },
-    })
-    const dir = join(tmp(), 'app-profile')
-    initProfile(dir, ['@game-agent/base', retired, 'custom-bundle'])
-    writeProfileManifest(dir, { ...readProfileManifest('t', dir), dependencies: { 'custom-bundle': '^1.0.0' } })
-    const profile = loadProfileDirectory('t', dir, anchor)
-    expect(profile.skippedBundles).toEqual([])
-    expect(profile.layers.map(layer => layer.packageName)).toEqual(['@game-agent/base', 'custom-bundle'])
-    expect(readProfileManifest('t', dir)).toMatchObject({
-      dependencies: { 'custom-bundle': '^1.0.0' },
-      gameAgent: { profile: { bundles: ['@game-agent/base', 'custom-bundle'] } },
-    })
   })
 
   it.each(['missing package', 'invalid manifest', 'not a bundle', 'missing patch', 'invalid patch'])(
@@ -459,7 +412,7 @@ describe('loadProfile', () => {
     },
   )
 
-  it('skips a bundle whose own gameAgent peers are incompatible until the profile exempts that exact pair', () => {
+  it('skips a bundle whose own game-agent peers are incompatible until the profile exempts that exact pair', () => {
     const anchor = stageInstallation({
       guarded: { patch: '- insert: [{ id: a, name: pkg-a }]\n' },
       kept: { patch: '- insert: [{ id: b, name: pkg-b }]\n' },
@@ -470,13 +423,13 @@ describe('loadProfile', () => {
     }))
     const dir = resolveProfileDir('demo', tmp())
     initProfile(dir, ['guarded', 'kept'])
-    const denied = loadProfileDirectory('gameAgent', dir, anchor)
+    const denied = loadProfileDirectory('game-agent', dir, anchor)
     expect(denied.layers.map(layer => layer.packageName)).toEqual(['kept'])
     expect(denied.skippedBundles).toEqual([{ packageName: 'guarded', reason: expect.stringContaining(
-      `Error: Plugin guarded@0.0.0 is incompatible with gameAgent ${getGameAgentRuntimeVersion()}`,
+      `Error: Plugin guarded@0.0.0 is incompatible with game-agent ${getGameAgentRuntimeVersion()}`,
     ) as string }])
     writeFileSync(join(dir, PROFILE_COMPATIBILITY_FILENAME), JSON.stringify({ 'guarded@0.0.0': [getGameAgentRuntimeVersion()] }))
-    expect(loadProfileDirectory('gameAgent', dir, anchor).layers.map(layer => layer.packageName)).toEqual(['guarded', 'kept'])
+    expect(loadProfileDirectory('game-agent', dir, anchor).layers.map(layer => layer.packageName)).toEqual(['guarded', 'kept'])
   })
 
   it('still rejects invalid profile manifests and user patches', () => {

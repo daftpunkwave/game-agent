@@ -148,7 +148,7 @@ describe('include refresh with overlay patches', () => {
 
 describe('include patches layered over one base', () => {
   it('lets a later patch configure or disable a row an earlier patch inserted', async () => {
-    // The bundle/user-layer/`--patch` composition: `gameAgent` includes one root
+    // The bundle/user-layer/`--patch` composition: `game-agent` includes one root
     // and applies each source as its own patch list at the SAME include
     // level, because patches never cross an include boundary. A later layer
     // must therefore be able to reach a row an earlier layer inserted, or

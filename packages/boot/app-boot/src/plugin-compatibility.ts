@@ -1,15 +1,15 @@
-/** Evaluate plugin gameAgent requirements (`engines.gameAgent`, else gameAgent peers) without importing plugin code. */
+/** Evaluate plugin game-agent requirements (`engines.gameAgent`, else game-agent peers) without importing plugin code. */
 
 import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import semver from 'semver'
 
-/** Unmet gameAgent requirements and the exact plugin/runtime exemption decision. */
+/** Unmet game-agent requirements and the exact plugin/runtime exemption decision. */
 export interface PluginCompatibility {
   name: string
   version: string
   runtimeVersion: string
-  /** Only requirements the running gameAgent version does not satisfy: `engines.gameAgent`, or gameAgent peer package names. */
+  /** Only requirements the running game-agent version does not satisfy: `engines.gameAgent`, or game-agent peer package names. */
   requirements: Record<string, string>
   exempted: boolean
 }
@@ -23,7 +23,7 @@ function objectOf(value: unknown, field: string): Record<string, unknown> {
 
 function runtimeVersionOf(value: unknown): string {
   if (typeof value !== 'string' || semver.valid(value) === null) {
-    throw new Error(`Invalid gameAgent runtime version: ${JSON.stringify(value)}; expected a semantic version`)
+    throw new Error(`Invalid game-agent runtime version: ${JSON.stringify(value)}; expected a semantic version`)
   }
   return value
 }
@@ -31,7 +31,7 @@ function runtimeVersionOf(value: unknown): string {
 function identityField(manifest: Record<string, unknown>, field: 'name' | 'version'): string {
   const value = Object.hasOwn(manifest, field) ? manifest[field] : undefined
   if (typeof value !== 'string' || value.trim() === '') {
-    throw new Error(`Plugin manifest ${field} must be a non-empty string when gameAgent requirements are unmet`)
+    throw new Error(`Plugin manifest ${field} must be a non-empty string when game-agent requirements are unmet`)
   }
   return value
 }
@@ -74,13 +74,13 @@ function unmetRequirements(fields: Record<string, unknown>, runtimeVersion: stri
 }
 
 /**
- * Check the plugin's gameAgent requirements against the runtime. An own `engines.gameAgent` range decides alone and
+ * Check the plugin's game-agent requirements against the runtime. An own `engines.gameAgent` range decides alone and
  * peerDependencies are ignored; otherwise every @game-agent/cli or @game-agent/* peer must match.
  * Prereleases participate in ranges. For peers only, workspace:^, workspace:~, and workspace:* refer to
  * the current runtime; other empty or invalid ranges, including any workspace: `engines.gameAgent`, are unmet.
  * @param manifest - parsed plugin package.json; inherited fields are ignored.
  * @param exemptions - exact plugin name@version keys mapped to exact runtime versions.
- * @param runtimeVersion - running gameAgent version, defaulting to this app-boot package.
+ * @param runtimeVersion - running game-agent version, defaulting to this app-boot package.
  * @returns unmet requirements and exemption status, or undefined when every requirement is met.
  * @throws for malformed manifest engines or peer fields, invalid runtime versions, or missing identity on a mismatch.
  */
@@ -109,9 +109,9 @@ export function evaluatePluginCompatibility(
  */
 export function pluginCompatibilityWarning(issue: PluginCompatibility): string {
   const key = `${issue.name}@${issue.version}`
-  return `Plugin ${key} is incompatible with gameAgent ${issue.runtimeVersion}: requirements ${JSON.stringify(issue.requirements)}. `
+  return `Plugin ${key} is incompatible with game-agent ${issue.runtimeVersion}: requirements ${JSON.stringify(issue.requirements)}. `
     + 'Running it may cause crashes or data loss. '
-    + 'Update the plugin or install a plugin version compatible with this gameAgent runtime. '
-    + `To accept this risk explicitly, grant the exact-version exemption for ${key} on gameAgent ${issue.runtimeVersion} with \`gameAgent plugin allow-version\` or the plugin manager, then retry the installation or restart gameAgent. `
+    + 'Update the plugin or install a plugin version compatible with this game-agent runtime. '
+    + `To accept this risk explicitly, grant the exact-version exemption for ${key} on game-agent ${issue.runtimeVersion} with \`game-agent plugin allow-version\` or the plugin manager, then retry the installation or restart game-agent. `
     + `Exact-version exemption: ${issue.exempted ? 'active' : 'not active'}.`
 }

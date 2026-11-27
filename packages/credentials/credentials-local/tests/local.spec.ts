@@ -53,8 +53,8 @@ describe('resolveSpec', () => {
   })
 
   it('lets an explicit path win over the home', () => {
-    const spec = resolveSpec({ path: '/etc/gameAgent/creds.yaml', gameAgentHome: '/ignored', watch: false, debounceMs: 5 })
-    expect(spec).toEqual({ filename: resolve('/etc/gameAgent/creds.yaml'), watch: false, debounceMs: 5 })
+    const spec = resolveSpec({ path: '/etc/game-agent/creds.yaml', gameAgentHome: '/ignored', watch: false, debounceMs: 5 })
+    expect(spec).toEqual({ filename: resolve('/etc/game-agent/creds.yaml'), watch: false, debounceMs: 5 })
   })
 })
 

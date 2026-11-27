@@ -1,20 +1,20 @@
 /**
  * Profile discovery, initialization, and patch-layer composition for the
- * `gameAgent --profile` launcher family.
+ * `game-agent --profile` launcher family.
  *
  * A profile is a directory under `$GAME_AGENT_HOME/profiles/<name>` holding a
  * `package.json` (out-of-tree plugin dependencies plus the profile manifest
- * `gameAgent.profile` with its ordered `bundles` list) and a `game-agent.patch.yml`
+ * `game-agent.profile` with its ordered `bundles` list) and a `game-agent.patch.yml`
  * (the user's own patch layer, applied after every bundle layer). Bundles are
  * npm packages whose manifest declares
- * `"gameAgent": { "bundle": { "patch": "./game-agent.patch.yml" } }` (one file, or an
+ * `"game-agent": { "bundle": { "patch": "./game-agent.patch.yml" } }` (one file, or an
  * ordered list of files); the tree is composed by applying each bundle's patch
- * lists in `gameAgent.profile.bundles` order over an empty entry list, then the
+ * lists in `game-agent.profile.bundles` order over an empty entry list, then the
  * profile's own patches, then any launcher layers (`--patch` files and
  * flag-derived patches).
  *
  * Module resolution is two-anchor by construction: a bundle name resolves
- * first from the gameAgent installation (the launcher's own package), then from the
+ * first from the game-agent installation (the launcher's own package), then from the
  * profile directory. Pnpm-managed entries in the profile's `node_modules`
  * resolve first. The runtime resolution supplies packages carried by the
  * installation and selected bundles to Node's ESM and CommonJS resolvers.
@@ -47,14 +47,14 @@ export type ProfileManifest = Partial<GameAgentPackageManifest>
 /**
  * The patch files a bundle declares, as written: one file for a string
  * `patch`, the listed files in order for an array.
- * @param bundle - the bundle's `gameAgent.bundle` declaration, as read from package.json.
+ * @param bundle - the bundle's `game-agent.bundle` declaration, as read from package.json.
  * @returns the package-relative patch file paths in application order.
  * @throws {Error} when `patch` is neither a string nor a list of strings.
  */
 export function bundlePatchFiles(bundle: GameAgentBundleManifest): string[] {
   const declared = typeof bundle.patch === 'string' ? [bundle.patch] : bundle.patch
   if (!Array.isArray(declared) || !declared.every(file => typeof file === 'string')) {
-    throw new Error('gameAgent.bundle.patch must be a file path or a list of file paths')
+    throw new Error('game-agent.bundle.patch must be a file path or a list of file paths')
   }
   return declared
 }
@@ -62,7 +62,7 @@ export function bundlePatchFiles(bundle: GameAgentBundleManifest): string[] {
 /**
  * Resolve a bundle declaration to its ordered absolute patch files.
  * @param packageDir - absolute directory of the bundle package.
- * @param bundle - the bundle's `gameAgent.bundle` declaration, as read from package.json.
+ * @param bundle - the bundle's `game-agent.bundle` declaration, as read from package.json.
  * @returns the absolute patch file paths in application order.
  * @throws {Error} when `patch` is neither a string nor a list of strings.
  */
@@ -72,7 +72,7 @@ export function bundlePatchPaths(packageDir: string, bundle: GameAgentBundleMani
 
 /** One resolved bundle layer of a profile. */
 export interface ProfileLayer {
-  /** The bundle's package name, as listed in `gameAgent.profile.bundles`. */
+  /** The bundle's package name, as listed in `game-agent.profile.bundles`. */
   packageName: string
   /** Absolute directory of the resolved bundle package. */
   packageDir: string
@@ -88,19 +88,19 @@ export interface Profile {
   name: string
   /** Absolute profile directory. */
   dir: string
-  /** Bundle layers in `gameAgent.profile.bundles` order. */
+  /** Bundle layers in `game-agent.profile.bundles` order. */
   layers: ProfileLayer[]
   /** Absolute path of the profile's own patch file. */
   patchPath: string
   /** The profile's own patches; empty when the file is absent. */
   patches: PatchOptions[]
-  /** Selected bundles that contributed no layer, in `gameAgent.profile.bundles` order, with why. */
+  /** Selected bundles that contributed no layer, in `game-agent.profile.bundles` order, with why. */
   skippedBundles: SkippedBundle[]
 }
 
 /** A selected bundle the profile could not load, or whose own game-agent requirements the profile does not exempt. */
 export interface SkippedBundle {
-  /** The bundle's package name from `gameAgent.profile.bundles`. */
+  /** The bundle's package name from `game-agent.profile.bundles`. */
   packageName: string
   /** The resolution, manifest, compatibility, or patch-loading failure. */
   reason: string
@@ -158,7 +158,7 @@ export interface RuntimeResolution {
 
 /**
  * Resolve a profile's directory under the game-agent home.
- * @param name - the profile name (`gameAgent --profile <name>`).
+ * @param name - the profile name (`game-agent --profile <name>`).
  * @param home - the game-agent home; defaults to {@link resolveGameAgentHome}.
  * @returns the absolute profile directory (which may not exist yet).
  */
@@ -166,12 +166,12 @@ export function resolveProfileDir(name: string, home: string = resolveGameAgentH
   if (name === '' || name.includes('/') || name.includes('\\') || name === '.' || name === '..'
     // Node reserves this name for dependency lookup.
     || name === 'node_modules') {
-    throw new Error(`gameAgent: invalid profile name ${JSON.stringify(name)}`)
+    throw new Error(`game-agent: invalid profile name ${JSON.stringify(name)}`)
   }
   return join(home, PROFILES_DIR, name)
 }
 
-const PROFILE_PATCH_TEMPLATE = `# Your patch layer for this gameAgent profile, applied after every bundle layer:
+const PROFILE_PATCH_TEMPLATE = `# Your patch layer for this game-agent profile, applied after every bundle layer:
 # a top-level YAML array of loader patch entries (id-targeted config
 # overrides, disables, and insert lists; \`!!js\` expressions allowed).
 []
@@ -193,7 +193,7 @@ autoInstallPeers: false
  * pnpm settings out-of-tree plugins need. Existing files are never touched,
  * so re-running is a no-op on an initialized profile.
  * @param dir - the profile directory from {@link resolveProfileDir}.
- * @param bundles - the initial `gameAgent.profile.bundles` layer list.
+ * @param bundles - the initial `game-agent.profile.bundles` layer list.
  */
 export function initProfile(
   dir: string,
@@ -216,7 +216,7 @@ export function initProfile(
   if (!existsSync(workspacePath)) writeFileSync(workspacePath, PROFILE_PNPM_WORKSPACE)
 }
 
-/** Directory where the link backend of the gameAgent 0.1.5 releases projected bundle-carried packages into a profile. */
+/** Directory where the link backend of the game-agent 0.1.5 releases projected bundle-carried packages into a profile. */
 const LINK_PROJECTION_DIR = '.game-agent-module-fallback'
 
 /**
@@ -354,7 +354,7 @@ function collectInstallationScopePackages(
       const manifestPath = join(realModuleDirectory(dir), 'package.json')
       let manifest: ProfileManifest
       try {
-        manifest = skippedBundles.has(dep) ? readProfileManifest('gameAgent', dir) : readPackageManifest(manifestPath)
+        manifest = skippedBundles.has(dep) ? readProfileManifest('game-agent', dir) : readPackageManifest(manifestPath)
       } catch (error) {
         if (!skippedBundles.has(dep)) throw error
         continue
@@ -370,7 +370,7 @@ function collectInstallationScopePackages(
 
 /** Inputs for {@link createRuntimeResolution}. */
 export interface RuntimeResolutionOptions {
-  /** Absolute package.json path of the running gameAgent installation. */
+  /** Absolute package.json path of the running game-agent installation. */
   installAnchor: string
   /** Loaded profile whose selected bundles may carry profile-local plugins. */
   profile?: Profile
@@ -461,7 +461,7 @@ export class ProfileRuntimeResolution implements RuntimeResolution {
     const { installAnchor, home, profileDir } = this.#source
     return createRuntimeResolution({
       installAnchor, home,
-      ...profileDir === undefined ? {} : { profile: loadProfileDirectory('gameAgent', profileDir, installAnchor) },
+      ...profileDir === undefined ? {} : { profile: loadProfileDirectory('game-agent', profileDir, installAnchor) },
     })
   }
 }
@@ -575,7 +575,7 @@ function sameBundles(left: readonly string[], right: readonly string[]): boolean
   return left.length === right.length && left.every((value, index) => value === right[index])
 }
 
-/** Return `manifest` with `gameAgent.profile.bundles` replaced, preserving all other fields. */
+/** Return `manifest` with `game-agent.profile.bundles` replaced, preserving all other fields. */
 function withBundles(manifest: ProfileManifest, bundles: readonly string[]): ProfileManifest {
   return {
     ...manifest,
@@ -640,11 +640,11 @@ function packageDirFromAnchor(anchor: string, packageName: string): string | und
  * Resolve one bundle package's directory: installation anchor first, then the
  * profile directory. The installation-first order is the contract that
  * `@game-agent/base` (and every other in-box bundle) always comes from
- * the same installation as the running gameAgent, never from a profile-local copy.
+ * the same installation as the running game-agent, never from a profile-local copy.
  * Resolution does not require the package to export `./package.json`.
  * @param binName - the diagnostic prefix on the thrown error.
- * @param packageName - the bundle's package name from `gameAgent.profile.bundles`.
- * @param installAnchor - absolute path of a file inside the gameAgent app package (its package.json).
+ * @param packageName - the bundle's package name from `game-agent.profile.bundles`.
+ * @param installAnchor - absolute path of a file inside the game-agent app package (its package.json).
  * @param profileDir - the profile directory (second anchor).
  * @returns the bundle package's absolute directory.
  */
@@ -656,8 +656,8 @@ export function resolveBundleDir(
     if (dir !== undefined) return dir
   }
   throw new Error(
-    `${binName}: cannot resolve profile bundle ${JSON.stringify(packageName)} from the gameAgent installation or ${profileDir}; `
-    + `run 'gameAgent plugin --profile ${basename(profileDir)} install' if its dependency is not installed`,
+    `${binName}: cannot resolve profile bundle ${JSON.stringify(packageName)} from the game-agent installation or ${profileDir}; `
+    + `run 'game-agent plugin --profile ${basename(profileDir)} install' if its dependency is not installed`,
   )
 }
 
@@ -666,12 +666,12 @@ export function resolveBundleDir(
  * the shared game-agent home. This is used by application-owned profiles whose
  * package project and lifecycle belong to that application.
  * Retired bundles are removed from the stored bundle list first, rewriting the
- * manifest when it listed one. Unreadable bundles, unsupported Host platforms, and bundles whose own gameAgent requirements
+ * manifest when it listed one. Unreadable bundles, unsupported Host platforms, and bundles whose own game-agent requirements
  * the profile does not exempt are skipped
  * without changing the manifest and listed in `skippedBundles`; nothing is printed.
  * @param binName - the diagnostic prefix on thrown errors.
  * @param dir - absolute profile package directory.
- * @param installAnchor - absolute path of the owning gameAgent app's package.json.
+ * @param installAnchor - absolute path of the owning game-agent app's package.json.
  * @param options - `userLayer: false` skips reading `game-agent.patch.yml`.
  * @returns the successfully loaded bundle layers and optional user patch layer.
  */
@@ -692,10 +692,10 @@ export function loadProfileDirectory(
       const bundleManifest = readProfileManifest(binName, packageDir)
       const bundle = bundleManifest.gameAgent?.bundle
       if (bundle === undefined) {
-        throw new Error(`${binName}: profile bundle ${JSON.stringify(packageName)} declares no gameAgent.bundle in its package.json`)
+        throw new Error(`${binName}: profile bundle ${JSON.stringify(packageName)} declares no game-agent.bundle in its package.json`)
       }
       assertBundlePlatform(bundle.platforms, process.platform)
-      // A bundle is not a plugin row, so row admission never reads its own gameAgent requirements.
+      // A bundle is not a plugin row, so row admission never reads its own game-agent requirements.
       const issue = evaluatePluginCompatibility(bundleManifest, exemptions)
       if (issue !== undefined && !issue.exempted) throw new Error(pluginCompatibilityWarning(issue))
       const patchPaths = bundlePatchPaths(packageDir, bundle)
@@ -713,12 +713,12 @@ export function loadProfileDirectory(
 }
 
 /**
- * Load a profile: resolve every `gameAgent.profile.bundles` entry to its patch
+ * Load a profile: resolve every `game-agent.profile.bundles` entry to its patch
  * layer and parse the profile's own patch file. Unreadable bundles, unsupported Host platforms,
  * and incompatible bundles are skipped and listed in `skippedBundles`; profile manifest and user patch errors still throw.
  * @param binName - the diagnostic prefix on thrown errors.
  * @param name - the profile name.
- * @param installAnchor - absolute path of the gameAgent app's package.json (first resolution anchor).
+ * @param installAnchor - absolute path of the game-agent app's package.json (first resolution anchor).
  * @param home - the game-agent home; defaults to {@link resolveGameAgentHome}.
  * @param options - `userLayer: false` skips reading `game-agent.patch.yml`, so a
  * bundles-only consumer (`--dump-default-config`, a recovery diagnostic)
@@ -734,7 +734,7 @@ export function loadProfile(
     const template = PROFILE_TEMPLATES[name]
     if (template === undefined) {
       throw new Error(
-        `${binName}: profile ${JSON.stringify(name)} does not exist; create it with 'gameAgent plugin --profile ${name} add <package>'`,
+        `${binName}: profile ${JSON.stringify(name)} does not exist; create it with 'game-agent plugin --profile ${name} add <package>'`,
       )
     }
     initProfile(dir, template.bundles)

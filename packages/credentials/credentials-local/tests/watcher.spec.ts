@@ -156,7 +156,7 @@ describe('watcher pipeline', () => {
     await fiber.dispose()
 
     expect(() => instance!.watcher.emit('error', Object.assign(
-      new Error("EPERM: operation not permitted, stat 'C:\\Temp\\gameAgent\\.credentials.yaml'"),
+      new Error("EPERM: operation not permitted, stat 'C:\\Temp\\game-agent\\.credentials.yaml'"),
       { code: 'EPERM', syscall: 'stat' },
     ))).not.toThrow()
   })

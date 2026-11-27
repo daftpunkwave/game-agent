@@ -141,12 +141,12 @@ function fixture(name = '@game-agent/core'): {
   installed: string
   profile: Profile
 } {
-  // root plays $GAME_AGENT_HOME; the running gameAgent lives in a global install outside the profiles tree.
+  // root plays $GAME_AGENT_HOME; the running game-agent lives in a global install outside the profiles tree.
   // Node reports resolved module paths through the native realpath: /private/var for a macOS tmpdir under /var,
   // and the long directory name for a Windows tmpdir spelled with an 8.3 short name.
   const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'game-agent-profile-resolution-')))
   roots.push(root)
-  const installDir = join(root, 'global', 'node_modules', '@game-agent', 'gameAgent')
+  const installDir = join(root, 'global', 'node_modules', '@game-agent', 'cli')
   const installed = join(installDir, 'node_modules', name)
   const installAnchor = pkg(installDir, '@game-agent/cli', 0, { [name]: '*' })
   pkg(installed, name, 1)
@@ -1117,7 +1117,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
       name: 'game-agent-profile-web', private: true, dependencies: { '@game-agent/core': '*' },
     }))
-    const target = join(f.root, 'old-game-agent', 'node_modules', '@game-agent', 'game-agent-core')
+    const target = join(f.root, 'old-game-agent', 'node_modules', '@game-agent', 'core')
     pkg(target, '@game-agent/core', 9)
     const owned = join(f.profile.dir, '.game-agent-module-fallback', 'node_modules', '@game-agent/core')
     const projected = join(f.profile.dir, 'node_modules', '@game-agent/core')
@@ -1218,7 +1218,7 @@ describe('runtime resolution', { concurrent: false }, () => {
       gameAgent: { profile: { bundles: ['bundle-b'] } },
     }))
 
-    const profile = loadProfile('gameAgent', 'web', f.installAnchor, f.root)
+    const profile = loadProfile('game-agent', 'web', f.installAnchor, f.root)
     expect(profile.layers.map(layer => layer.packageName)).toEqual(['bundle-b'])
     expect(existsSync(join(profileDir, '.game-agent-module-fallback'))).toBe(false)
     expect(existsSync(join(modules, plugin))).toBe(false)
@@ -2093,7 +2093,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     const f = fixture()
     const installDir = dirname(f.installAnchor)
     pkg(installDir, '@game-agent/cli', 0, { '@game-agent/core': '*', '@game-agent/util': '*' })
-    pkg(join(installDir, 'node_modules', '@game-agent', 'game-agent-util'), '@game-agent/util', 2)
+    pkg(join(installDir, 'node_modules', '@game-agent', 'util'), '@game-agent/util', 2)
     const linkedRoot = join(f.root, 'work', 'my-plugin')
     const writeManifest = (peers: Record<string, string> | undefined): void => {
       file(join(linkedRoot, 'package.json'), JSON.stringify({
@@ -2110,11 +2110,11 @@ describe('runtime resolution', { concurrent: false }, () => {
     writeManifest(peerDependencies)
     file(join(linkedRoot, 'index.js'), 'export const marker = 30\n')
     file(join(linkedRoot, 'index.cjs'), 'module.exports = { marker: 30 }\n')
-    // The devDependency copy a type checker needs, the plugin's own third-party version, and a gameAgent package
+    // The devDependency copy a type checker needs, the plugin's own third-party version, and a game-agent package
     // declared as a plain dependency.
-    pkg(join(linkedRoot, 'node_modules', '@game-agent', 'game-agent-core'), '@game-agent/core', 21)
+    pkg(join(linkedRoot, 'node_modules', '@game-agent', 'core'), '@game-agent/core', 21)
     pkg(join(linkedRoot, 'node_modules', 'zod'), 'zod', 22)
-    pkg(join(linkedRoot, 'node_modules', '@game-agent', 'game-agent-util'), '@game-agent/util', 23)
+    pkg(join(linkedRoot, 'node_modules', '@game-agent', 'util'), '@game-agent/util', 23)
     pkg(join(f.root, 'work', 'node_modules', 'left-pad'), 'left-pad', 24)
     // A transitive dependency in pnpm's isolated layout, with a sibling of its own.
     const helper = join(linkedRoot, 'node_modules', '.pnpm', 'helper@1.0.0', 'node_modules', 'helper')
@@ -2572,9 +2572,9 @@ describe('runtime resolution', { concurrent: false }, () => {
     // A cache-busting query on the importer, as hot module replacement re-imports it, changes nothing.
     expect(resolveFrom('@game-agent/core', `${parent}?t=1`)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
     expect(resolveFrom('zod', `${parent}?t=1`)).toBe(pathToFileURL(join(linkedRoot, 'node_modules', 'zod', 'index.js')).href)
-    // Plain dependencies keep the plugin's own copies, including a gameAgent package declared as one.
+    // Plain dependencies keep the plugin's own copies, including a game-agent package declared as one.
     await expectResolution('zod', join(linkedRoot, 'node_modules', 'zod'), 22)
-    await expectResolution('@game-agent/util', join(linkedRoot, 'node_modules', '@game-agent', 'game-agent-util'), 23)
+    await expectResolution('@game-agent/util', join(linkedRoot, 'node_modules', '@game-agent', 'util'), 23)
     // An undeclared name without an entry follows the real ancestor chain.
     await expectResolution('left-pad', join(f.root, 'work', 'node_modules', 'left-pad'), 24)
     // Package imports and self-references keep their Node semantics inside the linked package.
@@ -2596,10 +2596,10 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('continues above a linked plugin after a CommonJS subpath miss in an occupied peer', async () => {
     const { f, linkedRoot } = linkedPluginFixture()
     file(join(f.installed, 'package.json'), JSON.stringify({ name: '@game-agent/core', version: '1.0.0', main: './index.cjs' }))
-    const above = join(f.root, 'work', 'node_modules', '@game-agent', 'game-agent-core')
+    const above = join(f.root, 'work', 'node_modules', '@game-agent', 'core')
     file(join(above, 'package.json'), JSON.stringify({ name: '@game-agent/core', version: '3.0.0' }))
     file(join(above, 'sub.cjs'), 'module.exports = { marker: 3 }\n')
-    file(join(linkedRoot, 'node_modules', '@game-agent', 'game-agent-core', 'sub.cjs'), 'module.exports = { marker: 21 }\n')
+    file(join(linkedRoot, 'node_modules', '@game-agent', 'core', 'sub.cjs'), 'module.exports = { marker: 21 }\n')
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
     const require = createRequire(join(linkedRoot, 'entry.cjs'))
@@ -2640,7 +2640,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     const { f, linkedRoot, writeManifest } = linkedPluginFixture({})
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
-    const devCopy = join(linkedRoot, 'node_modules', '@game-agent', 'game-agent-core')
+    const devCopy = join(linkedRoot, 'node_modules', '@game-agent', 'core')
     const require = createRequire(join(linkedRoot, 'entry.cjs'))
     const parent = pathToFileURL(join(linkedRoot, 'entry.mjs')).href
     expect(require.resolve('@game-agent/core')).toBe(join(devCopy, 'index.cjs'))

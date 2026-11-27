@@ -1,5 +1,5 @@
 /**
- * @game-agent/cmdline — the command line a gameAgent launcher hands to the app
+ * @game-agent/cmdline — the command line a game-agent launcher hands to the app
  * it boots.
  *
  * The launcher parses only its own flags (`--profile`, `--patch`, the config
@@ -21,7 +21,7 @@ import type { Context } from '@game-agent/kernel'
 
 /**
  * The invocation's inner arguments: everything after the launcher's own flags,
- * verbatim and in argv order. `gameAgent --profile tui --resume abc` yields
+ * verbatim and in argv order. `game-agent --profile tui --resume abc` yields
  * `['--resume', 'abc']`.
  */
 export interface CmdlineArgs {

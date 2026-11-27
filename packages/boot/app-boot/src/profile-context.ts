@@ -31,7 +31,7 @@ export interface ProfileContext {
 
 declare module '@game-agent/kernel' {
   interface Context {
-    /** Present only in a profile launched by gameAgent. */
+    /** Present only in a profile launched by game-agent. */
     profileContext: ProfileContext
   }
 }

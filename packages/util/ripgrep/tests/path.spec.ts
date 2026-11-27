@@ -36,7 +36,7 @@ describe('ripgrep resolution', () => {
   it('uses the native sidecar beside the current executable', async () => {
     Reflect.defineProperty(process, 'pkg', { configurable: true, value: {} })
     Reflect.defineProperty(process, 'platform', { configurable: true, enumerable: true, value: 'linux' })
-    process.execPath = '/runtime/gameAgent'
+    process.execPath = '/runtime/game-agent'
     existsSync.mockReturnValue(true)
     const sidecar = '/runtime/game-agent-rg'
     const { resolveRgPath } = await import('@game-agent/util-ripgrep')
@@ -80,11 +80,11 @@ describe('ripgrep resolution', () => {
 
   it('uses the unpacked executable path for an Electron ASAR dependency', async () => {
     Reflect.defineProperty(process.versions, 'electron', { configurable: true, value: '44.0.0' })
-    dependency.rgPath = '/Applications/game-agent.app/Contents/Resources/app.asar/gameAgent/node_modules/@vscode/ripgrep/bin/rg'
+    dependency.rgPath = '/Applications/game-agent.app/Contents/Resources/app.asar/game-agent/node_modules/@vscode/ripgrep/bin/rg'
     const { resolveRgPath } = await import('@game-agent/util-ripgrep')
 
     await expect(resolveRgPath()).resolves.toBe(
-      '/Applications/game-agent.app/Contents/Resources/app.asar.unpacked/gameAgent/node_modules/@vscode/ripgrep/bin/rg',
+      '/Applications/game-agent.app/Contents/Resources/app.asar.unpacked/game-agent/node_modules/@vscode/ripgrep/bin/rg',
     )
   })
 })

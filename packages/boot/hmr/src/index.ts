@@ -393,7 +393,7 @@ class Hmr extends Service {
       let lastInputs: string | undefined
       let lastBundles = JSON.stringify(profile.startedBundles)
       const refresh = async (manifestOnly: boolean): Promise<void> => {
-        const bundles = JSON.stringify(readProfileManifest('gameAgent', profile.dir).gameAgent?.profile?.bundles ?? [])
+        const bundles = JSON.stringify(readProfileManifest('game-agent', profile.dir).gameAgent?.profile?.bundles ?? [])
         if (manifestOnly && bundles === lastBundles) return
         const inputs = JSON.stringify([bundles, ...patchFiles.map((filename) => {
           try { return readFileSync(filename, 'utf8') }
@@ -946,7 +946,7 @@ class Hmr extends Service {
     let comparedAt = 0
     let pending: PendingModule[] = []
     try {
-      const patches = readProfilePatches('gameAgent', profile)
+      const patches = readProfilePatches('game-agent', profile)
       comparedAt = this.files.now()
       // A failed comparison keeps every record, so the next recomposition compares the same modules again.
       comparison = await this.contained('comparing loaded modules with disk', () => {
@@ -978,7 +978,7 @@ class Hmr extends Service {
           return job !== undefined && namespaceOf(job) === undefined
         }))
       }, undefined)
-      const result = await recomposeProfile(this.ownerContext[Context.root], patches, 'gameAgent', { requiredIds, running })
+      const result = await recomposeProfile(this.ownerContext[Context.root], patches, 'game-agent', { requiredIds, running })
       const restartReason = compared === undefined || unavailable ? 'module-comparison' : result.restartReason
       return { warnings: result.warnings, pending, ...restartReason === undefined ? {} : { restartReason } }
     } finally {

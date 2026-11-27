@@ -1,4 +1,4 @@
-/** Plugin gameAgent requirement checks prefer engines.gameAgent, retain exact mismatches, and never inherit exemption entries. */
+/** Plugin game-agent requirement checks prefer engines.gameAgent, retain exact mismatches, and never inherit exemption entries. */
 
 import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
@@ -16,7 +16,7 @@ function check(peerDependencies: object) {
 
 afterEach(() => vi.restoreAllMocks())
 
-describe('gameAgent runtime version', () => {
+describe('game-agent runtime version', () => {
   it('reads the exact version with a string path accepted by executable virtual filesystems', () => {
     const { version: expected } = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')) as { version: string }
     const read = vi.spyOn(fs, 'readFileSync')
@@ -28,7 +28,7 @@ describe('gameAgent runtime version', () => {
   it.each([{}, { version: null }, { version: 1 }, { version: '' }, { version: 'not-semver' }])(
     'rejects an invalid or absent package version: %j', (manifest) => {
       vi.spyOn(fs, 'readFileSync').mockReturnValueOnce(JSON.stringify(manifest))
-      expect(() => getGameAgentRuntimeVersion()).toThrow('Invalid gameAgent runtime version')
+      expect(() => getGameAgentRuntimeVersion()).toThrow('Invalid game-agent runtime version')
     },
   )
 
@@ -62,12 +62,12 @@ describe('plugin compatibility', () => {
     expect(check({ '@game-agent/session': range })).toBeUndefined()
   })
 
-  it('checks the intersection of gameAgent requirements and returns only mismatches', () => {
+  it('checks the intersection of game-agent requirements and returns only mismatches', () => {
     expect(check({
       '@game-agent/cli': '^0.1.0',
       '@game-agent/session': '>=0.2.0',
       '@game-agent/tools': '<0.1.0',
-      '@game-agent/kernel': '^99.0.0',
+      '@other/kernel': '^99.0.0',
     })).toEqual({
       ...identity,
       runtimeVersion: runtime,
@@ -76,7 +76,7 @@ describe('plugin compatibility', () => {
     })
   })
 
-  it.each(['^0.2.0', '>=0.1.7', 'broken', '', ' ', 'workspace:>=0.2.0', 'file:../gameAgent', 'npm:gameAgent@*'])(
+  it.each(['^0.2.0', '>=0.1.7', 'broken', '', ' ', 'workspace:>=0.2.0', 'file:../game-agent', 'npm:game-agent@*'])(
     'fails closed for an incompatible or malformed range %j', (range) => {
       expect(check({ '@game-agent/cli': range })?.requirements).toEqual({ '@game-agent/cli': range })
     },
@@ -84,8 +84,8 @@ describe('plugin compatibility', () => {
 
   it('ignores unrelated names and dependency fields', () => {
     expect(check({
-      '@game-agent/kernel': 'broken', '@game-agent/kernel-loader': '^99',
-      '@other/gameAgent': '^99', '@other-scope/clix': '^99', gameAgent: '^99',
+      '@other/kernel': 'broken', '@other/kernel-loader': '^99',
+      '@other/game-agent': '^99', '@other-scope/clix': '^99', gameAgent: '^99',
       constructor: '^99', hasOwnProperty: '^99', ['__proto__']: '^99',
     })).toBeUndefined()
     expect(evaluatePluginCompatibility({ dependencies: { '@game-agent/cli': '^99' } }, {}, runtime)).toBeUndefined()
@@ -120,7 +120,7 @@ describe('plugin compatibility', () => {
   })
 
   it('rejects an invalid explicit runtime even when no peers are declared', () => {
-    expect(() => evaluatePluginCompatibility({}, {}, 'invalid')).toThrow('Invalid gameAgent runtime version')
+    expect(() => evaluatePluginCompatibility({}, {}, 'invalid')).toThrow('Invalid game-agent runtime version')
   })
 
   it('rejects array plugin manifests', () => {
@@ -157,7 +157,7 @@ describe('engines.gameAgent', () => {
     expect(() => engines(value, passingPeers)).toThrow('Plugin manifest engines.gameAgent must be a string')
   })
 
-  it('falls back to peers when engines has no own gameAgent member', () => {
+  it('falls back to peers when engines has no own game-agent member', () => {
     const inherited = Object.create({ gameAgent: '*' }) as object
     for (const value of [{}, { node: '>=99' }, inherited]) {
       expect(evaluatePluginCompatibility({ ...identity, engines: value, peerDependencies: failingPeers }, {}, runtime)?.requirements)
@@ -213,12 +213,12 @@ describe('compatibility warning', () => {
       ...identity, runtimeVersion: runtime,
       requirements: { '@game-agent/cli': '^0.2.0', '@game-agent/session': 'broken' }, exempted,
     })).toBe(
-      'Plugin @example/plugin@2.0.0 is incompatible with gameAgent 0.1.7-alpha.1: '
+      'Plugin @example/plugin@2.0.0 is incompatible with game-agent 0.1.7-alpha.1: '
       + 'requirements {"@game-agent/cli":"^0.2.0","@game-agent/session":"broken"}. '
       + 'Running it may cause crashes or data loss. '
-      + 'Update the plugin or install a plugin version compatible with this gameAgent runtime. '
-      + 'To accept this risk explicitly, grant the exact-version exemption for @example/plugin@2.0.0 on gameAgent 0.1.7-alpha.1 '
-      + 'with `gameAgent plugin allow-version` or the plugin manager, then retry the installation or restart gameAgent. '
+      + 'Update the plugin or install a plugin version compatible with this game-agent runtime. '
+      + 'To accept this risk explicitly, grant the exact-version exemption for @example/plugin@2.0.0 on game-agent 0.1.7-alpha.1 '
+      + 'with `game-agent plugin allow-version` or the plugin manager, then retry the installation or restart game-agent. '
       + `Exact-version exemption: ${exempted ? 'active' : 'not active'}.`,
     )
   })

@@ -40,7 +40,7 @@ it('recovers a profile without loading its broken plugins or patch', () => {
   const pluginManifest = join(packageDir, 'package.json')
   writeFileSync(pluginManifest, '{broken')
   const backup = sanitizeProfile('test', dir, bundles)
-  expect(backup).toMatch(/kernel\.patch\.yml\.bak-\d{13}$/u)
+  expect(backup).toMatch(/game-agent\.patch\.yml\.bak-\d{13}$/u)
   expect(existsSync(patch)).toBe(false)
   expect(readFileSync(backup!, 'utf8')).toBe(': broken YAML')
   expect(readFileSync(pluginManifest, 'utf8')).toBe('{broken')
