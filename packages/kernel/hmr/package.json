@@ -1,0 +1,27 @@
+{
+  "name": "@game-agent/kernel-hmr",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Hot module replacement for plugins during development",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@babel/code-frame": "^7.29.0",
+    "@game-agent/kit": "workspace:*",
+    "@game-agent/schema": "workspace:*",
+    "chokidar": "^4.0.3",
+    "picomatch": "^4.0.3"
+  },
+  "peerDependencies": {
+    "@game-agent/kernel": "workspace:*",
+    "@game-agent/kernel-include": "workspace:*",
+    "@game-agent/kernel-loader": "workspace:*",
+    "@game-agent/kernel-timer": "workspace:*"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  }
+}
