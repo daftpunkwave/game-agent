@@ -151,14 +151,14 @@ suite('persistent Bash through a real game-agent.yml Loader composition', () => 
     await execute('state', 'export KEEP=loader; mkdir -p nested; cd nested')
     const observed = text(await execute('observe', 'printf "cwd=%s keep=%s\\n" "$PWD" "$KEEP"'))
     expect(observed).toContain(`cwd=${join(root, 'nested')} keep=loader`)
-    expect(observed).not.toContain('GAME_AGENT_PERSISTENT_BASH')
+    expect(observed).not.toContain('NPC_PERSISTENT_BASH')
 
     const multiline = text(await execute(
       'multiline',
       'value="line one"\nprintf "%s:%s\\n" "$value" "it\'s fine"',
     ))
     expect(multiline).toBe("line one:it's fine\n[Command finished with exit code 0]")
-    expect(multiline).not.toContain('GAME_AGENT_PERSISTENT_BASH')
+    expect(multiline).not.toContain('NPC_PERSISTENT_BASH')
 
     const heredoc = text(await execute(
       'heredoc',
@@ -195,7 +195,7 @@ suite('persistent Bash through a real game-agent.yml Loader composition', () => 
     // stdin_read readiness is what returns the replacement shell's prompt
     // instead of spinning until the tool deadline.
     const execed = text(await execute('exec-replacement', 'exec bash --noprofile --norc -i'))
-    expect(execed).toBe('game-agent> ')
+    expect(execed).toBe('npc> ')
 
     const exited = text(await execute('exit', 'exit'))
     expect(exited).toContain('next bash call starts from the workspace')

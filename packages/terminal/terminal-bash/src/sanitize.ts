@@ -6,7 +6,7 @@ import { Buffer } from 'node:buffer'
 export const PROMPT_MARKER_PREFIX = '133;D;'
 
 /** Exact printable prompt emitted after the private marker. */
-export const CONTROLLED_PROMPT = 'game-agent> '
+export const CONTROLLED_PROMPT = 'npc> '
 
 /** One sanitized chunk plus whether it contained the owned prompt marker. */
 export interface SanitizedChunk {

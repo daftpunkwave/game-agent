@@ -292,8 +292,8 @@ describe('BashTerminalBackend startup rollback', () => {
       cwd: '/work',
       graceMs: 10,
       env: {
-        TERM: 'dumb', PAGER: 'cat', GIT_PAGER: 'cat', PS1: 'game-agent> ', BASH_SILENCE_DEPRECATION_WARNING: '1',
-        PROMPT_COMMAND: 'printf "\\033]133;D;%s\\007" "$?"; PS1=\'game-agent> \'',
+        TERM: 'dumb', PAGER: 'cat', GIT_PAGER: 'cat', PS1: 'npc> ', BASH_SILENCE_DEPRECATION_WARNING: '1',
+        PROMPT_COMMAND: 'printf "\\033]133;D;%s\\007" "$?"; PS1=\'npc> \'',
         GAME_AGENT_SHELL: '1', GAME_AGENT_SESSION_ID: 'agent', GAME_AGENT_PTY_SESSION_ID: 'pty-1',
       },
     })
@@ -424,14 +424,14 @@ describe('BashTerminalBackend startup rollback', () => {
         outcome.resolve({ exitCode: null, signal: 'SIGTERM' })
       },
     }
-    queueMicrotask(() => { output.write(Buffer.from('\x1b]133;D;0\x07game-agent> ')) })
+    queueMicrotask(() => { output.write(Buffer.from('\x1b]133;D;0\x07npc> ')) })
     const backend = new BashTerminalBackend(
       ctx,
       config(),
       async () => terminal,
     )
     const session = await backend.spawn(spec(agent(ctx)))
-    expect(session.motd).toBe('game-agent> ')
+    expect(session.motd).toBe('npc> ')
     await session.close('test complete')
   })
 
@@ -449,7 +449,7 @@ describe('BashTerminalBackend startup rollback', () => {
         sent = request
         return {
           done: Promise.resolve({
-            viewport: 'setup-echo game-agent> ', waitReason: 'stdin_read' as const,
+            viewport: 'setup-echo npc> ', waitReason: 'stdin_read' as const,
             sessionStatus: { kind: 'running' as const }, truncated: false,
           }),
           readOutput: () => ({ delta: '', truncated: false }),
@@ -466,7 +466,7 @@ describe('BashTerminalBackend startup rollback', () => {
     )
     expect(await backend.spawn(spec(agent(ctx)))).toBe(session)
     expect(sent).toMatchObject({ text: ENCODING_PREAMBLE + PWSH_PROMPT_SETUP, submit: true })
-    expect(session.motd).toBe('setup-echo game-agent> ')
+    expect(session.motd).toBe('setup-echo npc> ')
     expect(spawned?.env).toMatchObject({
       TERM: 'dumb', NO_COLOR: '1', GAME_AGENT_SHELL: '1', GAME_AGENT_SESSION_ID: 'agent', GAME_AGENT_PTY_SESSION_ID: 'pty-1',
     })
@@ -488,7 +488,7 @@ describe('BashTerminalBackend startup rollback', () => {
         const second = sends.length > 1
         return {
           done: Promise.resolve({
-            viewport: second ? 'game-agent> ' : "function prompt { 'game-agent> ' }\n",
+            viewport: second ? 'npc> ' : "function prompt { 'npc> ' }\n",
             waitReason: second ? 'stdin_read' as const : 'inferred_idle' as const,
             sessionStatus: { kind: 'running' as const }, truncated: false,
           }),
@@ -507,7 +507,7 @@ describe('BashTerminalBackend startup rollback', () => {
     await backend.spawn(spec(agent(ctx)))
     expect(sends).toHaveLength(2)
     expect(sends[1]).toMatchObject({ text: '', submit: false })
-    expect(session.motd).toBe('game-agent> ')
+    expect(session.motd).toBe('npc> ')
   })
 
   it('rejects a pwsh bootstrap whose shell exits or times out', async () => {
@@ -605,7 +605,7 @@ describe('BashTerminalBackend startup rollback', () => {
         sends.push(request)
         return {
           done: Promise.resolve({
-            viewport: 'game-agent> ', waitReason: 'stdin_read' as const,
+            viewport: 'npc> ', waitReason: 'stdin_read' as const,
             sessionStatus: { kind: 'running' as const }, truncated: false,
           }),
           readOutput: () => ({ delta: '', truncated: false }),
@@ -622,7 +622,7 @@ describe('BashTerminalBackend startup rollback', () => {
     )
     const signal = new AbortController().signal
     const spawned = await backend.spawn({ ...spec(agent(ctx)), signal })
-    expect(spawned.motd).toBe('game-agent> ')
+    expect(spawned.motd).toBe('npc> ')
     expect(sends).toHaveLength(1)
     expect(sends[0]?.signal).toBe(signal)
   })

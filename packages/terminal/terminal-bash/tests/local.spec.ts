@@ -146,7 +146,7 @@ describe.skipIf(process.platform === 'win32')('terminal-bash real shell', () => 
     try {
       const { ctx, root, agent } = await rig('danger-full-access')
       const created = await ctx.terminals.spawn(agent, { type: 'shell', name: 'main', cwd: root })
-      expect(created.motd).toContain('game-agent> ')
+      expect(created.motd).toContain('npc> ')
 
       const first = ctx.terminals.startSend(agent, created.sessionId, { text: 'export KEEP=ok; cd /', submit: true })
       expect((await first.done).waitReason).toBe('stdin_read')
@@ -178,7 +178,7 @@ describe.skipIf(process.platform === 'win32')('terminal-bash real shell', () => 
     const after = ctx.terminals.startSend(agent, created.sessionId, { text: 'printf "healed=[%s]\\n" "$PS1"', submit: true })
     const result = await after.done
     expect(result.waitReason).toBe('stdin_read')
-    expect(result.viewport).toContain('healed=[game-agent> ]')
+    expect(result.viewport).toContain('healed=[npc> ]')
     await ctx.terminals.kill(agent, created.sessionId)
   }, 20_000)
 
@@ -342,7 +342,7 @@ describe.skipIf(!hasPwsh)('terminal-bash pwsh real shell', () => {
       const created = await ctx.terminals.spawn(agent, { type: 'shell', name: 'main', cwd: root })
       // stdin_read can precede delivery of the printable prompt to the PTY reader.
       await expect.poll(() => ctx.terminals.read(agent, created.sessionId, { offset: 0, count: 100 }).text,
-        { timeout: 8_000 }).toContain('game-agent> ')
+        { timeout: 8_000 }).toContain('npc> ')
 
       const releaseFile = join(root, 'release-command')
       // Hold the command across the silence settlement without relying on host load.
