@@ -5,7 +5,7 @@ Thank you for your interest in contributing to **game-agent**! All contributions
 ## 1. Language Policy
 
 - This repository is **English-only** across source code, comments, file headers, documentation, commit messages, pull requests, and issues (unless explicitly implementing an `i18n` localization package).
-- Dedicated `i18n` support will be added as a separate capability once the core TypeScript harness stabilizes.
+- Dedicated `i18n` support will be added as a separate capability once the core TypeScript runtime stabilizes.
 
 ## 2. Technology Stack
 

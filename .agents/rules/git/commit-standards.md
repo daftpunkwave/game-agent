@@ -25,7 +25,7 @@ Every commit must follow Conventional Commits:
 | `docs` | Documentation and repository rules |
 | `refactor` | Structural change with no behavior change |
 | `perf` | Performance improvement |
-| `test` | Test cases, fixtures, and test harnesses |
+| `test` | Test cases, fixtures, and test helpers |
 | `style` | Formatting changes that do not affect semantics |
 | `build` | Build system, packaging, TypeScript configs, and dependencies |
 | `ci` | CI/CD automation (`ci(check)`, `ci(release)`, etc.) |

@@ -105,7 +105,7 @@ Visible game state is mirrored into the blackboard as `<view>.<field>` after cro
 | Group | Packages | Responsibility |
 |---|---|---|
 | `kernel` | `kernel`, `kit`, `schema`, `loader`, `include`, `group`, `timer`, `logger-console`, `hmr` | Plugin kernel, configuration schemas, configuration loading, plugin-scoped timers, console logging, hot reload |
-| `util` | `errors`, `deque`, `atomic-write`, `ports` | Zero-dependency building blocks and injected time, randomness, and ids |
+| `util` | `error`, `deque`, `atomic-write`, `time`, `timeout`, `home-paths`, `http-proxy`, `values`, `ports`, and others (see [packages/README.md](packages/README.md)) | Building blocks: errors, collections, file and path helpers, time and timeouts, outbound proxy policy, and injected time, randomness, and ids |
 | `protocol` | `contracts`, `intent-ledger`, `inbox`, `gateway` | Game vocabulary, command lifecycle, event inbox, single ingress and egress |
 | `behavior` | `behavior-tree` | Tree format, validation, editing, scheduling, runner |
 | `core` | `decision`, `agent-runtime` | Bounded model decisions and the single-agent runtime |
