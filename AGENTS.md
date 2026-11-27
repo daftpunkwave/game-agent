@@ -48,18 +48,19 @@ scripts/                  repository gates
 
 ```sh
 pnpm install
-pnpm typecheck          # tsc over every package, app, script, and test
+pnpm build              # tsc -b: type-check everything and compile each package and app from src/ to lib/
 pnpm test               # vitest
-pnpm check:boundaries   # declared deps, no deep imports, acyclic graph, group rules, no Node I/O in cognition packages, SDK confinement
+pnpm check:boundaries   # declared deps, no deep imports, acyclic graph, group rules, no Node I/O in cognition packages, SDK confinement; tsconfig references match package dependencies
 pnpm check:headers      # file headers with Responsibilities, Contracts, and Constraints (other content allowed); no console.log, debugger, TODO, or FIXME in packages and apps
 pnpm check:notices      # THIRD_PARTY_NOTICES.md matches runtime dependencies; their licenses are on the allow list
-pnpm check:smoke        # every package entry loads and the CLI runs under Node.js from source
+pnpm check:smoke        # every compiled package entry loads and the compiled CLI runs under Node.js
 pnpm check              # all of the above
 pnpm check:conventions  # Conventional Commits and English-only commit messages in origin/main..HEAD (CI also checks PR title and description)
-pnpm game-agent help    # run the CLI from source (no build step yet)
+pnpm sync:projects      # regenerate tsconfig.json files after adding a package or changing workspace dependencies
+pnpm game-agent help    # run the compiled CLI (after pnpm build)
 ```
 
-Source is executed directly by Node.js with `--experimental-transform-types`; there is no build step yet. Use explicit `.ts` extensions in relative imports.
+Every package and app is a composite TypeScript project that compiles `src/` to `lib/`; `pnpm build` builds them in dependency order. Package `exports` list three targets per entry: `@game-agent/source` (the TypeScript source, used by type checking and tests), `types`, and `default` (the compiled output, used by Node.js). Tests never need a build; running the CLI does. Use explicit `.ts` extensions in relative imports; the compiler rewrites them to `.js`.
 
 ---
 

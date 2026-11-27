@@ -51,6 +51,7 @@ Requires Node.js 24 or newer and pnpm.
 
 ```sh
 pnpm install
+pnpm build
 
 # Check and inspect a behavior tree
 pnpm game-agent tree validate examples/simulated-farm/tree.json

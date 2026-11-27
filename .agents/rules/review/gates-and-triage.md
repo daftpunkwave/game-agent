@@ -13,8 +13,8 @@ This document governs CI check interpretation, static analysis triage, and revie
   | Check | Workflow | Runs when the pull request | What it verifies |
   |---|---|---|---|
   | `hygiene` | `repo-hygiene.yml` | is opened, reopened, or gets new commits | Whitespace errors, conflict markers, tracked `.env` files |
-  | `check (ubuntu-latest)` | `check.yml` | is opened, reopened, or gets new commits | `pnpm check`: types, tests, package boundaries, file headers, third-party notices, running from source |
-  | `check (windows-latest)` | `check.yml` | is opened, reopened, or gets new commits | `pnpm test` and `pnpm check:smoke`, the platform-sensitive part; static checks run only on Linux because their result does not depend on the platform |
+  | `check (ubuntu-latest)` | `check.yml` | is opened, reopened, or gets new commits | `pnpm check`: build with type checking, tests, package boundaries and project references, file headers, third-party notices, running the compiled output |
+  | `check (windows-latest)` | `check.yml` | is opened, reopened, or gets new commits | `pnpm build`, `pnpm test`, and `pnpm check:smoke`, the platform-sensitive part; static checks run only on Linux because their result does not depend on the platform |
   | `conventions` | `pull-request.yml` | is opened, reopened, gets new commits, or has its title or description edited | Conventional Commits and English-only title, description, and non-merge commits (`pnpm check:conventions`) |
   | `dependency-review` | `dependencies.yml` | is opened, reopened, or gets new commits | No added dependency with a known vulnerability of moderate or higher severity or with a license outside `allow-licenses` in `.github/dependency-review-config.yml` |
 
