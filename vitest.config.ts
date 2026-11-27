@@ -71,6 +71,14 @@ const POSIX_ONLY = process.platform === 'win32'
       // The 4,800-case linked-package resolution matrix builds directory links in bulk; on Windows its forked
       // worker exits or stalls partway through. The resolution logic is platform-neutral and runs on Linux.
       'packages/boot/app-boot/tests/linked-resolution-matrix.spec.ts',
+      // Hosted CI runners execute as an elevated administrator, who holds WRITE_DAC and WRITE_OWNER implicitly. These
+      // suites verify ACL behavior for a standard user, so they run on developer machines but not on hosted runners.
+      ...process.env.GITHUB_ACTIONS === 'true'
+        ? [
+            'packages/sandbox/sandbox-windows-acl/tests/diagnose-script.spec.ts',
+            'packages/sandbox/sandbox-windows-acl/tests/runner.spec.ts',
+          ]
+        : [],
     ]
   : []
 
