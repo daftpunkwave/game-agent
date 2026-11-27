@@ -6,7 +6,7 @@
  * the VM API run in a separate lane with `--experimental-vm-modules`.
  * Constraints: Tests must stay order-independent. Every suite runs in a forked worker, because Node.js 24 can
  * abort in its CommonJS lexer inside worker threads. Suites that need POSIX process semantics are excluded on
- * Windows and run on Linux.
+ * Windows and run on Linux, as does one resolution matrix that does not complete on Windows.
  */
 import ts from 'typescript'
 import { defineConfig, type Plugin } from 'vitest/config'
@@ -62,6 +62,9 @@ const POSIX_ONLY = process.platform === 'win32'
       'packages/subprocess/subprocess-local/tests/process-inspector.spec.ts',
       'packages/subprocess/subprocess-local/tests/spawn.spec.ts',
       'packages/subprocess/subprocess-local/tests/terminal.spec.ts',
+      // The 4,800-case linked-package resolution matrix builds directory links in bulk; on Windows its forked
+      // worker exits or stalls partway through. The resolution logic is platform-neutral and runs on Linux.
+      'packages/boot/app-boot/tests/linked-resolution-matrix.spec.ts',
     ]
   : []
 
