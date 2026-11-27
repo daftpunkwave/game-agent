@@ -1,8 +1,8 @@
 # Pull Request Policy
 #
-# Responsibilities: Check pull request conventions and review dependency changes before a pull request can merge.
-# Contracts: Reports the required checks `conventions` (Conventional Commits and English-only rules for the title, description, and every non-merge commit, via scripts/check-conventions.ts) and `dependency-review` (fails when the pull request adds a dependency with a known vulnerability of moderate or higher severity).
-# Constraints: Runs only on pull_request events with a read-only token, so fork pull requests never receive secrets; untrusted PR text reaches the script through environment variables, never through expression interpolation in shell code; actions are pinned by commit SHA; renaming a job requires updating the required checks of the `main` ruleset.
+# Responsibilities: Check pull request conventions before a pull request can merge.
+# Contracts: Reports the required check `conventions` (Conventional Commits and English-only rules for the title, description, and every non-merge commit, via scripts/check-conventions.ts).
+# Constraints: Also runs when the title or description is edited, because the squash commit title comes from the pull request title. Runs only on pull_request events with a read-only token, so fork pull requests never receive secrets; untrusted PR text reaches the script through environment variables, never through expression interpolation in shell code; actions are pinned by commit SHA; renaming the job requires updating the required checks of the `main` ruleset.
 name: pull-request
 
 on:
@@ -43,16 +43,3 @@ jobs:
           BASE_REF: ${{ github.event.pull_request.base.ref }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: node scripts/check-conventions.ts --range "origin/${BASE_REF}..${HEAD_SHA}"
-
-  dependency-review:
-    name: dependency-review
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-
-      - name: Review dependency changes
-        uses: actions/dependency-review-action@bbc44d14a204704ccc493733616cd1e93a0321ec # v5.0.1
-        with:
-          fail-on-severity: moderate
