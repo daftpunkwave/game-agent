@@ -9,15 +9,16 @@
     "node": ">=24"
   },
   "scripts": {
-    "typecheck": "tsc -b tsconfig.json",
+    "build": "tsc -b tsconfig.json",
     "test": "vitest run",
-    "check:boundaries": "node scripts/check-boundaries.ts",
+    "sync:projects": "node scripts/sync-projects.ts",
+    "check:boundaries": "node scripts/check-boundaries.ts && node scripts/sync-projects.ts --check",
     "check:headers": "node scripts/check-headers.ts",
     "check:notices": "node scripts/check-notices.ts",
-    "check:smoke": "node --experimental-transform-types --disable-warning=ExperimentalWarning scripts/check-smoke.ts",
+    "check:smoke": "node scripts/check-smoke.ts",
     "check:conventions": "node scripts/check-conventions.ts",
-    "check": "pnpm typecheck && pnpm test && pnpm check:boundaries && pnpm check:headers && pnpm check:notices && pnpm check:smoke",
-    "game-agent": "node --experimental-transform-types --disable-warning=ExperimentalWarning apps/cli/src/main.ts"
+    "check": "pnpm build && pnpm test && pnpm check:boundaries && pnpm check:headers && pnpm check:notices && pnpm check:smoke",
+    "game-agent": "node apps/cli/lib/main.js"
   },
   "devDependencies": {
     "@types/node": "^24.10.0",

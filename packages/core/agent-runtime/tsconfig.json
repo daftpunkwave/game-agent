@@ -1,0 +1,37 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../behavior/behavior-tree"
+    },
+    {
+      "path": "../../protocol/contracts"
+    },
+    {
+      "path": "../decision"
+    },
+    {
+      "path": "../../protocol/gateway"
+    },
+    {
+      "path": "../../protocol/inbox"
+    },
+    {
+      "path": "../../protocol/intent-ledger"
+    },
+    {
+      "path": "../../util/ports"
+    },
+    {
+      "path": "../../telemetry/trace"
+    }
+  ]
+}

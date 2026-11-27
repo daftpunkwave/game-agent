@@ -1,13 +1,9 @@
 {
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
-    "composite": true,
-    "noEmit": false,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "declarationMap": true,
     "rootDir": "src",
-    "outDir": "lib/types",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo",
     "verbatimModuleSyntax": false,
     "noImplicitAny": false,
     "noImplicitThis": false,
@@ -23,10 +19,10 @@
   ],
   "references": [
     {
-      "path": "../kit"
+      "path": "../kernel"
     },
     {
-      "path": "../kernel"
+      "path": "../kit"
     }
   ]
 }

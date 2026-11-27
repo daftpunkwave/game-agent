@@ -1,0 +1,55 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../packages/core/agent-runtime"
+    },
+    {
+      "path": "../../packages/boot/app"
+    },
+    {
+      "path": "../../packages/behavior/behavior-tree"
+    },
+    {
+      "path": "../../packages/protocol/contracts"
+    },
+    {
+      "path": "../../packages/core/decision"
+    },
+    {
+      "path": "../../packages/util/error"
+    },
+    {
+      "path": "../../packages/fleet/fleet"
+    },
+    {
+      "path": "../../packages/protocol/gateway"
+    },
+    {
+      "path": "../../packages/kernel/kernel"
+    },
+    {
+      "path": "../../packages/llm/model-openai-compatible"
+    },
+    {
+      "path": "../../packages/util/ports"
+    },
+    {
+      "path": "../../packages/telemetry/trace"
+    },
+    {
+      "path": "../../packages/transport/transport-mcp"
+    },
+    {
+      "path": "../../packages/transport/transport-simulated"
+    }
+  ]
+}

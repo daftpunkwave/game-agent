@@ -5,10 +5,14 @@
   "type": "module",
   "license": "MIT",
   "bin": {
-    "game-agent": "./src/main.ts"
+    "game-agent": "./lib/main.js"
   },
   "exports": {
-    ".": "./src/main.ts"
+    ".": {
+      "@game-agent/source": "./src/main.ts",
+      "types": "./lib/main.d.ts",
+      "default": "./lib/main.js"
+    }
   },
   "dependencies": {
     "@game-agent/agent-runtime": "workspace:*",

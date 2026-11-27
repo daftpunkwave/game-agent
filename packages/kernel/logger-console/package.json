@@ -7,9 +7,14 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "types": "./src/shared.ts",
-      "node": "./src/index.ts",
-      "default": "./src/browser.ts"
+      "@game-agent/source": {
+        "types": "./src/shared.ts",
+        "node": "./src/index.ts",
+        "default": "./src/browser.ts"
+      },
+      "types": "./lib/shared.d.ts",
+      "node": "./lib/index.js",
+      "default": "./lib/browser.js"
     }
   },
   "dependencies": {
