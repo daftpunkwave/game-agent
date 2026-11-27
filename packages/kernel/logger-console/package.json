@@ -6,7 +6,11 @@
   "type": "module",
   "license": "MIT",
   "exports": {
-    ".": "./src/browser.ts"
+    ".": {
+      "types": "./src/shared.ts",
+      "node": "./src/index.ts",
+      "default": "./src/browser.ts"
+    }
   },
   "dependencies": {
     "@game-agent/kit": "workspace:*",
